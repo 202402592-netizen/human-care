@@ -1,0 +1,155 @@
+/* ==========================================================================
+   MindCare Mental Health Platform — Responsive Styles
+   Breakpoints:
+   - Desktop: 1200px+
+   - Tablet: 768px - 1199px
+   - Mobile: < 768px
+   ========================================================================== */
+
+/* Mobile Bottom Navigation Bar (for portal dashboards on small screens) */
+.mc-mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--mc-border-light);
+  box-shadow: 0 -4px 20px rgba(91, 66, 109, 0.08);
+  z-index: 1040;
+  padding: 6px 12px;
+}
+
+.mc-mobile-nav-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mc-mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--mc-text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--mc-radius-md);
+  transition: var(--mc-transition);
+}
+
+.mc-mobile-nav-item i {
+  font-size: 1.25rem;
+  margin-bottom: 2px;
+}
+
+.mc-mobile-nav-item.active,
+.mc-mobile-nav-item:hover {
+  color: var(--mc-primary);
+}
+
+.mc-mobile-nav-item.active i {
+  color: var(--mc-primary);
+}
+
+/* Tablet adjustments */
+@media (max-width: 1199px) {
+  .mc-sidebar {
+    width: 220px;
+    padding: 1.25rem 0.75rem;
+  }
+
+  .mc-portal-content {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile adjustments (< 768px) */
+@media (max-width: 767.98px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.45rem; }
+  h3 { font-size: 1.25rem; }
+
+  .mc-portal-layout {
+    flex-direction: column;
+    padding-bottom: 70px; /* space for mobile bottom nav */
+  }
+
+  .mc-sidebar {
+    display: none; /* replaced by mobile bottom nav or offcanvas */
+  }
+
+  .mc-portal-content {
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .mc-portal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .mc-mobile-bottom-nav {
+    display: block;
+  }
+
+  .mc-hero {
+    padding: 2.5rem 0 2rem;
+    text-align: center;
+  }
+
+  .mc-hero .d-flex {
+    justify-content: center;
+  }
+
+  .mc-crisis-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .mc-crisis-banner .btn {
+    width: 100%;
+  }
+
+  .mc-week-strip {
+    gap: 4px;
+    padding: 6px;
+  }
+
+  .mc-week-day {
+    padding: 6px 2px;
+    font-size: 0.8rem;
+  }
+
+  .mc-demo-bar {
+    font-size: 0.72rem;
+    padding: 6px 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .mc-card {
+    padding: 1.15rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .mc-sidebar, .mc-demo-bar, .mc-navbar, .mc-mobile-bottom-nav, .btn, .mc-footer {
+    display: none !important;
+  }
+  .mc-portal-content {
+    padding: 0 !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
+}

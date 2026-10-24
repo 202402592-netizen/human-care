@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact MindCare — Compassionate Care Support</title>
+  <meta name="description" content="Reach the MindCare team for general inquiries, intake coordination, therapist partnership questions, or platform assistance.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Crisis Banner -->
+  <div class="bg-light border-bottom py-1 px-3 text-center small">
+    <span class="text-muted">In crisis or experiencing acute distress? Free 24/7 support is available:</span>
+    <a href="#" class="text-danger fw-bold ms-2 mc-crisis-trigger">
+      <i class="bi bi-heart-pulse-fill me-1"></i> Call 988 Crisis Lifeline
+    </a>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg mc-navbar">
+    <div class="container">
+      <a class="mc-brand" href="index.html">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <span>MindCare</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mcNavbarContent">
+        <i class="bi bi-list fs-2 text-dark"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mcNavbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="therapists.html">Therapists</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link active" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a href="login.html" class="btn btn-mc-ghost">Sign In</a>
+          <a href="register.html" class="btn btn-mc-primary">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="py-5" style="background-color: var(--mc-canvas);">
+    <div class="container py-2">
+      <div class="mc-section-header">
+        <span class="mc-section-tag">We Are Here For You</span>
+        <h1 class="display-6 fw-bold mb-2 text-dark">Get in Touch with MindCare</h1>
+        <p class="text-muted">Have a question about scheduling, therapist credentialing, or technical setup? Our care coordination team responds within 24 hours.</p>
+      </div>
+
+      <div class="row g-5">
+        <!-- Contact Form -->
+        <div class="col-lg-7">
+          <div class="mc-card p-4 p-md-5 border-0 shadow-sm">
+            <h4 class="fw-bold text-dark mb-4"><i class="bi bi-envelope-paper-heart text-primary me-2"></i> Send an Inquiry</h4>
+            
+            <form id="mcContactForm">
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label">Full Name *</label>
+                  <input type="text" id="contactName" class="form-control" placeholder="Maya Lin" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Email Address *</label>
+                  <input type="email" id="contactEmail" class="form-control" placeholder="maya@example.com" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Inquiry Topic</label>
+                <select id="contactTopic" class="form-select">
+                  <option value="General Questions">General Questions & Guidance</option>
+                  <option value="Therapist Matching">Assistance Finding the Right Clinician</option>
+                  <option value="Telehealth Technical">Telehealth Video & Technical Support</option>
+                  <option value="Billing & Superbill">Insurance Superbill & Receipts</option>
+                  <option value="Practitioner Application">Psychologist Credentialing Application</option>
+                </select>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Your Message *</label>
+                <textarea id="contactMessage" class="form-control" rows="5" placeholder="Share how we can support your journey..." required></textarea>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="contactDisclaimer" required checked>
+                <label class="form-check-label small text-muted" for="contactDisclaimer">
+                  I understand that this form is for non-urgent administrative and scheduling questions only, and not for immediate crisis intervention.
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-mc-primary w-100 py-3 fw-bold">
+                <i class="bi bi-send-fill me-2"></i> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Contact Info & Crisis Notice -->
+        <div class="col-lg-5">
+          <!-- Emergency Box -->
+          <div class="mc-card p-4 border-0 mb-4 bg-white shadow-sm border-start border-4 border-danger">
+            <h5 class="fw-bold text-danger mb-2"><i class="bi bi-shield-exclamation me-2"></i> Immediate Crisis Notice</h5>
+            <p class="small text-muted mb-3">
+              MindCare is an outpatient counseling service. If you are experiencing thoughts of suicide or immediate harm, please access free, confidential 24/7 help:
+            </p>
+            <div class="d-grid gap-2">
+              <a href="tel:988" class="btn btn-danger btn-sm rounded-pill fw-bold">
+                <i class="bi bi-telephone-fill me-1"></i> Call 988 Suicide & Crisis Lifeline
+              </a>
+              <span class="badge bg-secondary-subtle text-dark p-2 text-center small">
+                Crisis Text Line: Text HOME to 741741
+              </span>
+            </div>
+          </div>
+
+          <!-- Platform Offices & Hours -->
+          <div class="mc-card p-4 border-0 bg-white shadow-sm mb-4">
+            <h5 class="fw-bold text-dark mb-3">Administrative Care Team</h5>
+            <div class="d-flex align-items-start gap-3 mb-3">
+              <div class="mc-stat-icon lavender mc-avatar-sm"><i class="bi bi-geo-alt"></i></div>
+              <div>
+                <span class="fw-bold text-dark d-block">Sanctuary Wellness Center</span>
+                <span class="text-muted small">450 Sutter St, Suite 1200, San Francisco, CA 94108</span>
+              </div>
+            </div>
+            <div class="d-flex align-items-start gap-3 mb-3">
+              <div class="mc-stat-icon peach mc-avatar-sm"><i class="bi bi-envelope"></i></div>
+              <div>
+                <span class="fw-bold text-dark d-block">Support Email</span>
+                <span class="text-muted small">care@mindcare.org</span>
+              </div>
+            </div>
+            <div class="d-flex align-items-start gap-3">
+              <div class="mc-stat-icon mint mc-avatar-sm"><i class="bi bi-clock"></i></div>
+              <div>
+                <span class="fw-bold text-dark d-block">Coordinator Hours</span>
+                <span class="text-muted small">Mon – Fri: 8:00 AM – 6:00 PM (EST)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mc-footer">
+    <div class="container text-center text-muted small">
+      &copy; 2026 MindCare Mental Health Platform.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('mcContactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('contactName').value.trim();
+          const submitBtn = contactForm.querySelector('button[type="submit"]');
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Sending...';
+
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="bi bi-send-fill me-2"></i> Send Message';
+            MindCareUI.showToast(`Thank you, ${name}! Your inquiry has been routed to care coordination.`, 'success');
+            contactForm.reset();
+          }, 600);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

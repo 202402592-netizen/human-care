@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Wellness Check-in — MindCare Sanctuary</title>
+  <meta name="description" content="Record daily mood, sleep quality, anxiety scores, and personal reflections to track therapeutic progress.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <div>
+          <span class="fw-bold text-dark d-block">MindCare</span>
+          <span class="text-muted small">Sanctuary Portal</span>
+        </div>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li><a href="patient-dashboard.html" class="mc-sidebar-link"><i class="bi bi-grid"></i> Dashboard</a></li>
+        <li><a href="book-appointment.html" class="mc-sidebar-link"><i class="bi bi-calendar-plus"></i> Book Session</a></li>
+        <li><a href="patient-appointments.html" class="mc-sidebar-link"><i class="bi bi-calendar-check"></i> My Appointments</a></li>
+        <li><a href="wellness-checkin.html" class="mc-sidebar-link active"><i class="bi bi-heart-pulse-fill"></i> Wellness Check-in</a></li>
+        <li><a href="patient-favorites.html" class="mc-sidebar-link"><i class="bi bi-bookmark-heart"></i> Saved Resources</a></li>
+        <li><a href="patient-profile.html" class="mc-sidebar-link"><i class="bi bi-person-gear"></i> Profile & Care Plan</a></li>
+      </ul>
+
+      <div class="pt-3 border-top">
+        <a href="../login.html" class="mc-sidebar-link text-danger">
+          <i class="bi bi-box-arrow-right text-danger"></i> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="mc-portal-content">
+      <div class="mc-portal-header">
+        <div>
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <span class="mc-badge mc-badge-peach">Daily Reflection</span>
+            <span class="badge bg-light text-primary border small">Encrypted Health Log</span>
+          </div>
+          <h2 class="fw-bold text-dark mb-0">Daily Mental Wellness Check-in</h2>
+          <p class="text-muted small mb-0">Track how your mind and body feel over time. This data is shared exclusively with your treating psychologist.</p>
+        </div>
+
+        <button class="btn btn-outline-danger btn-sm rounded-pill mc-crisis-trigger">
+          <i class="bi bi-telephone-fill me-1"></i> Crisis Support
+        </button>
+      </div>
+
+      <div class="row g-4">
+        <!-- Interactive Check-in Form -->
+        <div class="col-lg-7">
+          <div class="mc-card mb-4">
+            <form id="mcWellnessForm">
+              <!-- Mood Selector -->
+              <div class="mb-4">
+                <label class="form-label fw-bold text-dark mb-2">1. How is your overall emotional state today?</label>
+                <div class="d-flex gap-2 flex-wrap" id="moodChoicesContainer">
+                  <button type="button" class="btn btn-mc-primary btn-sm mc-mood-choice active" data-mood="Calm & Grounded" data-score="5">
+                    😌 Calm & Grounded
+                  </button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm mc-mood-choice" data-mood="Content" data-score="4">
+                    🙂 Content
+                  </button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm mc-mood-choice" data-mood="Neutral" data-score="3">
+                    😐 Neutral
+                  </button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm mc-mood-choice" data-mood="Mild Anxiety" data-score="2">
+                    😰 Mild Anxiety
+                  </button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm mc-mood-choice" data-mood="Distressed" data-score="1">
+                    😣 Distressed
+                  </button>
+                </div>
+              </div>
+
+              <!-- Sleep Slider -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <label class="form-label fw-bold text-dark mb-0">2. Hours of Restful Sleep Last Night</label>
+                  <span class="fw-bold text-primary" id="sleepValDisplay">7.5 hrs</span>
+                </div>
+                <input type="range" class="form-range" id="wellSleepHours" min="2" max="12" step="0.5" value="7.5">
+                <div class="d-flex justify-content-between small text-muted">
+                  <span>2 hrs</span>
+                  <span>7-8 hrs (Ideal)</span>
+                  <span>12 hrs</span>
+                </div>
+              </div>
+
+              <!-- Anxiety Level Slider -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <label class="form-label fw-bold text-dark mb-0">3. Anxiety or Physical Tension Level</label>
+                  <span class="fw-bold text-danger" id="anxietyValDisplay">3/10</span>
+                </div>
+                <input type="range" class="form-range" id="wellAnxietyLevel" min="0" max="10" step="1" value="3">
+                <div class="d-flex justify-content-between small text-muted">
+                  <span>0 (Total Peace)</span>
+                  <span>5 (Noticeable Tension)</span>
+                  <span>10 (Severe Panic)</span>
+                </div>
+              </div>
+
+              <!-- Journal Note -->
+              <div class="mb-4">
+                <label class="form-label fw-bold text-dark mb-1">4. Mindful Reflection or Triggers (Private)</label>
+                <textarea id="wellJournalNote" class="form-control" rows="4" placeholder="What felt grounding today? What felt challenging or elevated your heart rate?"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-mc-primary w-100 py-3 fw-bold">
+                <i class="bi bi-check2-circle me-1"></i> Save Today's Check-in
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- History & Trends -->
+        <div class="col-lg-5">
+          <div class="mc-card mb-4">
+            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-clock-history text-primary me-2"></i> Recent Check-in Records</h5>
+            <div id="mcWellnessLogsHistory">
+              <!-- Populated by assets/js/patient.js -->
+            </div>
+          </div>
+
+          <!-- Quick Vagus Nerve Grounding widget -->
+          <div class="mc-card bg-light border-0 text-center p-4">
+            <span class="mc-badge mc-badge-lavender mb-2">Somatic Recovery</span>
+            <h6 class="fw-bold text-dark mb-1">4-7-8 Parasympathetic Reset</h6>
+            <p class="small text-muted mb-3">Inhale through nose (4s), hold gently (7s), exhale slowly through mouth (8s).</p>
+            <div class="mc-breathing-circle my-2" style="width: 100px; height: 100px;">
+              <i class="bi bi-flower1 fs-3 text-primary"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mc-mobile-bottom-nav">
+    <ul class="mc-mobile-nav-items">
+      <li><a href="patient-dashboard.html" class="mc-mobile-nav-item"><i class="bi bi-grid"></i><span>Home</span></a></li>
+      <li><a href="book-appointment.html" class="mc-mobile-nav-item"><i class="bi bi-calendar-plus"></i><span>Book</span></a></li>
+      <li><a href="patient-appointments.html" class="mc-mobile-nav-item"><i class="bi bi-calendar-check"></i><span>Sessions</span></a></li>
+      <li><a href="wellness-checkin.html" class="mc-mobile-nav-item active"><i class="bi bi-heart-pulse-fill"></i><span>Check-in</span></a></li>
+      <li><a href="patient-profile.html" class="mc-mobile-nav-item"><i class="bi bi-person"></i><span>Profile</span></a></li>
+    </ul>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/patient.js"></script>
+</body>
+</html>

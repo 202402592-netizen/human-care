@@ -1,0 +1,1 @@
+import { IsBoolean, IsOptional, IsString } from 'class-validator'; export class TherapistQueryDto { @IsOptional() @IsString() search?: string; @IsOptional() @IsString() specialty?: string; @IsOptional() @IsBoolean() acceptingNewPatients?: boolean; }

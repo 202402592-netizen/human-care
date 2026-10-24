@@ -1,0 +1,1 @@
+import{Controller,Get}from'@nestjs/common';import{InjectConnection}from'@nestjs/mongoose';import{Connection}from'mongoose';@Controller('health')export class HealthController{constructor(@InjectConnection()private c:Connection){}@Get()status(){return {status:'ok',database:this.c.readyState===1?'connected':'disconnected',timestamp:new Date().toISOString()}}}

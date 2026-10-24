@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Therapists Directory — Licensed Clinical Psychologists | MindCare</title>
+  <meta name="description" content="Search and filter licensed psychologists and therapists by clinical specialty, modality, and availability. Book a private telehealth session.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Crisis Banner -->
+  <div class="bg-light border-bottom py-1 px-3 text-center small">
+    <span class="text-muted">In crisis or experiencing acute distress? Free 24/7 support is available:</span>
+    <a href="#" class="text-danger fw-bold ms-2 mc-crisis-trigger">
+      <i class="bi bi-heart-pulse-fill me-1"></i> Call 988 Crisis Lifeline
+    </a>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg mc-navbar">
+    <div class="container">
+      <a class="mc-brand" href="index.html">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <span>MindCare</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mcNavbarContent">
+        <i class="bi bi-list fs-2 text-dark"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mcNavbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link active" href="therapists.html">Therapists</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a href="login.html" class="btn btn-mc-ghost">Sign In</a>
+          <a href="register.html" class="btn btn-mc-primary">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Directory Header -->
+    <section class="py-5" style="background: linear-gradient(180deg, #fff7fd 0%, var(--mc-canvas) 100%);">
+      <div class="container py-2 text-center">
+        <span class="mc-section-tag">Clinical Directory</span>
+        <h1 class="display-6 fw-bold mb-2 text-dark">Find Your Mental Health Specialist</h1>
+        <p class="text-muted mx-auto" style="max-width: 650px;">
+          Filter by clinical specialty, therapeutic technique, and appointment availability to connect with a psychologist suited to your needs.
+        </p>
+
+        <!-- Search and Filter Bar -->
+        <div class="mc-card p-3 mx-auto mt-4 shadow-sm border-0" style="max-width: 900px;">
+          <div class="row g-2 align-items-center">
+            <div class="col-md-5">
+              <div class="input-group">
+                <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" id="dirSearchInput" class="form-control" placeholder="Search by name, symptom, or approach...">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <select id="dirSpecialtyFilter" class="form-select">
+                <option value="all">All Clinical Specialties</option>
+                <option value="anxiety">Anxiety & Panic Disorders</option>
+                <option value="cbt">Cognitive Behavioral Therapy (CBT)</option>
+                <option value="trauma">Trauma & EMDR Recovery</option>
+                <option value="couples">Couples & Relationship Counseling</option>
+                <option value="mindfulness">Mindfulness & MBSR</option>
+                <option value="adhd">Adult ADHD & Executive Coaching</option>
+                <option value="grief">Grief & Mood Processing</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select id="dirAvailabilityFilter" class="form-select">
+                <option value="all">Any Availability</option>
+                <option value="accepting">Accepting New Clients</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Therapist List Section -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <p class="text-muted mb-0 small" id="therapistsCountText">Showing verified practitioners</p>
+          <span class="badge bg-light text-success border"><i class="bi bi-shield-check me-1"></i>100% Board Verified</span>
+        </div>
+
+        <div class="row g-4" id="therapistsDirectoryGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mc-footer">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+          <a class="mc-brand mb-3" href="index.html">
+            <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+            <span>MindCare</span>
+          </a>
+          <p class="text-muted small mb-0">Bridging compassionate presence with validated clinical therapy.</p>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h6 class="mc-footer-title">Platform</h6>
+          <a href="therapists.html" class="mc-footer-link">Find Therapists</a>
+          <a href="services.html" class="mc-footer-link">Services</a>
+          <a href="resources.html" class="mc-footer-link">Articles</a>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h6 class="mc-footer-title">Portals</h6>
+          <a href="patient/patient-dashboard.html" class="mc-footer-link">Patient Dashboard</a>
+          <a href="therapist/therapist-dashboard.html" class="mc-footer-link">Therapist Portal</a>
+          <a href="admin/admin-dashboard.html" class="mc-footer-link">Admin Portal</a>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="mc-footer-title">Emergency Notice</h6>
+          <p class="small text-muted mb-2">If you are in danger, please reach out to the 24/7 Lifeline:</p>
+          <button class="btn btn-outline-danger btn-sm rounded-pill mc-crisis-trigger">Dial 988 Lifeline</button>
+        </div>
+      </div>
+      <div class="border-top pt-3 text-center text-muted small">
+        &copy; 2026 MindCare. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const grid = document.getElementById('therapistsDirectoryGrid');
+      const searchInput = document.getElementById('dirSearchInput');
+      const specialtyFilter = document.getElementById('dirSpecialtyFilter');
+      const availFilter = document.getElementById('dirAvailabilityFilter');
+      const countText = document.getElementById('therapistsCountText');
+
+      // Check URL query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const preSpecialty = urlParams.get('specialty');
+      if (preSpecialty && specialtyFilter) {
+        specialtyFilter.value = preSpecialty;
+      }
+
+      async function renderList() {
+        const filters = {
+          search: searchInput ? searchInput.value.trim() : '',
+          specialty: specialtyFilter ? specialtyFilter.value : 'all',
+          availability: availFilter ? availFilter.value : 'all'
+        };
+
+        const therapists = await MindCareAPI.therapists.getAll(filters);
+
+        if (countText) {
+          countText.textContent = `Showing ${therapists.length} verified clinical psychologist${therapists.length === 1 ? '' : 's'}`;
+        }
+
+        if (therapists.length === 0) {
+          grid.innerHTML = `
+            <div class="col-12 text-center py-5">
+              <div class="mc-card p-5 border-0">
+                <i class="bi bi-search fs-1 text-secondary opacity-50 mb-3 d-block"></i>
+                <h4 class="fw-bold">No clinicians found matching your criteria</h4>
+                <p class="text-muted small mb-3">Try broadening your search or resetting filters.</p>
+                <button class="btn btn-mc-secondary btn-sm" onclick="document.getElementById('dirSearchInput').value=''; document.getElementById('dirSpecialtyFilter').value='all'; document.getElementById('dirAvailabilityFilter').value='all'; renderList();">
+                  Reset All Filters
+                </button>
+              </div>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = therapists.map(t => `
+          <div class="col-lg-4 col-md-6">
+            <div class="mc-card h-100 d-flex flex-column">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <img src="${t.avatar}" class="mc-avatar mc-avatar-lg" alt="${t.name}">
+                <div>
+                  <h5 class="fw-bold mb-0 text-dark">${t.name}</h5>
+                  <span class="text-muted small d-block">${t.qualification}</span>
+                  <div class="mc-stars mt-1 small">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span class="text-dark fw-bold ms-1">${t.rating}</span>
+                    <span class="text-muted">(${t.reviewsCount})</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3 d-flex flex-wrap gap-1">
+                ${t.specialties.map(s => `<span class="mc-badge mc-badge-lavender">${s}</span>`).join('')}
+              </div>
+
+              <p class="text-muted small flex-grow-1">${t.bio}</p>
+
+              <div class="bg-light p-2 rounded-3 mb-3 small d-flex justify-content-between align-items-center">
+                <span class="text-muted"><i class="bi bi-geo-alt me-1"></i>${t.location.split('(')[0]}</span>
+                <span class="fw-bold text-primary">$${t.hourlyRate}/session</span>
+              </div>
+
+              <div class="d-flex gap-2 pt-2 border-top">
+                <a href="therapist-details.html?id=${t.id}" class="btn btn-mc-outline btn-sm flex-grow-1">
+                  View Profile
+                </a>
+                <a href="patient/book-appointment.html?therapist=${t.id}" class="btn btn-mc-primary btn-sm flex-grow-1">
+                  Book Slot
+                </a>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      if (searchInput) searchInput.addEventListener('input', renderList);
+      if (specialtyFilter) specialtyFilter.addEventListener('change', renderList);
+      if (availFilter) availFilter.addEventListener('change', renderList);
+
+      window.renderList = renderList;
+      renderList();
+    });
+  </script>
+</body>
+</html>

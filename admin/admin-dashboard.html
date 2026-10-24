@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platform Operations & Clinical Governance — MindCare Admin Portal</title>
+  <meta name="description" content="MindCare administrative oversight portal. Continuous credential verification queue, appointment completion telemetry, and HIPAA least-privilege administrative governance.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Admin Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo" style="background: linear-gradient(135deg, #281139 0%, #5b426d 100%);">
+          <i class="bi bi-shield-lock"></i>
+        </div>
+        <div>
+          <span class="fw-bold text-dark d-block">HumanCare</span>
+          <span class="badge bg-dark text-white border small" style="font-size: 0.65rem;">HIPAA Tier 4 Admin Portal</span>
+        </div>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li><a href="admin-dashboard.html" class="mc-sidebar-link active"><i class="bi bi-grid-1x2-fill"></i> Overview</a></li>
+        <li>
+          <a href="admin-therapists.html" class="mc-sidebar-link d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-person-check"></i> Psychologist Verification</span>
+            <span class="badge bg-primary-subtle text-primary rounded-pill small">4 Pending</span>
+          </a>
+        </li>
+        <li><a href="admin-users.html" class="mc-sidebar-link"><i class="bi bi-people"></i> User & Identity</a></li>
+        <li><a href="admin-appointments.html" class="mc-sidebar-link"><i class="bi bi-calendar-check"></i> Appointment Oversight</a></li>
+        <li><a href="admin-articles.html" class="mc-sidebar-link"><i class="bi bi-journal-text"></i> Content & Resources</a></li>
+        <li>
+          <a href="admin-feedback.html" class="mc-sidebar-link d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-chat-heart"></i> Support Tickets</span>
+            <span class="badge bg-warning-subtle text-warning-emphasis rounded-pill small">3 Open</span>
+          </a>
+        </li>
+        <li><a href="admin-appointments.html" class="mc-sidebar-link"><i class="bi bi-bar-chart-line"></i> Reports & Analytics</a></li>
+        <li><a href="admin-dashboard.html#audit" class="mc-sidebar-link"><i class="bi bi-journal-medical"></i> Audit Logs</a></li>
+        <li><a href="admin-settings.html" class="mc-sidebar-link"><i class="bi bi-gear"></i> Platform Settings</a></li>
+      </ul>
+
+      <!-- Admin Profile Card in Sidebar -->
+      <div class="pt-3 border-top mt-auto">
+        <div class="d-flex align-items-center gap-2 mb-2 px-2">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" 
+               class="mc-avatar mc-avatar-sm" alt="Dr. Vance">
+          <div class="overflow-hidden">
+            <strong class="d-block text-dark small text-truncate">Dr. Marcus Vance</strong>
+            <span class="text-muted small" style="font-size: 0.72rem;">Chief Medical Admin</span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center px-2 small">
+          <span class="badge bg-primary-subtle text-primary" style="font-size: 0.68rem;">SuperAdmin</span>
+          <a href="../login.html" class="text-danger text-decoration-none small"><i class="bi bi-box-arrow-right me-1"></i>Logout</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="mc-portal-content">
+      <!-- Top Global Bar -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+        <div class="d-flex align-items-center gap-2 flex-grow-1" style="max-width: 480px;">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+            <input type="text" class="form-control border-start-0 ps-0" placeholder="Search patient, provider NPI, or license #..." id="adminGlobalSearch">
+          </div>
+          <span class="badge bg-success-subtle text-success py-2 px-3 rounded-pill small flex-shrink-0">
+            <i class="bi bi-check-circle-fill me-1"></i> System Healthy • HIPAA Least-Privilege Enforced
+          </span>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill" onclick="MindCareUI.showToast('Generating signed FHIR Audit PDF report bundle...', 'info')">
+            <i class="bi bi-download me-1"></i> Export FHIR Audit PDF
+          </button>
+          <a href="admin-therapists.html" class="btn btn-mc-primary btn-sm rounded-pill">
+            <i class="bi bi-plus-lg me-1"></i> Verify Practitioner
+          </a>
+          <button type="button" class="btn btn-light rounded-circle p-2 text-dark position-relative shadow-sm" style="width: 38px; height: 38px;" onclick="MindCareUI.showToast('5 Pending administrative alerts in queue.', 'info')">
+            <i class="bi bi-bell"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">5</span>
+          </button>
+          <div class="mc-brand-logo" style="width: 38px; height: 38px; font-size: 1rem;"><i class="bi bi-shield-check"></i></div>
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" 
+               class="mc-avatar mc-avatar-sm" alt="Dr. Vance">
+        </div>
+      </div>
+
+      <!-- HIPAA Enclave Banner -->
+      <div class="mc-card p-3 mb-4" style="background: linear-gradient(135deg, #f7effd 0%, #fff7fd 100%); border-left: 4px solid var(--mc-primary) !important;">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <div class="d-flex align-items-center gap-3">
+            <div style="width: 42px; height: 42px; border-radius: 50%; background: #ede0f7; display: flex; align-items: center; justify-content: center;">
+              <i class="bi bi-shield-lock-fill text-primary fs-5"></i>
+            </div>
+            <div>
+              <div class="d-flex align-items-center gap-2">
+                <strong class="text-dark small">HIPAA Least–Privilege Enclave Active</strong>
+                <span class="badge bg-primary text-white rounded-pill small" style="font-size: 0.68rem;">Zero-Knowledge PHI</span>
+              </div>
+              <p class="text-muted small mb-0" style="font-size: 0.78rem;">
+                Private telehealth recordings, somatic diary telemetry, and psychotherapy notes remain cryptographically sealed to licensed practitioners and patients.
+              </p>
+            </div>
+          </div>
+          <div class="d-flex gap-3 small">
+            <a href="#" class="text-primary text-decoration-none fw-semibold" onclick="event.preventDefault(); MindCareUI.showToast('Audit ledger synchronized across nodes.', 'info')">
+              <i class="bi bi-arrow-repeat me-1"></i> Audit Ledger Syncing
+            </a>
+            <a href="admin-settings.html" class="text-muted text-decoration-none">
+              Security Specs &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platform Operations & Clinical Governance Header -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <div>
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <span class="mc-badge mc-badge-lavender" style="font-size: 0.72rem;">CLINICAL OPERATIONS TELEMETRY</span>
+            <span class="text-muted small" style="font-size: 0.72rem;">• Cluster node: us-east-clinical-vault-01</span>
+          </div>
+          <h2 class="fw-bold text-dark mb-1">Platform Operations & Clinical Governance</h2>
+          <p class="text-muted small mb-0">Continuous credential verification queue, appointment completion telemetry, and HIPAA least-privilege administrative oversight.</p>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <select class="form-select form-select-sm rounded-pill" style="width: 140px;" onchange="MindCareUI.showToast('Filtered telemetry by: ' + this.value, 'info')">
+            <option>Last 7 Days</option>
+            <option>Last 30 Days</option>
+            <option>This Quarter</option>
+            <option>Year to Date</option>
+          </select>
+          <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill" onclick="MindCareUI.showToast('Telemetry refreshed in 28ms.', 'success')">
+            <i class="bi bi-arrow-clockwise me-1"></i> Refresh Telemetry
+          </button>
+          <div class="dropdown">
+            <button class="btn btn-mc-primary btn-sm rounded-pill dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              <i class="bi bi-box-arrow-up-right me-1"></i> Quick Export
+            </button>
+            <ul class="dropdown-menu shadow">
+              <li><a class="dropdown-item small" href="#" onclick="event.preventDefault(); MindCareUI.showToast('Exporting CSV summary...', 'info')"><i class="bi bi-file-earmark-spreadsheet me-2"></i>Export CSV Summary</a></li>
+              <li><a class="dropdown-item small" href="#" onclick="event.preventDefault(); MindCareUI.showToast('Exporting HL7 FHIR Bundle...', 'info')"><i class="bi bi-code-slash me-2"></i>Export HL7 FHIR Bundle</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 Executive KPI Stat Cards (Matching Screen Admin Governance) -->
+      <div class="row g-3 mb-4">
+        <!-- 1. Registered Users -->
+        <div class="col-sm-6 col-lg-2">
+          <div class="mc-stat-card h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="text-muted small fw-semibold" style="font-size: 0.72rem;">REGISTERED USERS</span>
+              <div class="mc-stat-icon lavender mc-avatar-sm" style="width: 28px; height: 28px; font-size: 0.85rem;"><i class="bi bi-people-fill"></i></div>
+            </div>
+            <div class="mc-stat-val fs-3">24,892</div>
+            <div class="d-flex justify-content-between align-items-center mt-1">
+              <span class="text-success small fw-semibold" style="font-size: 0.7rem;"><i class="bi bi-arrow-up-short"></i> 14%</span>
+              <span class="text-muted small" style="font-size: 0.68rem;">21,450 Patients • 442 Providers</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Active Clinicians -->
+        <div class="col-sm-6 col-lg-2">
+          <div class="mc-stat-card h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="text-muted small fw-semibold" style="font-size: 0.72rem;">ACTIVE CLINICIANS</span>
+              <div class="mc-stat-icon peach mc-avatar-sm" style="width: 28px; height: 28px; font-size: 0.85rem;"><i class="bi bi-geo-alt-fill"></i></div>
+            </div>
+            <div class="mc-stat-val fs-3">384</div>
+            <div class="d-flex justify-content-between align-items-center mt-1">
+              <span class="text-muted small" style="font-size: 0.68rem;">18 Jurisdictions</span>
+              <span class="badge bg-success-subtle text-success small" style="font-size: 0.65rem;">Compliance 98.6% Valid</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Credential Queue -->
+        <div class="col-sm-6 col-lg-2">
+          <div class="mc-stat-card h-100 p-3 border-warning">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="text-muted small fw-semibold" style="font-size: 0.72rem;">CREDENTIAL QUEUE</span>
+              <span class="badge bg-warning text-dark small" style="font-size: 0.65rem;">Action</span>
+            </div>
+            <div class="mc-stat-val fs-3 text-warning-emphasis">4</div>
+            <div class="d-flex justify-content-between align-items-center mt-1">
+              <span class="text-muted small" style="font-size: 0.68rem;">Verifications</span>
+              <span class="text-danger small" style="font-size: 0.68rem;">Malpractice 2 Due Today</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Sessions (MTD) -->
+        <div class="col-sm-6 col-lg-2">
+          <div class="mc-stat-card h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="text-muted small fw-semibold" style="font-size: 0.72rem;">SESSIONS (MTD)</span>
+              <div class="mc-stat-icon lavender mc-avatar-sm" style="width: 28px; height: 28px; font-size: 0.85rem;"><i class="bi bi-camera-video-fill"></i></div>
+            </div>
+            <div class="mc-stat-val fs-3">6,240</div>
+            <div class="d-flex justify-content-between align-items-center mt-1">
+              <span class="text-success small fw-semibold" style="font-size: 0.68rem;">94.2%</span>
+              <span class="text-muted small" style="font-size: 0.68rem;">Reschedules 2.8% • No-Show 1.1%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Somatic Anchors -->
+        <div class="col-sm-6 col-lg-2">
+          <div class="mc-stat-card h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="text-muted small fw-semibold" style="font-size: 0.72rem;">SOMATIC ANCHORS</span>
+              <div class="mc-stat-icon mint mc-avatar-sm" style="width: 28px; height: 28px; font-size: 0.85rem;"><i class="bi bi-soundwave"></i></div>
+            </div>
+            <div class="mc-stat-val fs-3">148</div>
+            <div class="d-flex justify-content-between align-items-center mt-1">
+              <span class="text-muted small" style="font-size: 0.68rem;">Live Guides</span>
+              <span class="text-primary small" style="font-size: 0.68rem;">+12 Draft Reviews (Audio & Text)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Triage Flags -->
+        <div class="col-sm-6 col-lg-2">
+          <div class="mc-stat-card h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="text-muted small fw-semibold" style="font-size: 0.72rem;">TRIAGE FLAGS</span>
+              <div class="mc-stat-icon peach mc-avatar-sm" style="width: 28px; height: 28px; font-size: 0.85rem;"><i class="bi bi-shield-exclamation"></i></div>
+            </div>
+            <div class="mc-stat-val fs-3 text-plum">3</div>
+            <div class="d-flex justify-content-between align-items-center mt-1">
+              <span class="text-success small" style="font-size: 0.68rem;">0 Crisis Alert</span>
+              <span class="text-muted small" style="font-size: 0.68rem;">SLA Response 100% On-Time</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two Core Operational Charts -->
+      <div class="row g-4 mb-4">
+        <!-- Chart 1: Platform Utilization & Clinical Trajectory -->
+        <div class="col-lg-8">
+          <div class="mc-card p-4 h-100 bg-white">
+            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+              <div>
+                <h5 class="fw-bold text-dark mb-0">Platform Utilization & Clinical Trajectory</h5>
+                <span class="text-muted small">Comparative session throughput: Real-time Telehealth Video vs. Asynchronous Somatic Care Anchors</span>
+              </div>
+              <span class="badge bg-light text-primary border rounded-pill px-3 py-1 small">Last 30 Days</span>
+            </div>
+
+            <!-- Chart SVG -->
+            <div class="p-3 bg-light rounded-3 my-3 position-relative">
+              <div class="d-flex justify-content-end gap-3 text-muted small mb-2" style="font-size: 0.75rem;">
+                <span><i class="bi bi-circle-fill text-plum me-1"></i> Live Video Sessions</span>
+                <span><i class="bi bi-circle-fill text-primary me-1"></i> Somatic / Audio Notes</span>
+              </div>
+
+              <svg viewBox="0 0 650 180" class="w-100" style="height: 160px;">
+                <defs>
+                  <linearGradient id="areaVideo" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#281139" stop-opacity="0.18"/>
+                    <stop offset="100%" stop-color="#281139" stop-opacity="0.0"/>
+                  </linearGradient>
+                  <linearGradient id="areaSomatic" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#8a65ac" stop-opacity="0.22"/>
+                    <stop offset="100%" stop-color="#8a65ac" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Somatic Curve Area -->
+                <path d="M 0,130 C 80,140 140,90 220,110 C 300,130 380,50 460,40 C 530,30 580,70 650,55 L 650,180 L 0,180 Z" fill="url(#areaSomatic)"/>
+                <path d="M 0,130 C 80,140 140,90 220,110 C 300,130 380,50 460,40 C 530,30 580,70 650,55" fill="none" stroke="#8a65ac" stroke-width="3" stroke-linecap="round"/>
+
+                <!-- Live Video Sessions Curve -->
+                <path d="M 0,150 C 70,160 150,120 230,135 C 310,150 390,75 460,65 C 530,55 580,85 650,70 L 650,180 L 0,180 Z" fill="url(#areaVideo)"/>
+                <path d="M 0,150 C 70,160 150,120 230,135 C 310,150 390,75 460,65 C 530,55 580,85 650,70" fill="none" stroke="#281139" stroke-width="2.5" stroke-linecap="round"/>
+
+                <!-- Peak Marker -->
+                <circle cx="460" cy="40" r="5" fill="#f69d7b" stroke="#ffffff" stroke-width="2"/>
+                <rect x="415" y="10" width="110" height="24" rx="12" fill="#704c91"/>
+                <text x="470" y="26" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">Peak Day: 284 Sessions</text>
+              </svg>
+
+              <div class="d-flex justify-content-between text-muted small mt-2" style="font-size: 0.72rem;">
+                <span>Oct 01</span>
+                <span>Oct 07</span>
+                <span>Oct 14</span>
+                <span>Oct 21</span>
+                <span>Oct 28</span>
+                <span class="text-primary fw-bold">Today (Active)</span>
+              </div>
+            </div>
+
+            <!-- Footer Stats -->
+            <div class="row g-2 text-center pt-2 border-top">
+              <div class="col-4">
+                <span class="text-muted small d-block" style="font-size: 0.72rem;">Mean Session Duration</span>
+                <strong class="text-dark">51.4 minutes</strong>
+              </div>
+              <div class="col-4">
+                <span class="text-muted small d-block" style="font-size: 0.72rem;">Peak Concurrent Streams</span>
+                <strong class="text-primary">64 Active Feeds</strong>
+              </div>
+              <div class="col-4">
+                <span class="text-muted small d-block" style="font-size: 0.72rem;">Audio Anchors Delivered</span>
+                <strong class="text-dark">1,290 Completed</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart 2: Practitioner Specialties Donut -->
+        <div class="col-lg-4">
+          <div class="mc-card p-4 h-100 bg-white">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div>
+                <h5 class="fw-bold text-dark mb-0">Practitioner Specialties</h5>
+                <span class="text-muted small">Licensure classification distribution</span>
+              </div>
+              <i class="bi bi-person-badge fs-4 text-primary"></i>
+            </div>
+
+            <!-- Donut SVG -->
+            <div class="d-flex justify-content-center my-3 position-relative">
+              <svg width="180" height="180" viewBox="0 0 180 180">
+                <!-- Circle background -->
+                <circle cx="90" cy="90" r="70" fill="none" stroke="#ede0f7" stroke-width="22"/>
+                <!-- PsyD: 48% (circumference ~ 440) -> 211 -->
+                <circle cx="90" cy="90" r="70" fill="none" stroke="#704c91" stroke-width="22" stroke-dasharray="211 440" stroke-dashoffset="0" transform="rotate(-90 90 90)"/>
+                <!-- LMFT: 28% -> 123 -->
+                <circle cx="90" cy="90" r="70" fill="none" stroke="#8a65ac" stroke-width="22" stroke-dasharray="123 440" stroke-dashoffset="-211" transform="rotate(-90 90 90)"/>
+                <!-- LCSW: 18% -> 79 -->
+                <circle cx="90" cy="90" r="70" fill="none" stroke="#b995d6" stroke-width="22" stroke-dasharray="79 440" stroke-dashoffset="-334" transform="rotate(-90 90 90)"/>
+                <!-- Psychiatrists: 6% -> 26 -->
+                <circle cx="90" cy="90" r="70" fill="none" stroke="#f69d7b" stroke-width="22" stroke-dasharray="26 440" stroke-dashoffset="-413" transform="rotate(-90 90 90)"/>
+              </svg>
+              <div class="position-absolute top-50 start-50 translate-middle text-center">
+                <span class="fs-4 fw-bold text-dark d-block" style="line-height: 1;">384</span>
+                <span class="text-muted small fw-semibold" style="font-size: 0.68rem; letter-spacing: 0.05em;">CLINICIANS</span>
+              </div>
+            </div>
+
+            <!-- Legend with Percentages -->
+            <div class="d-flex flex-column gap-2 small mb-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-circle-fill text-plum me-1"></i> PsyD / Clinical Psychologists</span>
+                <strong class="text-dark">48%</strong>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-circle-fill text-primary me-1"></i> LMFT (Marriage & Family)</span>
+                <strong class="text-dark">28%</strong>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-circle-fill text-secondary me-1"></i> LCSW (Clinical Social Work)</span>
+                <strong class="text-dark">18%</strong>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-circle-fill text-danger me-1"></i> Psychiatrists (MD / DO)</span>
+                <strong class="text-dark">6%</strong>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted" style="font-size: 0.72rem;">
+              <span>Average Verification SLA: <strong class="text-dark">2.1 Days</strong></span>
+              <span>Regulatory Ceiling: <strong class="text-dark">&lt; 3.0 Days</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Two Core Sections: Credentialing Queue & Audit Ledger -->
+      <div class="row g-4">
+        <!-- Urgent Credentialing Queue (Matching Mockup Left Card) -->
+        <div class="col-lg-6">
+          <div class="mc-card p-4 h-100 bg-white">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="d-flex align-items-center gap-2">
+                <div class="mc-stat-icon lavender" style="width: 32px; height: 32px; font-size: 0.95rem;"><i class="bi bi-patch-check-fill"></i></div>
+                <div>
+                  <h5 class="fw-bold text-dark mb-0">Urgent Credentialing Queue</h5>
+                  <span class="text-muted small">4 practitioners awaiting NPI and primary-source board audit</span>
+                </div>
+              </div>
+              <span class="badge bg-warning-subtle text-warning-emphasis rounded-pill small">4 Pending Review</span>
+            </div>
+
+            <!-- Practitioner 1 -->
+            <div class="p-3 bg-light rounded-3 mb-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=100&q=80" 
+                     class="mc-avatar mc-avatar-sm" alt="Dr. Aris Thorne">
+                <div>
+                  <div class="d-flex align-items-center gap-2">
+                    <strong class="text-dark">Dr. Aris Thorne, PhD</strong>
+                    <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">PSY-29401 (CA)</span>
+                  </div>
+                  <span class="text-muted small">Clinical Psychology • NPI: 1982736450 • <span class="text-success"><i class="bi bi-check2"></i> Malpractice Verified</span></span>
+                </div>
+              </div>
+              <button type="button" class="btn btn-mc-primary btn-sm py-1 px-3 rounded-pill" onclick="MindCareUI.showToast('Inspecting Dr. Thorne credential file...', 'info')">
+                Inspect Credentials
+              </button>
+            </div>
+
+            <!-- Practitioner 2 -->
+            <div class="p-3 bg-light rounded-3 mb-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=100&q=80" 
+                     class="mc-avatar mc-avatar-sm" alt="Dr. Simone Chen">
+                <div>
+                  <div class="d-flex align-items-center gap-2">
+                    <strong class="text-dark">Dr. Simone Chen, PsyD</strong>
+                    <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">#021948 (NY)</span>
+                  </div>
+                  <span class="text-muted small">Neuropsych & Somatic • NPI: 1048291044 • <span class="text-warning"><i class="bi bi-clock"></i> Primary Source Pending</span></span>
+                </div>
+              </div>
+              <button type="button" class="btn btn-outline-secondary btn-sm py-1 px-3 rounded-pill" onclick="MindCareUI.showToast('Reviewing Dr. Chen dossier...', 'info')">
+                Review File
+              </button>
+            </div>
+
+            <!-- Practitioner 3 -->
+            <div class="p-3 bg-light rounded-3 mb-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" 
+                     class="mc-avatar mc-avatar-sm" alt="Marcus Sterling">
+                <div>
+                  <div class="d-flex align-items-center gap-2">
+                    <strong class="text-dark">Marcus Sterling, LMFT</strong>
+                    <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">LF-609123 (WA)</span>
+                  </div>
+                  <span class="text-muted small">Anxiety & Trauma Specialization • NPI: 1827490123 • <span class="text-success"><i class="bi bi-check2"></i> CAQH Attested</span></span>
+                </div>
+              </div>
+              <button type="button" class="btn btn-outline-secondary btn-sm py-1 px-3 rounded-pill" onclick="MindCareUI.showToast('Reviewing Marcus Sterling file...', 'info')">
+                Review File
+              </button>
+            </div>
+
+            <!-- Practitioner 4 -->
+            <div class="p-3 bg-light rounded-3 mb-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" 
+                     class="mc-avatar mc-avatar-sm" alt="Dr. Fatima Al-Mansoor">
+                <div>
+                  <div class="d-flex align-items-center gap-2">
+                    <strong class="text-dark">Dr. Fatima Al-Mansoor, MD</strong>
+                    <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">MD-88319 (TX)</span>
+                  </div>
+                  <span class="text-muted small">Consultation Liaison Psychiatry • NPI: 1729384756 • <span class="text-success"><i class="bi bi-check2"></i> Board Cert Verified</span></span>
+                </div>
+              </div>
+              <button type="button" class="btn btn-outline-secondary btn-sm py-1 px-3 rounded-pill" onclick="MindCareUI.showToast('Reviewing Dr. Al-Mansoor credential dossier...', 'info')">
+                Review File
+              </button>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center pt-2 border-top small">
+              <span class="text-muted">4 pending of 14 total applications in registry</span>
+              <a href="admin-therapists.html" class="text-primary text-decoration-none fw-semibold">View all 14 credentialing applications in full queue &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tamper-Evident Audit Ledger (Matching Mockup Right Card) -->
+        <div class="col-lg-6" id="audit">
+          <div class="mc-card p-4 h-100 bg-white">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="d-flex align-items-center gap-2">
+                <div class="mc-stat-icon lavender" style="width: 32px; height: 32px; font-size: 0.95rem;"><i class="bi bi-journal-check"></i></div>
+                <div>
+                  <h5 class="fw-bold text-dark mb-0">Tamper–Evident Audit Ledger</h5>
+                  <span class="text-muted small">Live chronological administrative trace</span>
+                </div>
+              </div>
+              <span class="badge bg-success-subtle text-success rounded-pill small"><i class="bi bi-shield-check me-1"></i>Immutable</span>
+            </div>
+
+            <!-- Ledger Trace Items -->
+            <div class="mc-audit-item">
+              <div class="mc-audit-dot purple"></div>
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="fw-bold text-dark small">10:42 AM • Identity Verifier</span>
+                <span class="badge bg-light text-muted border small" style="font-size: 0.68rem;">Admin Marcus Vance</span>
+              </div>
+              <p class="text-muted small mb-0" style="font-size: 0.78rem;">
+                Approved primary source NPI & CAQH profile for <strong>Dr. Elena Rostova (#PSY-8821)</strong>. Full privileges provisioned.
+              </p>
+            </div>
+
+            <div class="mc-audit-item">
+              <div class="mc-audit-dot green"></div>
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="fw-bold text-dark small">09:15 AM • Privacy Guardrail</span>
+                <span class="badge bg-light text-muted border small" style="font-size: 0.68rem;">Automated Enclave</span>
+              </div>
+              <p class="text-muted small mb-0" style="font-size: 0.78rem;">
+                Automated HIPAA Least-Privilege Scrub: Masked 41 PHI identifiers in operational report export bundle <strong>#EXP-992</strong>.
+              </p>
+            </div>
+
+            <div class="mc-audit-item">
+              <div class="mc-audit-dot peach"></div>
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="fw-bold text-dark small">08:30 AM • Telemetry Health</span>
+                <span class="badge bg-light text-muted border small" style="font-size: 0.68rem;">FHIR v4 Engine</span>
+              </div>
+              <p class="text-muted small mb-0" style="font-size: 0.78rem;">
+                Apple Watch Biofeedback & HL7 FHIR v4 WebSocket bridge nominal (Latency: 28ms, zero dropped packets).
+              </p>
+            </div>
+
+            <div class="mc-audit-item">
+              <div class="mc-audit-dot"></div>
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="fw-bold text-dark small">07:12 AM • Clinician Dispatch</span>
+                <span class="badge bg-light text-muted border small" style="font-size: 0.68rem;">Dr. Julian Ross</span>
+              </div>
+              <p class="text-muted small mb-0" style="font-size: 0.78rem;">
+                Provider set live status to "Available for Urgent Telehealth Intake" (Zone: Pacific Standard).
+              </p>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center pt-3 border-top small text-muted" style="font-size: 0.72rem;">
+              <span><i class="bi bi-lock-fill text-primary me-1"></i> SHA-256 Ledger: <code>#c4f9...81e2</code></span>
+              <span class="badge bg-light text-primary border rounded-pill">SOC2 Type II + BAA Certified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

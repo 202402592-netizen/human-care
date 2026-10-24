@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practitioner Profile & Credentials — MindCare Clinical Portal</title>
+  <meta name="description" content="Manage clinical qualifications, state board license numbers, consultation rates, and therapeutic specialty areas.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo" style="background: linear-gradient(135deg, #5b426d 0%, #704c91 100%);">
+          <i class="bi bi-clipboard2-pulse"></i>
+        </div>
+        <div>
+          <span class="fw-bold text-dark d-block">MindCare</span>
+          <span class="badge bg-light text-primary border small">Clinical Portal</span>
+        </div>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li><a href="therapist-dashboard.html" class="mc-sidebar-link"><i class="bi bi-grid"></i> Clinician Overview</a></li>
+        <li><a href="therapist-appointments.html" class="mc-sidebar-link"><i class="bi bi-calendar-event"></i> Schedule & Requests</a></li>
+        <li><a href="therapist-session-notes.html" class="mc-sidebar-link"><i class="bi bi-journal-medical"></i> Clinical SOAP Notes</a></li>
+        <li><a href="therapist-availability.html" class="mc-sidebar-link"><i class="bi bi-clock"></i> My Availability</a></li>
+        <li><a href="therapist-profile.html" class="mc-sidebar-link active"><i class="bi bi-person-badge-fill"></i> Practitioner Profile</a></li>
+      </ul>
+
+      <div class="pt-3 border-top">
+        <a href="../login.html" class="mc-sidebar-link text-danger">
+          <i class="bi bi-box-arrow-right text-danger"></i> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="mc-portal-content">
+      <div class="mc-portal-header">
+        <div>
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <span class="mc-badge mc-badge-success"><i class="bi bi-shield-check"></i> CA Board of Psychology Verified</span>
+            <span class="badge bg-light text-primary border small">NPI: 1982736450</span>
+          </div>
+          <h2 class="fw-bold text-dark mb-0">Practitioner Profile & Credentials</h2>
+          <p class="text-muted small mb-0">Manage how your clinical experience and bio appear to prospective patients on the public directory.</p>
+        </div>
+
+        <button type="submit" form="mcTherapistProfileForm" class="btn btn-mc-primary">
+          <i class="bi bi-save me-1"></i> Update Public Profile
+        </button>
+      </div>
+
+      <form id="mcTherapistProfileForm">
+        <div class="row g-4">
+          <!-- Left: Avatar & Identity Card -->
+          <div class="col-lg-4">
+            <div class="mc-card text-center mb-4">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=300&q=80" 
+                   class="mc-avatar mc-avatar-xl mx-auto mb-3 shadow" alt="Dr. Rostova">
+              <h5 class="fw-bold text-dark mb-1">Dr. Elena Rostova</h5>
+              <p class="text-primary small fw-semibold mb-2">Ph.D., Licensed Clinical Psychologist</p>
+              <span class="badge bg-success-subtle text-success rounded-pill px-3 py-1 small">
+                <i class="bi bi-check-circle-fill me-1"></i>Active Practice
+              </span>
+
+              <hr class="border-light opacity-50 my-3">
+
+              <div class="text-start small text-muted">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>License:</span>
+                  <strong class="text-dark">PSY-88219 (CA)</strong>
+                </div>
+                <div class="d-flex justify-content-between mb-1">
+                  <span>Experience:</span>
+                  <strong class="text-dark">12 Years</strong>
+                </div>
+                <div class="d-flex justify-content-between mb-1">
+                  <span>Client Rating:</span>
+                  <strong class="text-dark">4.95 / 5.0 (142 reviews)</strong>
+                </div>
+              </div>
+
+              <div class="mt-3 pt-3 border-top">
+                <a href="../therapist-details.html?id=therapist-001" target="_blank" class="btn btn-mc-outline btn-sm w-100">
+                  <i class="bi bi-eye me-1"></i> View Live Directory Listing
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Profile Form Details -->
+          <div class="col-lg-8">
+            <div class="mc-card mb-4">
+              <h5 class="fw-bold text-dark mb-3"><i class="bi bi-person-lines-fill text-primary me-2"></i> Clinical Credentials</h5>
+
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label">Full Clinical Name</label>
+                  <input type="text" class="form-control" value="Dr. Elena Rostova" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Professional Title</label>
+                  <input type="text" class="form-control" value="Senior Clinical Psychologist (Ph.D.)" required>
+                </div>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label">Standard Session Fee</label>
+                  <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" value="150" required>
+                    <span class="input-group-text">/ 50 min</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Clinic & Telehealth Location</label>
+                  <input type="text" class="form-control" value="San Francisco, CA (Telehealth & In-Clinic)" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Specialties & Modalities</label>
+                <input type="text" class="form-control" value="Cognitive Behavioral Therapy (CBT), Mindfulness (MBSR), Panic & Anxiety Disorders, Insomnia (CBT-I)">
+                <div class="form-text small text-muted">Separate multiple therapeutic techniques with commas.</div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Education & Clinical Fellowships</label>
+                <input type="text" class="form-control" value="Stanford University (Ph.D.), Columbia University (M.S.)">
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Clinical Bio & Empathic Philosophy</label>
+                <textarea class="form-control" rows="4">Dr. Rostova specializes in evidence-based cognitive behavioral strategies and somatic mindfulness interventions. Guiding healing with empathy and calm presence to resolve panic and professional burnout.</textarea>
+              </div>
+
+              <button type="submit" class="btn btn-mc-primary py-2 px-4 fw-bold">
+                <i class="bi bi-check2-circle me-1"></i> Save Practitioner Profile
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mc-mobile-bottom-nav">
+    <ul class="mc-mobile-nav-items">
+      <li><a href="therapist-dashboard.html" class="mc-mobile-nav-item"><i class="bi bi-grid"></i><span>Overview</span></a></li>
+      <li><a href="therapist-appointments.html" class="mc-mobile-nav-item"><i class="bi bi-calendar-event"></i><span>Schedule</span></a></li>
+      <li><a href="therapist-session-notes.html" class="mc-mobile-nav-item"><i class="bi bi-journal-medical"></i><span>Clinical</span></a></li>
+      <li><a href="therapist-availability.html" class="mc-mobile-nav-item"><i class="bi bi-clock"></i><span>Hours</span></a></li>
+      <li><a href="therapist-profile.html" class="mc-mobile-nav-item active"><i class="bi bi-person-fill"></i><span>Profile</span></a></li>
+    </ul>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/therapist.js"></script>
+</body>
+</html>

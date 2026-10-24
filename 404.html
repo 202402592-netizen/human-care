@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — A Moment of Grounding | MindCare</title>
+  <meta name="description" content="This page could not be found. Take a gentle breath and return to safety.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <style>
+    .mc-404-canvas {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mc-breathe-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(42, 157, 143, 0.2), rgba(138, 180, 248, 0.2));
+      border: 2px dashed rgba(42, 157, 143, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      animation: gentleBreathe 8s infinite ease-in-out;
+    }
+    @keyframes gentleBreathe {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.25); opacity: 1; border-color: var(--mc-primary); }
+    }
+  </style>
+</head>
+<body style="background-color: var(--mc-bg-warm);">
+
+  <!-- Simple Brand Navbar -->
+  <nav class="navbar navbar-light bg-white border-bottom">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <span class="fw-bold text-dark fs-4">HumanCare</span>
+      </a>
+
+      <div class="d-flex align-items-center gap-2">
+        <a href="index.html" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
+          <i class="bi bi-house me-1"></i> Return Home
+        </a>
+        <a href="#" class="btn btn-danger btn-sm rounded-pill px-3 mc-crisis-trigger">
+          <i class="bi bi-telephone-fill me-1"></i> 988 Lifeline
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 404 Hero Sanctuary -->
+  <main class="mc-404-canvas py-5">
+    <div class="container text-center">
+      <div class="mx-auto" style="max-width: 600px;">
+        <!-- Animated Grounding Orb -->
+        <div class="mb-4">
+          <div class="mc-breathe-circle">
+            <i class="bi bi-flower1 fs-1 text-teal" style="color: var(--mc-primary);"></i>
+          </div>
+        </div>
+
+        <span class="mc-badge mc-badge-lavender py-1 px-3 mb-2">
+          Error 404 • Page Not Found
+        </span>
+        <h1 class="display-5 fw-bold text-dark mb-3">Take a gentle pause.</h1>
+        <p class="text-muted lead mb-4" style="line-height: 1.6;">
+          The page you are looking for has drifted away or moved, but your nervous system is safe right here. Let your shoulders soften, take one slow breath, and find your way back.
+        </p>
+
+        <!-- Mini Pacer Step -->
+        <div class="p-3 rounded-4 bg-white border shadow-xs mb-4 mx-auto" style="max-width: 440px;">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="small fw-bold text-dark"><i class="bi bi-wind text-success me-1"></i> Quick 10-Second Breath Reset</span>
+            <span class="badge bg-light text-muted small" id="pacerTimer">Inhale</span>
+          </div>
+          <div class="progress" style="height: 6px; border-radius: 99px;">
+            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 100%;"></div>
+          </div>
+        </div>
+
+        <!-- Helpful Wayfinding Buttons -->
+        <div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
+          <a href="index.html" class="btn btn-mc-primary rounded-pill px-4 py-2 fw-bold">
+            <i class="bi bi-house-door-fill me-1"></i> Back to Homepage
+          </a>
+          <a href="patient/patient-dashboard.html" class="btn btn-outline-secondary rounded-pill px-4 py-2">
+            <i class="bi bi-person-heart me-1"></i> Patient Sanctuary
+          </a>
+          <a href="help-center.html" class="btn btn-outline-secondary rounded-pill px-4 py-2">
+            <i class="bi bi-question-circle me-1"></i> Help Center & FAQs
+          </a>
+        </div>
+
+        <span class="text-muted small">Need immediate assistance? Reach our team at <a href="contact.html" class="text-teal" style="color: var(--mc-primary);">support@mindcare.org</a>.</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 bg-white border-top text-center text-muted small">
+    <div class="container">
+      © 2026 HumanCare Mental Health Platform. Phase 1 Frontend Demonstration.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Subtle cyclical pacer label
+    const pacerEl = document.getElementById('pacerTimer');
+    let phase = 0;
+    setInterval(() => {
+      phase = (phase + 1) % 2;
+      pacerEl.textContent = phase === 0 ? 'Inhale gently (4s)' : 'Exhale completely (6s)';
+    }, 4500);
+  </script>
+</body>
+</html>

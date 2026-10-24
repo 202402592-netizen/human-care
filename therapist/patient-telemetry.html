@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Telemetry & Vagal Downshift — MindCare Clinical Portal</title>
+  <meta name="description" content="Review Maya Lin's real-time somatic downshift telemetry, dual-stream HRV coherence, and dispatch clinical voice anchors.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body style="background-color: var(--mc-bg-warm);">
+
+  <!-- Centered / Mobile-friendly Clinical Portal Container -->
+  <div class="container py-3" style="max-width: 540px;">
+    <!-- Top Action Bar -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="d-flex align-items-center gap-2">
+        <a href="therapist-dashboard.html" class="btn btn-light rounded-circle p-2 text-dark shadow-sm" style="width: 40px; height: 40px;" title="Back to Clinician Dashboard">
+          <i class="bi bi-chevron-left"></i>
+        </a>
+        <div class="d-flex align-items-center gap-2">
+          <div class="mc-brand-logo" style="width: 32px; height: 32px; font-size: 1rem;"><i class="bi bi-flower1"></i></div>
+          <div>
+            <strong class="text-dark small d-block">HumanCare</strong>
+            <span class="text-muted" style="font-size: 0.7rem;">Clinical Portal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="btn btn-light rounded-circle p-2 text-dark position-relative shadow-sm" style="width: 40px; height: 40px;" onclick="MindCareUI.showToast('3 Telemetry alerts: Maya Lin (Vagal drop verified), Ethan Cole (Log due).', 'info');">
+          <i class="bi bi-bell"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">3</span>
+        </button>
+        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=100&q=80" 
+             class="mc-avatar mc-avatar-sm" alt="Dr. Elena Rostova">
+      </div>
+    </div>
+
+    <!-- Patient Banner -->
+    <div class="mc-card p-3 mb-3 bg-white">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" 
+             class="mc-avatar mc-avatar-md" alt="Maya Lin">
+        <div class="flex-grow-1">
+          <div class="d-flex align-items-center justify-content-between">
+            <h5 class="fw-bold text-dark mb-0">Maya Lin <span class="badge bg-light text-primary border ms-1 small">#HC-8821</span></h5>
+            <span class="text-muted small">29 yrs</span>
+          </div>
+          <span class="text-muted small d-block mt-1">Anxiety & Somatic Dysregulation Protocol • Session 7</span>
+          <div class="d-flex align-items-center gap-2 mt-2">
+            <span class="badge bg-light text-muted border rounded-pill small" style="font-size: 0.7rem;">
+              <i class="bi bi-smartwatch text-primary me-1"></i> Apple Watch S9 + Vagal Engine v4.2
+            </span>
+            <span class="badge bg-success-subtle text-success rounded-pill small" style="font-size: 0.7rem;">
+              <i class="bi bi-shield-lock-fill me-1"></i> HIPAA Encrypted
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 1: Autonomic Downshift Index -->
+    <div class="mc-card p-3 mb-3 bg-white">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <strong class="text-dark small"><i class="bi bi-activity text-primary me-1"></i> Autonomic Downshift Index</strong>
+        <span class="badge bg-light text-primary border small">Target >70</span>
+      </div>
+
+      <div class="p-3 rounded-3 mb-3 d-flex justify-content-between align-items-center" style="background: linear-gradient(135deg, #ede0f7 0%, #fff7fd 100%); border: 1px solid #d8c3ed;">
+        <div>
+          <span class="text-muted small d-block" style="font-size: 0.75rem;">Downshift engagement</span>
+          <strong class="fs-1 fw-bold text-plum">88 <span class="fs-6 fw-normal text-muted">/ 100</span></strong>
+        </div>
+        <div class="text-end">
+          <span class="badge bg-primary text-white py-2 px-3 rounded-pill small d-block mb-1">
+            <i class="bi bi-check-circle-fill me-1"></i> Optimal Parasympathetic
+          </span>
+          <span class="text-muted small" style="font-size: 0.72rem;">Vagal braking confirmed</span>
+        </div>
+      </div>
+
+      <!-- 4 Grid Metric Tiles -->
+      <div class="row g-2">
+        <div class="col-6">
+          <div class="mc-telemetry-tile">
+            <div class="d-flex justify-content-between text-muted small" style="font-size: 0.72rem;">
+              <span>Heart Rate</span>
+              <i class="bi bi-heart text-danger"></i>
+            </div>
+            <div class="fs-5 fw-bold text-dark mt-1">64 <span class="small fw-normal text-muted">bpm</span></div>
+            <div class="text-success small" style="font-size: 0.7rem;"><i class="bi bi-arrow-down"></i> -12 bpm (1h roll)</div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="mc-telemetry-tile">
+            <div class="d-flex justify-content-between text-muted small" style="font-size: 0.72rem;">
+              <span>HRV (RMSSD)</span>
+              <i class="bi bi-graph-up-arrow text-primary"></i>
+            </div>
+            <div class="fs-5 fw-bold text-primary mt-1">52 <span class="small fw-normal text-muted">ms</span></div>
+            <div class="text-success small" style="font-size: 0.7rem;"><i class="bi bi-arrow-up"></i> +38.4% (38 &rarr; 52)</div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="mc-telemetry-tile">
+            <div class="d-flex justify-content-between text-muted small" style="font-size: 0.72rem;">
+              <span>Respiration Rate</span>
+              <i class="bi bi-wind text-info"></i>
+            </div>
+            <div class="fs-5 fw-bold text-dark mt-1">5.2 <span class="small fw-normal text-muted">br/min</span></div>
+            <div class="text-primary small" style="font-size: 0.7rem;"><i class="bi bi-lock-fill"></i> 4-7-8 Cadence Lock</div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="mc-telemetry-tile">
+            <div class="d-flex justify-content-between text-muted small" style="font-size: 0.72rem;">
+              <span>SUDS Score</span>
+              <i class="bi bi-shield-check text-success"></i>
+            </div>
+            <div class="fs-5 fw-bold text-dark mt-1">32 <span class="small fw-normal text-muted">/ 100</span></div>
+            <div class="text-success small" style="font-size: 0.7rem;"><i class="bi bi-arrow-down-left"></i> -46 pts relief</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Dual-Stream Telemetry -->
+    <div class="mc-card p-3 mb-3 bg-white">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <strong class="text-dark small"><i class="bi bi-bezier2 text-primary me-1"></i> Dual–Stream Telemetry</strong>
+        <span class="badge bg-primary-subtle text-primary rounded-pill small">High Coherence</span>
+      </div>
+
+      <div class="d-flex justify-content-between text-muted small mb-2" style="font-size: 0.72rem;">
+        <span><i class="bi bi-circle-fill text-plum me-1"></i> HR (BPM) &nbsp; <i class="bi bi-circle-fill text-primary me-1"></i> HRV (RMSSD)</span>
+        <span>05:00 Session</span>
+      </div>
+
+      <!-- Coherence SVG Wave Curve -->
+      <div class="p-2 bg-light rounded-3 mb-2 position-relative">
+        <svg viewBox="0 0 400 130" class="w-100" style="height: 110px;">
+          <!-- Threshold line -->
+          <line x1="180" y1="10" x2="180" y2="120" stroke="#704c91" stroke-width="2" stroke-dasharray="4 2"/>
+          <!-- HR Curve downward -->
+          <path d="M 0,35 Q 100,45 180,68 T 400,95" fill="none" stroke="#281139" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- HRV Curve upward -->
+          <path d="M 0,95 Q 100,85 180,68 T 400,35" fill="none" stroke="#8a65ac" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="180" cy="68" r="5" fill="#f69d7b" stroke="#ffffff" stroke-width="2"/>
+        </svg>
+
+        <div class="d-flex justify-content-between text-muted small" style="font-size: 0.7rem;">
+          <span>00:00</span>
+          <span>01:15</span>
+          <span class="text-primary fw-bold">02:14 (Cycle 3)</span>
+          <span>03:45</span>
+          <span>05:00</span>
+        </div>
+      </div>
+
+      <div class="p-2 bg-light rounded-3 small mb-2" style="font-size: 0.76rem; border-left: 3px solid var(--mc-primary);">
+        <strong class="text-dark d-block">Cycle 3 Threshold (02:19)</strong>
+        <span class="text-muted">Vagal brake engaged. RMSSD crossed 46ms. Inhale 4s + Hold 7s + Exhale 8s.</span>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center text-muted small" style="font-size: 0.72rem;">
+        <span>5 of 6 Cadence Cycles Completed</span>
+        <span class="text-success fw-bold"><i class="bi bi-check-circle-fill me-1"></i>100% Adherence</span>
+      </div>
+    </div>
+
+    <!-- Card 3: Somatic Symptom Delta -->
+    <div class="mc-card p-3 mb-3 bg-white">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <strong class="text-dark small"><i class="bi bi-body-text text-primary me-1"></i> Somatic Symptom Delta</strong>
+        <span class="badge bg-light text-muted border small">Pre vs. Post</span>
+      </div>
+
+      <div class="row g-2 mb-2">
+        <div class="col-6">
+          <div class="p-2 rounded-3 bg-light h-100" style="font-size: 0.76rem;">
+            <span class="badge bg-danger-subtle text-danger rounded-pill small mb-1">Pre-Session (09:14 AM)</span>
+            <p class="text-muted mb-1" style="line-height: 1.4;">
+              High anticipatory chest tightness, shallow apical breath, locked masseter jaw tension.
+            </p>
+            <span class="text-danger small fw-semibold">Trigger: Tomorrow's 10am standup</span>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="p-2 rounded-3 h-100" style="background: #ede0f7; font-size: 0.76rem;">
+            <span class="badge bg-success-subtle text-success rounded-pill small mb-1">Post-Session (09:21 AM)</span>
+            <p class="text-plum mb-1" style="line-height: 1.4;">
+              Shoulders dropped, diaphragmatic depth restored, steady pulse rhythm felt in fingers.
+            </p>
+            <span class="text-success small fw-semibold">Shift: Diaphragm activation verified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Maya's Audio Transcription -->
+      <div class="p-2 px-3 bg-light rounded-3 small">
+        <div class="d-flex justify-content-between align-items-center mb-1">
+          <strong class="text-dark" style="font-size: 0.76rem;"><i class="bi bi-mic text-primary me-1"></i> Maya's Post-Practice Reflection</strong>
+          <span class="text-muted" style="font-size: 0.68rem;">Audio transcription</span>
+        </div>
+        <p class="fst-italic text-plum mb-0" style="font-size: 0.8rem; line-height: 1.45;">
+          “Felt my chest loosen around cycle 3 during the 7s hold. The catastrophic worry about tomorrow's standup feels much smaller now.”
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 4: CBT Homework Synergy -->
+    <div class="mc-card p-3 mb-3 bg-white">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <strong class="text-dark small"><i class="bi bi-columns-gap text-primary me-1"></i> CBT Homework Synergy</strong>
+        <span class="badge bg-primary-subtle text-primary rounded-pill small">+15 Min Post-Shift</span>
+      </div>
+
+      <div class="p-2 bg-light rounded-3 small mb-2">
+        <div class="d-flex justify-content-between align-items-center mb-1">
+          <strong class="text-dark" style="font-size: 0.78rem;">3-Column Decatastrophizing Log</strong>
+          <span class="text-success fw-bold">Distress -21%</span>
+        </div>
+        <p class="text-muted mb-0" style="font-size: 0.76rem; line-height: 1.4;">
+          Following somatic downshift, Maya executed her reframe exercise regarding peer presentation critique with significant cognitive flexibility.
+        </p>
+      </div>
+
+      <div class="p-2 px-3 rounded-3 small text-plum" style="background: #fff7fd; border: 1px solid #ede0f7; font-size: 0.76rem;">
+        <i class="bi bi-lightbulb-fill text-warning me-1"></i> <strong>Clinical Takeaway:</strong> Vagal downshift cleared sympathetic tunnel vision, enabling spontaneous rational re-attribution before the trigger event.
+      </div>
+    </div>
+
+    <!-- Card 5: Dr. Rostova's Clinical Observations -->
+    <div class="mc-card p-3 mb-3 bg-white">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <strong class="text-dark small"><i class="bi bi-pencil-square text-primary me-1"></i> Dr. Rostova's Clinical Observations</strong>
+        <span class="badge bg-light text-muted border small">Session 7 Case File</span>
+      </div>
+
+      <!-- Rapid Observation Badges -->
+      <span class="text-muted small d-block mb-1" style="font-size: 0.72rem;">Rapid Observation Anchors:</span>
+      <div class="d-flex flex-wrap gap-1 mb-3">
+        <span class="badge bg-primary-subtle text-primary py-1 px-2 rounded-pill small cursor-pointer" onclick="this.classList.toggle('bg-primary'); this.classList.toggle('text-white');">
+          Vagal tone consolidation effective
+        </span>
+        <span class="badge bg-primary-subtle text-primary py-1 px-2 rounded-pill small cursor-pointer" onclick="this.classList.toggle('bg-primary'); this.classList.toggle('text-white');">
+          Reinforce cycle 3 somatic awareness
+        </span>
+        <span class="badge bg-primary-subtle text-primary py-1 px-2 rounded-pill small cursor-pointer" onclick="this.classList.toggle('bg-primary'); this.classList.toggle('text-white');">
+          Maintain 10:00 PM sleep anchor
+        </span>
+      </div>
+
+      <!-- Direct Feedback to Patient Portal input -->
+      <label class="form-label small fw-semibold text-muted mb-1" style="font-size: 0.78rem;">Direct Feedback to Patient Portal:</label>
+      <textarea class="form-control mb-3 small" rows="2" placeholder="Provide clinical praise or grounding instruction to Maya..." style="font-size: 0.85rem;">Exceptional nervous system regulation this morning, Maya. Notice how quickly your heart rate settled once your vagal brake engaged.</textarea>
+
+      <!-- Record Voice Note Button (Triggers Screen 4 Drawer) -->
+      <button type="button" class="btn btn-outline-primary w-100 py-2 rounded-pill small mb-2 d-flex align-items-center justify-content-center gap-2 mc-launch-voice-anchor" data-patient="Maya Lin" data-patient-id="HC-8821">
+        <i class="bi bi-mic-fill text-danger"></i> Record Voice Note (01:45) <span class="text-muted" style="font-size: 0.72rem;">• Delivers to Maya's phone</span>
+      </button>
+
+      <!-- Action Buttons -->
+      <div class="d-grid gap-2">
+        <button type="button" class="btn btn-mc-primary py-2 fw-bold rounded-pill" onclick="MindCareUI.showToast('Session 7 telemetry endorsed and committed to EHR.', 'success');">
+          <i class="bi bi-check2-circle me-1"></i> Endorse Session Telemetry
+        </button>
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-outline-secondary w-50 py-2 rounded-pill small" onclick="MindCareUI.showToast('Telemetry appended to Session 8 prep file.', 'info');">
+            <i class="bi bi-folder-plus me-1"></i> Add to Session 8
+          </button>
+          <button type="button" class="btn btn-outline-secondary w-50 py-2 rounded-pill small" onclick="MindCareUI.showToast('Direct clinical SMS sent to Maya.', 'info');">
+            <i class="bi bi-chat-dots me-1"></i> Send Another Note
+          </button>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center pt-3 mt-3 border-top text-muted small" style="font-size: 0.72rem;">
+        <span><i class="bi bi-shield-lock-fill text-success me-1"></i> 256-Bit End-to-End Cryptographic Storage</span>
+        <div class="d-flex gap-2">
+          <a href="#" class="text-decoration-none text-muted" onclick="event.preventDefault(); MindCareUI.showToast('Exported HL7 FHIR Observation JSON.', 'info');">Export FHIR JSON</a>
+          <span>•</span>
+          <a href="#" class="text-decoration-none text-muted" onclick="event.preventDefault(); MindCareUI.showToast('Generating Clinical Audit PDF...', 'info');">Print Audit PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

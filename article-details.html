@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article Details — MindCare Mental Wellness Library</title>
+  <meta name="description" content="In-depth evidence-based guide on psychological wellness, cognitive behavioral tools, and somatic nervous system regulation.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Crisis Banner -->
+  <div class="bg-light border-bottom py-1 px-3 text-center small">
+    <span class="text-muted">In crisis or experiencing acute distress? Free 24/7 support is available:</span>
+    <a href="#" class="text-danger fw-bold ms-2 mc-crisis-trigger">
+      <i class="bi bi-heart-pulse-fill me-1"></i> Call 988 Crisis Lifeline
+    </a>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg mc-navbar">
+    <div class="container">
+      <a class="mc-brand" href="index.html">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <span>MindCare</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mcNavbarContent">
+        <i class="bi bi-list fs-2 text-dark"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mcNavbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="therapists.html">Therapists</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link active" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a href="login.html" class="btn btn-mc-ghost">Sign In</a>
+          <a href="register.html" class="btn btn-mc-primary">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="py-5" style="background-color: var(--mc-canvas);">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb small">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="resources.html">Resources</a></li>
+          <li class="breadcrumb-item active" aria-current="page" id="artBreadcrumbTitle">Article</li>
+        </ol>
+      </nav>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <article class="mc-card p-4 p-md-5 mb-5">
+            <!-- Article Meta Header -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+              <span class="mc-badge mc-badge-peach fs-6 py-2 px-3" id="artCategory">Anxiety</span>
+              <div class="text-muted small">
+                <span id="artDate" class="me-3">Oct 14, 2026</span>
+                <span id="artReadTime"><i class="bi bi-clock me-1"></i>6 min read</span>
+              </div>
+            </div>
+
+            <h1 class="display-6 fw-bold text-dark mb-4" id="artTitle">Loading Article...</h1>
+
+            <!-- Author byline -->
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 p-3 bg-light rounded-4 mb-4">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=120&q=80" 
+                     class="mc-avatar mc-avatar-sm" alt="Author">
+                <div>
+                  <span class="small text-muted d-block">Written & Medically Reviewed by</span>
+                  <span class="fw-bold text-dark" id="artAuthor">Dr. Elena Rostova</span>
+                </div>
+              </div>
+              <div class="d-flex gap-2">
+                <button type="button" id="btnToggleBookmark" class="btn btn-mc-secondary btn-sm">
+                  <i class="bi bi-bookmark-heart me-1" id="artFavIcon"></i> <span id="artFavText">Save to Sanctuary</span>
+                </button>
+                <button type="button" id="btnShareArticle" class="btn btn-mc-ghost btn-sm" title="Share Article">
+                  <i class="bi bi-share"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Banner Image -->
+            <img id="artImage" src="" class="w-100 rounded-4 mb-4 shadow-sm" style="max-height: 420px; object-fit: cover;" alt="Article Illustration">
+
+            <!-- Dynamic Article Content -->
+            <div id="artBody" class="fs-6 text-plum" style="line-height: 1.8;">
+              <!-- Inserted via JS -->
+            </div>
+
+            <!-- Clinical Disclaimer Box -->
+            <div class="mc-card mc-card-sm bg-light border-0 mt-5 p-4">
+              <div class="d-flex gap-3">
+                <i class="bi bi-shield-check text-primary fs-3"></i>
+                <div>
+                  <h6 class="fw-bold text-dark mb-1">Clinical Editorial Standard</h6>
+                  <p class="small text-muted mb-0">
+                    MindCare articles are written and fact-checked by licensed clinical psychologists and behavioral health researchers. Content is provided for informational and self-reflection purposes and does not replace diagnostic clinical evaluations.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Author Bio Card & Booking CTA -->
+            <div class="mc-card mc-card-accent p-4 mt-4 bg-white border">
+              <div class="d-flex align-items-center gap-3 flex-wrap">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=150&q=80" class="mc-avatar mc-avatar-lg" alt="">
+                <div class="flex-grow-1">
+                  <h5 class="fw-bold mb-1 text-dark">Discuss This With Dr. Elena Rostova</h5>
+                  <p class="small text-muted mb-2">Senior Clinical Psychologist • Stanford Ph.D. • Specializing in Anxiety & Somatic Regulation</p>
+                  <a href="therapist-details.html?id=therapist-001" class="btn btn-mc-primary btn-sm">
+                    View Dr. Rostova's Profile & Book Session
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mc-footer">
+    <div class="container text-center text-muted small">
+      &copy; 2026 MindCare Mental Health Platform.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const articleId = urlParams.get('id') || 'art-01';
+
+      const article = await MindCareAPI.articles.getById(articleId);
+
+      document.getElementById('artBreadcrumbTitle').textContent = article.title;
+      document.getElementById('artTitle').textContent = article.title;
+      document.getElementById('artCategory').textContent = article.category;
+      document.getElementById('artDate').textContent = article.date;
+      document.getElementById('artReadTime').innerHTML = `<i class="bi bi-clock me-1"></i>${article.readTime}`;
+      document.getElementById('artAuthor').textContent = article.author;
+      document.getElementById('artImage').src = article.image;
+      document.getElementById('artBody').innerHTML = article.content;
+
+      // Bookmark button state
+      const favBtn = document.getElementById('btnToggleBookmark');
+      const favIcon = document.getElementById('artFavIcon');
+      const favText = document.getElementById('artFavText');
+
+      function updateBookmarkUI(isSaved) {
+        if (isSaved) {
+          favIcon.className = 'bi bi-bookmark-heart-fill text-danger me-1';
+          favText.textContent = 'Saved in Sanctuary';
+          favBtn.classList.add('bg-white', 'border-danger');
+        } else {
+          favIcon.className = 'bi bi-bookmark-heart me-1';
+          favText.textContent = 'Save to Sanctuary';
+          favBtn.classList.remove('bg-white', 'border-danger');
+        }
+      }
+
+      updateBookmarkUI(article.saved);
+
+      favBtn.addEventListener('click', async () => {
+        const res = await MindCareAPI.articles.toggleSave(article.id);
+        updateBookmarkUI(res.saved);
+        if (res.saved) {
+          MindCareUI.showToast('Article saved to your personal sanctuary favorites.', 'success');
+        } else {
+          MindCareUI.showToast('Article removed from favorites.', 'info');
+        }
+      });
+
+      document.getElementById('btnShareArticle').addEventListener('click', () => {
+        navigator.clipboard?.writeText(window.location.href);
+        MindCareUI.showToast('Article link copied to clipboard!', 'info');
+      });
+    });
+  </script>
+</body>
+</html>

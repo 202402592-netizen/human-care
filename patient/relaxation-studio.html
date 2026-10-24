@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relaxation Studio — MindCare Sanctuary</title>
+  <meta name="description" content="Somatic regulation, multi-pattern breathing pacers, 5-4-3-2-1 sensory grounding, and soothing ambient soundscapes.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+
+  <style>
+    /* Breathing Orb Dynamics */
+    .mc-orb-container {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mc-orb-halo {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(42, 157, 143, 0.15) 0%, rgba(138, 180, 248, 0.05) 70%, transparent 100%);
+      transition: transform 1s ease-in-out;
+    }
+    .mc-orb {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2a9d8f 0%, #52b788 50%, #90e0ef 100%);
+      box-shadow: 0 10px 30px rgba(42, 157, 143, 0.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      transition: transform 0.3s ease;
+      z-index: 2;
+    }
+    .mc-orb.inhaling {
+      box-shadow: 0 15px 45px rgba(42, 157, 143, 0.55);
+    }
+    .mc-orb.holding {
+      box-shadow: 0 15px 45px rgba(233, 196, 106, 0.55);
+    }
+    .mc-orb.exhaling {
+      box-shadow: 0 10px 25px rgba(42, 157, 143, 0.25);
+    }
+    .grounding-step-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body style="background-color: var(--mc-bg-warm);">
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <div>
+          <span class="fw-bold text-dark d-block">HumanCare</span>
+          <span class="text-muted small" style="font-size: 0.72rem;">Patient Sanctuary</span>
+        </div>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li><a href="patient-dashboard.html" class="mc-sidebar-link"><i class="bi bi-grid"></i> Dashboard</a></li>
+        <li><a href="mood-tracker.html" class="mc-sidebar-link"><i class="bi bi-emoji-smile"></i> Mood Tracker</a></li>
+        <li><a href="journal.html" class="mc-sidebar-link"><i class="bi bi-journal-text"></i> Emotional Journal</a></li>
+        <li><a href="relaxation-studio.html" class="mc-sidebar-link active"><i class="bi bi-wind"></i> Relaxation Studio</a></li>
+        <li><a href="wellness-goals.html" class="mc-sidebar-link"><i class="bi bi-trophy"></i> Wellness Goals</a></li>
+        <li><a href="ai-companion.html" class="mc-sidebar-link"><i class="bi bi-chat-heart"></i> AI Companion</a></li>
+        <li><a href="patient-exercises.html" class="mc-sidebar-link"><i class="bi bi-person-walking"></i> Prescribed Homework</a></li>
+        <li><a href="cbt-thought-log.html" class="mc-sidebar-link"><i class="bi bi-pencil-square"></i> CBT Thought Log</a></li>
+        <li><a href="patient-appointments.html" class="mc-sidebar-link"><i class="bi bi-calendar-check"></i> Appointments</a></li>
+        <li><a href="patient-profile.html" class="mc-sidebar-link"><i class="bi bi-person-gear"></i> Settings</a></li>
+      </ul>
+
+      <div class="p-3 bg-white border rounded-3 mt-auto text-center">
+        <div class="text-success small fw-bold mb-1"><i class="bi bi-shield-check me-1"></i> Autonomic Downshift</div>
+        <span class="text-muted small d-block" style="font-size: 0.7rem;">Clinical vagus nerve pacing lowers acute physiological tension within 3 minutes.</span>
+      </div>
+
+      <div class="pt-2 border-top mt-2">
+        <a href="../login.html" class="mc-sidebar-link text-danger">
+          <i class="bi bi-box-arrow-right text-danger"></i> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="mc-portal-content">
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+        <div>
+          <span class="mc-badge mc-badge-mint py-1 px-3 mb-1">
+            <i class="bi bi-lungs-fill me-1 text-success"></i> Somatic Nervous System Regulation
+          </span>
+          <h2 class="fw-bold text-dark mb-1">Relaxation Studio</h2>
+          <p class="text-muted small mb-0">Synchronize autonomic rhythm, practice guided grounding, and dissolve physical hyperarousal.</p>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill" onclick="MindCareUI.openNotifications()">
+            <i class="bi bi-bell me-1"></i> Notifications
+          </button>
+          <a href="session-completion.html" class="btn btn-outline-primary btn-sm rounded-pill">
+            <i class="bi bi-clipboard2-check me-1"></i> View Last Session Metrics
+          </a>
+        </div>
+      </div>
+
+      <!-- Studio Tabs: Breathwork vs Grounding vs Soundscapes -->
+      <ul class="nav nav-pills mc-nav-pills mb-4" id="studioTabs" role="tablist">
+        <li class="nav-item">
+          <button class="nav-link active rounded-pill px-4" id="breath-tab" data-bs-toggle="pill" data-bs-target="#tab-breath" type="button">
+            <i class="bi bi-wind me-1"></i> Guided Breathing Pacer
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link rounded-pill px-4" id="grounding-tab" data-bs-toggle="pill" data-bs-target="#tab-grounding" type="button">
+            <i class="bi bi-compass me-1"></i> 5-4-3-2-1 Sensory Grounding
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link rounded-pill px-4" id="soundscape-tab" data-bs-toggle="pill" data-bs-target="#tab-soundscape" type="button">
+            <i class="bi bi-soundwave me-1"></i> Ambient Soundscapes
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="studioTabsContent">
+        <!-- Tab 1: Breathwork Pacer -->
+        <div class="tab-pane fade show active" id="tab-breath" role="tabpanel">
+          <div class="row g-4">
+            <!-- Left: Breathing Canvas & Controls -->
+            <div class="col-lg-7">
+              <div class="mc-card p-4 bg-white text-center">
+                <!-- Rhythm Selector Buttons -->
+                <div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
+                  <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 active" id="btnRhythm478" onclick="setBreathPattern('478')">
+                    <strong>4-7-8</strong> Vagus Reset
+                  </button>
+                  <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1" id="btnRhythmBox" onclick="setBreathPattern('box')">
+                    <strong>4-4-4-4</strong> Box Breathing
+                  </button>
+                  <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1" id="btnRhythmCoherent" onclick="setBreathPattern('coherent')">
+                    <strong>5-5</strong> Coherence (HRV)
+                  </button>
+                </div>
+
+                <!-- Live Breathing Orb Display -->
+                <div class="py-4">
+                  <div class="mc-orb-container">
+                    <div class="mc-orb-halo" id="orbHalo"></div>
+                    <div class="mc-orb" id="breathingOrb">
+                      <span class="fs-6 text-uppercase fw-bold opacity-75" id="orbPhaseText" style="letter-spacing: 0.1em;">Ready</span>
+                      <span class="display-4 fw-bold my-1" id="orbCountdown">4</span>
+                      <span class="small opacity-75" id="orbSubtitle">Press Start</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Phase Guidance Text -->
+                <div class="mb-4">
+                  <h4 class="fw-bold text-dark mb-1" id="guidanceHeadline">Prepare to Settle</h4>
+                  <p class="text-muted small mx-auto" style="max-width: 440px;" id="guidanceSub">Drop your shoulders away from your ears, place one hand on your lower belly, and let your jaw loosen.</p>
+                </div>
+
+                <!-- Controls: Start / Pause / Resume / Reset -->
+                <div class="d-flex justify-content-center align-items-center gap-3 mb-4">
+                  <button type="button" class="btn btn-outline-secondary rounded-pill px-3 py-2" id="resetBtn" onclick="resetBreathing()" disabled>
+                    <i class="bi bi-arrow-counterclockwise me-1"></i> Reset
+                  </button>
+                  <button type="button" class="btn btn-mc-primary rounded-pill px-5 py-3 fw-bold fs-5 shadow-sm" id="mainActionBtn" onclick="toggleBreathing()">
+                    <i class="bi bi-play-fill me-1" id="mainActionIcon"></i> <span id="mainActionText">Start Session</span>
+                  </button>
+                </div>
+
+                <!-- Session Stats Counter -->
+                <div class="row g-2 pt-3 border-top text-center">
+                  <div class="col-4">
+                    <span class="text-muted small d-block">Cycles Completed</span>
+                    <strong class="fs-4 text-dark" id="cycleCount">0</strong>
+                  </div>
+                  <div class="col-4">
+                    <span class="text-muted small d-block">Time Elapsed</span>
+                    <strong class="fs-4 text-dark" id="timeElapsed">00:00</strong>
+                  </div>
+                  <div class="col-4">
+                    <span class="text-muted small d-block">Parasympathetic Shift</span>
+                    <strong class="fs-4 text-success" id="shiftEstimate">+0%</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Clinical Information & Tips -->
+            <div class="col-lg-5">
+              <div class="mc-card p-4 bg-white mb-4">
+                <h5 class="fw-bold text-dark mb-3"><i class="bi bi-shield-heart text-primary me-2"></i> How Vagus Pacing Works</h5>
+                <p class="small text-muted mb-3" style="line-height: 1.6;">
+                  When your exhale is intentionally elongated (e.g. 7-8 seconds), your thoracic pressure rises, prompting baroreceptors to signal the vagus nerve. This directly slows sinoatrial heart rate firing and signals safety to the amygdala.
+                </p>
+
+                <div class="p-3 bg-light rounded-4 mb-3">
+                  <h6 class="fw-bold text-dark small mb-2"><i class="bi bi-check-circle-fill text-success me-1"></i> Optimal Body Posture</h6>
+                  <ul class="small text-muted ps-3 mb-0" style="line-height: 1.6;">
+                    <li>Keep spine upright but without rigid straining.</li>
+                    <li>Rest tongue against the roof of mouth behind front teeth.</li>
+                    <li>Inhale purely through the nose; exhale through lightly pursed lips with a gentle 'whoosh' sound.</li>
+                  </ul>
+                </div>
+
+                <div class="p-3 rounded-4" style="background-color: var(--mc-lavender-subtle);">
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <strong class="small text-dark">Today's Assigned Homework</strong>
+                    <span class="badge bg-white text-primary border rounded-pill">Dr. Elena's Protocol</span>
+                  </div>
+                  <p class="small text-muted mb-0">Complete at least two 3-minute breath cycles prior to your 2:00 PM clinical session today.</p>
+                </div>
+              </div>
+
+              <!-- Quick Link to Completion Summary -->
+              <div class="mc-card p-4 bg-light text-center border-0">
+                <h6 class="fw-bold text-dark mb-1">Finished a breathwork round?</h6>
+                <p class="small text-muted mb-3">Record your post-exercise SUDS distress score and view somatic telemetry.</p>
+                <a href="session-completion.html" class="btn btn-outline-success rounded-pill px-4 btn-sm fw-bold">
+                  <i class="bi bi-clipboard-pulse me-1"></i> Log Telemetry & Sensation
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: 5-4-3-2-1 Sensory Grounding -->
+        <div class="tab-pane fade" id="tab-grounding" role="tabpanel">
+          <div class="row g-4">
+            <div class="col-lg-8 mx-auto">
+              <div class="mc-card p-4 p-md-5 bg-white">
+                <div class="text-center mb-4">
+                  <span class="mc-badge mc-badge-mint py-1 px-3 mb-2">
+                    <i class="bi bi-anchor me-1"></i> Polyvagal Stabilizer
+                  </span>
+                  <h3 class="fw-bold text-dark mb-1">5-4-3-2-1 Sensory Grounding</h3>
+                  <p class="text-muted small mx-auto" style="max-width: 500px;">
+                    When anxiety spirals into future catastrophes, gently redirect cognitive attention to the undeniable physical reality of your current room.
+                  </p>
+                </div>
+
+                <!-- Grounding Step 5: SEE -->
+                <div class="p-3 rounded-4 mb-3 border bg-light" id="groundStep1">
+                  <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="grounding-step-badge bg-primary text-white">5</span>
+                      <h6 class="fw-bold text-dark mb-0">Notice 5 things you can SEE</h6>
+                    </div>
+                    <span class="badge bg-white border text-muted small" id="step1Counter">0 / 5 checked</span>
+                  </div>
+                  <p class="small text-muted mb-2">Look around: notice colors, shadow gradients, textures on the wall, or light hitting a surface.</p>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 1)">Lamp / Light</span>
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 1)">Window frame</span>
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 1)">Plant / Leaf</span>
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 1)">Wood texture</span>
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 1)">Reflection</span>
+                  </div>
+                </div>
+
+                <!-- Grounding Step 4: FEEL -->
+                <div class="p-3 rounded-4 mb-3 border bg-light" id="groundStep2">
+                  <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="grounding-step-badge bg-success text-white">4</span>
+                      <h6 class="fw-bold text-dark mb-0">Notice 4 things you can physically FEEL</h6>
+                    </div>
+                    <span class="badge bg-white border text-muted small" id="step2Counter">0 / 4 checked</span>
+                  </div>
+                  <p class="small text-muted mb-2">Feel your soles on the floor, the texture of your shirt against skin, or air moving across your face.</p>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 2)">Feet on solid floor</span>
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 2)">Fabric of clothing</span>
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 2)">Back against chair</span>
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 2)">Coolness of air</span>
+                  </div>
+                </div>
+
+                <!-- Grounding Step 3: HEAR -->
+                <div class="p-3 rounded-4 mb-3 border bg-light" id="groundStep3">
+                  <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="grounding-step-badge bg-info text-white">3</span>
+                      <h6 class="fw-bold text-dark mb-0">Notice 3 things you can HEAR</h6>
+                    </div>
+                    <span class="badge bg-white border text-muted small" id="step3Counter">0 / 3 checked</span>
+                  </div>
+                  <p class="small text-muted mb-2">Listen closely past obvious noises: hum of electricity, distant traffic, or your own breath.</p>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 3)">Distant hum</span>
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 3)">Subtle breeze</span>
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 3)">Sound of breath</span>
+                  </div>
+                </div>
+
+                <!-- Grounding Step 2: SMELL -->
+                <div class="p-3 rounded-4 mb-3 border bg-light" id="groundStep4">
+                  <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="grounding-step-badge bg-warning text-dark">2</span>
+                      <h6 class="fw-bold text-dark mb-0">Notice 2 things you can SMELL</h6>
+                    </div>
+                    <span class="badge bg-white border text-muted small" id="step4Counter">0 / 2 checked</span>
+                  </div>
+                  <p class="small text-muted mb-2">Notice the air scent, your hand lotion, coffee, or fresh room air.</p>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 4)">Ambient clean air</span>
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 4)">Herbal tea / coffee</span>
+                  </div>
+                </div>
+
+                <!-- Grounding Step 1: TASTE -->
+                <div class="p-3 rounded-4 mb-4 border bg-light" id="groundStep5">
+                  <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="grounding-step-badge bg-danger text-white">1</span>
+                      <h6 class="fw-bold text-dark mb-0">Notice 1 thing you can TASTE or AFFIRM</h6>
+                    </div>
+                    <span class="badge bg-white border text-muted small" id="step5Counter">0 / 1 checked</span>
+                  </div>
+                  <p class="small text-muted mb-2">Sip water, notice lingering mint, or state: "I am safe and anchored here now."</p>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span class="mc-emotion-tag" onclick="toggleGroundItem(this, 5)">"I am grounded in this present moment."</span>
+                  </div>
+                </div>
+
+                <div class="text-center">
+                  <button type="button" class="btn btn-mc-primary rounded-pill px-5 py-3 fw-bold" onclick="completeGrounding()">
+                    <i class="bi bi-check2-all me-1"></i> Complete Grounding Exercise
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Ambient Soundscapes -->
+        <div class="tab-pane fade" id="tab-soundscape" role="tabpanel">
+          <div class="row g-4">
+            <div class="col-lg-8 mx-auto">
+              <div class="mc-card p-4 p-md-5 bg-white">
+                <div class="text-center mb-4">
+                  <span class="mc-badge mc-badge-lavender py-1 px-3 mb-2">
+                    <i class="bi bi-music-note-beamed me-1"></i> Psychoacoustic Audio
+                  </span>
+                  <h3 class="fw-bold text-dark mb-1">Ambient Soundscapes</h3>
+                  <p class="text-muted small mx-auto" style="max-width: 520px;">
+                    Synthesized pink noise and soothing frequencies designed to mask disruptive external stimuli and lower sympathetic vigilance.
+                  </p>
+                </div>
+
+                <!-- 4 Sound Cards Grid -->
+                <div class="row g-3 mb-4">
+                  <div class="col-sm-6">
+                    <div class="p-4 rounded-4 border bg-light text-center h-100 hover-lift transition-all" id="soundCardRain">
+                      <div class="fs-1 text-primary mb-2"><i class="bi bi-cloud-drizzle"></i></div>
+                      <h5 class="fw-bold text-dark mb-1">Gentle Rainfall</h5>
+                      <p class="small text-muted mb-3">Broadband pink noise that mimics natural raindrops against foliage.</p>
+                      <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-4" onclick="toggleAudioSound('rain')">
+                        <i class="bi bi-play-fill me-1" id="iconSoundRain"></i> Play Rain
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="p-4 rounded-4 border bg-light text-center h-100 hover-lift transition-all" id="soundCardOcean">
+                      <div class="fs-1 text-teal mb-2" style="color: var(--mc-primary);"><i class="bi bi-water"></i></div>
+                      <h5 class="fw-bold text-dark mb-1">Ocean Rhythms</h5>
+                      <p class="small text-muted mb-3">Rhythmic swells that naturally modulate between 0.1 Hz breathing resonance.</p>
+                      <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-4" onclick="toggleAudioSound('ocean')">
+                        <i class="bi bi-play-fill me-1" id="iconSoundOcean"></i> Play Ocean
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="p-4 rounded-4 border bg-light text-center h-100 hover-lift transition-all" id="soundCardForest">
+                      <div class="fs-1 text-success mb-2"><i class="bi bi-tree"></i></div>
+                      <h5 class="fw-bold text-dark mb-1">Whispering Pine</h5>
+                      <p class="small text-muted mb-3">Soft mountain wind through cedar boughs to inspire spacious openness.</p>
+                      <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-4" onclick="toggleAudioSound('forest')">
+                        <i class="bi bi-play-fill me-1" id="iconSoundForest"></i> Play Forest
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="p-4 rounded-4 border bg-light text-center h-100 hover-lift transition-all" id="soundCardBowl">
+                      <div class="fs-1 text-warning mb-2"><i class="bi bi-circle"></i></div>
+                      <h5 class="fw-bold text-dark mb-1">Tibetan 432 Hz Bowl</h5>
+                      <p class="small text-muted mb-3">Harmonic warm resonance to ease chest constriction and mental clutter.</p>
+                      <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-4" onclick="toggleAudioSound('bowl')">
+                        <i class="bi bi-play-fill me-1" id="iconSoundBowl"></i> Play Bowl
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Volume Slider -->
+                <div class="p-3 bg-light rounded-4 d-flex align-items-center gap-3">
+                  <i class="bi bi-volume-up fs-5 text-muted"></i>
+                  <input type="range" class="form-range" id="soundVolumeSlider" min="0" max="1" step="0.05" value="0.5" oninput="setAudioVolume(this.value)">
+                  <span class="small text-muted" id="volumeLabel">50%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle & Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+  <script>
+    /* ==========================================================
+       BREATHING PACER ENGINE (Inhale, Hold, Exhale, Timers)
+       ========================================================== */
+    const PATTERNS = {
+      '478': {
+        name: '4-7-8 Vagus Reset',
+        phases: [
+          { name: 'Inhale', duration: 4, action: 'Breathe in softly through nose', scale: 1.35, color: '#2a9d8f' },
+          { name: 'Hold', duration: 7, action: 'Hold gently without straining', scale: 1.35, color: '#e9c46a' },
+          { name: 'Exhale', duration: 8, action: 'Release through mouth with soft whoosh', scale: 1.0, color: '#52b788' }
+        ]
+      },
+      'box': {
+        name: 'Box Breathing (4-4-4-4)',
+        phases: [
+          { name: 'Inhale', duration: 4, action: 'Inhale deep into abdomen', scale: 1.35, color: '#2a9d8f' },
+          { name: 'Hold', duration: 4, action: 'Hold breath with ease', scale: 1.35, color: '#e9c46a' },
+          { name: 'Exhale', duration: 4, action: 'Exhale steadily and completely', scale: 1.0, color: '#52b788' },
+          { name: 'Hold', duration: 4, action: 'Rest empty before next breath', scale: 1.0, color: '#e9c46a' }
+        ]
+      },
+      'coherent': {
+        name: 'Coherent 5-5 Resonance',
+        phases: [
+          { name: 'Inhale', duration: 5, action: 'Smooth 5-second continuous inhale', scale: 1.35, color: '#2a9d8f' },
+          { name: 'Exhale', duration: 5, action: 'Smooth 5-second continuous exhale', scale: 1.0, color: '#52b788' }
+        ]
+      }
+    };
+
+    let activePatternKey = '478';
+    let isRunning = false;
+    let isPaused = false;
+    let timerInterval = null;
+    let phaseInterval = null;
+    let currentPhaseIndex = 0;
+    let secondsLeftInPhase = 4;
+    let cyclesCount = 0;
+    let totalSecondsElapsed = 0;
+
+    function setBreathPattern(key) {
+      if (isRunning) resetBreathing();
+      activePatternKey = key;
+
+      document.querySelectorAll('#btnRhythm478, #btnRhythmBox, #btnRhythmCoherent').forEach(b => b.classList.remove('active'));
+      if (key === '478') document.getElementById('btnRhythm478').classList.add('active');
+      if (key === 'box') document.getElementById('btnRhythmBox').classList.add('active');
+      if (key === 'coherent') document.getElementById('btnRhythmCoherent').classList.add('active');
+
+      const pat = PATTERNS[key];
+      document.getElementById('guidanceHeadline').textContent = pat.name;
+      document.getElementById('guidanceSub').textContent = `Clinical timing: ${pat.phases.map(p => `${p.name} ${p.duration}s`).join(' • ')}`;
+      document.getElementById('orbCountdown').textContent = pat.phases[0].duration;
+    }
+
+    function toggleBreathing() {
+      if (!isRunning) {
+        startBreathing();
+      } else if (isPaused) {
+        resumeBreathing();
+      } else {
+        pauseBreathing();
+      }
+    }
+
+    function startBreathing() {
+      isRunning = true;
+      isPaused = false;
+      document.getElementById('resetBtn').disabled = false;
+      document.getElementById('mainActionText').textContent = 'Pause';
+      document.getElementById('mainActionIcon').className = 'bi bi-pause-fill me-1';
+
+      currentPhaseIndex = 0;
+      startPhase();
+
+      // Total session timer
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (!isPaused) {
+          totalSecondsElapsed++;
+          const mins = String(Math.floor(totalSecondsElapsed / 60)).padStart(2, '0');
+          const secs = String(totalSecondsElapsed % 60).padStart(2, '0');
+          document.getElementById('timeElapsed').textContent = `${mins}:${secs}`;
+
+          // Estimated parasympathetic shift calculation (up to +68%)
+          const shift = Math.min(68, Math.round(totalSecondsElapsed * 0.4));
+          document.getElementById('shiftEstimate').textContent = `+${shift}%`;
+        }
+      }, 1000);
+    }
+
+    function pauseBreathing() {
+      isPaused = true;
+      document.getElementById('mainActionText').textContent = 'Resume';
+      document.getElementById('mainActionIcon').className = 'bi bi-play-fill me-1';
+      document.getElementById('orbSubtitle').textContent = 'Paused';
+      MindCareUI.showToast('Breathing paused. Resume whenever ready.', 'info');
+    }
+
+    function resumeBreathing() {
+      isPaused = false;
+      document.getElementById('mainActionText').textContent = 'Pause';
+      document.getElementById('mainActionIcon').className = 'bi bi-pause-fill me-1';
+      document.getElementById('orbSubtitle').textContent = PATTERNS[activePatternKey].phases[currentPhaseIndex].name;
+    }
+
+    function resetBreathing() {
+      isRunning = false;
+      isPaused = false;
+      clearInterval(phaseInterval);
+      clearInterval(timerInterval);
+
+      const orb = document.getElementById('breathingOrb');
+      const halo = document.getElementById('orbHalo');
+      orb.style.transform = 'scale(1)';
+      halo.style.transform = 'scale(1)';
+      orb.className = 'mc-orb';
+
+      document.getElementById('orbPhaseText').textContent = 'Ready';
+      document.getElementById('orbCountdown').textContent = PATTERNS[activePatternKey].phases[0].duration;
+      document.getElementById('orbSubtitle').textContent = 'Press Start';
+      document.getElementById('mainActionText').textContent = 'Start Session';
+      document.getElementById('mainActionIcon').className = 'bi bi-play-fill me-1';
+      document.getElementById('resetBtn').disabled = true;
+
+      cyclesCount = 0;
+      totalSecondsElapsed = 0;
+      document.getElementById('cycleCount').textContent = '0';
+      document.getElementById('timeElapsed').textContent = '00:00';
+      document.getElementById('shiftEstimate').textContent = '+0%';
+
+      MindCareUI.showToast('Breathing pacer reset.', 'info');
+    }
+
+    function startPhase() {
+      const pattern = PATTERNS[activePatternKey];
+      const phase = pattern.phases[currentPhaseIndex];
+      secondsLeftInPhase = phase.duration;
+
+      const orb = document.getElementById('breathingOrb');
+      const halo = document.getElementById('orbHalo');
+
+      // Update text
+      document.getElementById('orbPhaseText').textContent = phase.name;
+      document.getElementById('orbCountdown').textContent = secondsLeftInPhase;
+      document.getElementById('orbSubtitle').textContent = phase.action;
+      document.getElementById('guidanceHeadline').textContent = `${phase.name} (${phase.duration}s)`;
+      document.getElementById('guidanceSub').textContent = phase.action;
+
+      // Animate orb
+      orb.style.transition = `transform ${phase.duration}s ease-in-out`;
+      halo.style.transition = `transform ${phase.duration}s ease-in-out`;
+      orb.style.transform = `scale(${phase.scale})`;
+      halo.style.transform = `scale(${phase.scale * 1.15})`;
+
+      orb.className = `mc-orb ${phase.name.toLowerCase()}ing`;
+
+      clearInterval(phaseInterval);
+      phaseInterval = setInterval(() => {
+        if (isPaused) return;
+
+        secondsLeftInPhase--;
+        document.getElementById('orbCountdown').textContent = Math.max(0, secondsLeftInPhase);
+
+        if (secondsLeftInPhase <= 0) {
+          clearInterval(phaseInterval);
+          advancePhase();
+        }
+      }, 1000);
+    }
+
+    function advancePhase() {
+      const pattern = PATTERNS[activePatternKey];
+      currentPhaseIndex++;
+      if (currentPhaseIndex >= pattern.phases.length) {
+        currentPhaseIndex = 0;
+        cyclesCount++;
+        document.getElementById('cycleCount').textContent = cyclesCount;
+      }
+      startPhase();
+    }
+
+    /* ==========================================================
+       5-4-3-2-1 SENSORY GROUNDING INTERACTION
+       ========================================================== */
+    const groundCounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    const groundMax = { 1: 5, 2: 4, 3: 3, 4: 2, 5: 1 };
+
+    function toggleGroundItem(el, step) {
+      el.classList.toggle('selected');
+      const container = el.parentElement;
+      const selected = container.querySelectorAll('.selected').length;
+      groundCounts[step] = selected;
+      document.getElementById(`step${step}Counter`).textContent = `${selected} / ${groundMax[step]} checked`;
+
+      if (selected >= groundMax[step]) {
+        el.closest('.border').classList.replace('bg-light', 'bg-success-subtle');
+      }
+    }
+
+    function completeGrounding() {
+      MindCareUI.showToast('Sensory grounding complete. Your nervous system is recalibrated.', 'success');
+      setTimeout(() => {
+        if (confirm('Great work centering yourself! Would you like to record a quick journal reflection?')) {
+          window.location.href = 'journal.html';
+        }
+      }, 500);
+    }
+
+    /* ==========================================================
+       WEB AUDIO SYNTHESIZED SOUNDSCAPES (No external MP3 files!)
+       ========================================================== */
+    let audioCtx = null;
+    let activeNodes = { rain: null, ocean: null, forest: null, bowl: null };
+    let masterGain = null;
+    let currentPlayingSound = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+        masterGain = audioCtx.createGain();
+        masterGain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+        masterGain.connect(audioCtx.destination);
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function setAudioVolume(val) {
+      if (masterGain && audioCtx) {
+        masterGain.gain.setValueAtTime(parseFloat(val), audioCtx.currentTime);
+      }
+      document.getElementById('volumeLabel').textContent = `${Math.round(val * 100)}%`;
+    }
+
+    function toggleAudioSound(type) {
+      initAudio();
+
+      if (currentPlayingSound === type) {
+        stopAllSounds();
+        return;
+      }
+
+      stopAllSounds();
+      currentPlayingSound = type;
+
+      if (type === 'rain') {
+        startPinkNoiseRain();
+        updateSoundUI('rain', true);
+      } else if (type === 'ocean') {
+        startOceanWaves();
+        updateSoundUI('ocean', true);
+      } else if (type === 'forest') {
+        startForestWind();
+        updateSoundUI('forest', true);
+      } else if (type === 'bowl') {
+        startTibetanBowl();
+        updateSoundUI('bowl', true);
+      }
+      MindCareUI.showToast(`Playing ambient soundscape: ${type.toUpperCase()}`, 'info');
+    }
+
+    function stopAllSounds() {
+      if (activeNodes.rain) { activeNodes.rain.stop(); activeNodes.rain = null; }
+      if (activeNodes.ocean) { activeNodes.ocean.stop(); activeNodes.ocean = null; }
+      if (activeNodes.forest) { activeNodes.forest.stop(); activeNodes.forest = null; }
+      if (activeNodes.bowl) { activeNodes.bowl.stop(); activeNodes.bowl = null; }
+      currentPlayingSound = null;
+      ['rain', 'ocean', 'forest', 'bowl'].forEach(t => updateSoundUI(t, false));
+    }
+
+    function updateSoundUI(type, isPlaying) {
+      const capitalized = type.charAt(0).toUpperCase() + type.slice(1);
+      const icon = document.getElementById(`iconSound${capitalized}`);
+      const card = document.getElementById(`soundCard${capitalized}`);
+      if (isPlaying) {
+        if (icon) icon.className = 'bi bi-stop-fill me-1';
+        if (card) card.classList.add('border-primary', 'shadow-sm');
+      } else {
+        if (icon) icon.className = 'bi bi-play-fill me-1';
+        if (card) card.classList.remove('border-primary', 'shadow-sm');
+      }
+    }
+
+    function createNoiseBuffer() {
+      const bufferSize = audioCtx.sampleRate * 2;
+      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const output = buffer.getChannelData(0);
+      let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+      for (let i = 0; i < bufferSize; i++) {
+        const white = Math.random() * 2 - 1;
+        b0 = 0.99886 * b0 + white * 0.0555179;
+        b1 = 0.99332 * b1 + white * 0.0750759;
+        b2 = 0.96900 * b2 + white * 0.1538520;
+        b3 = 0.86650 * b3 + white * 0.3104856;
+        b4 = 0.55000 * b4 + white * 0.5329522;
+        b5 = -0.7616 * b5 - white * 0.0168980;
+        output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.11;
+        b6 = white * 0.115926;
+      }
+      return buffer;
+    }
+
+    function startPinkNoiseRain() {
+      const noise = audioCtx.createBufferSource();
+      noise.buffer = createNoiseBuffer();
+      noise.loop = true;
+
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(1200, audioCtx.currentTime);
+
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(masterGain);
+      noise.start();
+      activeNodes.rain = noise;
+    }
+
+    function startOceanWaves() {
+      const noise = audioCtx.createBufferSource();
+      noise.buffer = createNoiseBuffer();
+      noise.loop = true;
+
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(450, audioCtx.currentTime);
+
+      const swellGain = audioCtx.createGain();
+      swellGain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+
+      // Low frequency oscillator for wave swells
+      const lfo = audioCtx.createOscillator();
+      lfo.frequency.setValueAtTime(0.1, audioCtx.currentTime); // 10 second wave cycle
+      const lfoGain = audioCtx.createGain();
+      lfoGain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      lfo.connect(lfoGain);
+      lfoGain.connect(swellGain.gain);
+      lfo.start();
+
+      noise.connect(filter);
+      filter.connect(swellGain);
+      swellGain.connect(masterGain);
+      noise.start();
+      activeNodes.ocean = noise;
+    }
+
+    function startForestWind() {
+      const noise = audioCtx.createBufferSource();
+      noise.buffer = createNoiseBuffer();
+      noise.loop = true;
+
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(600, audioCtx.currentTime);
+
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.35, audioCtx.currentTime);
+
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(masterGain);
+      noise.start();
+      activeNodes.forest = noise;
+    }
+
+    function startTibetanBowl() {
+      const osc1 = audioCtx.createOscillator();
+      const osc2 = audioCtx.createOscillator();
+      osc1.type = 'sine';
+      osc2.type = 'sine';
+      osc1.frequency.setValueAtTime(432, audioCtx.currentTime); // 432 Hz healing tone
+      osc2.frequency.setValueAtTime(435.5, audioCtx.currentTime); // Binaural binaural beat
+
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+
+      osc1.connect(gain);
+      osc2.connect(gain);
+      gain.connect(masterGain);
+
+      osc1.start();
+      osc2.start();
+      activeNodes.bowl = {
+        stop: () => {
+          osc1.stop();
+          osc2.stop();
+        }
+      };
+    }
+  </script>
+</body>
+</html>

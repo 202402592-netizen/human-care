@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HumanCare / MindCare — Your Well-being Matters | Calming Mental Health Platform</title>
+  <meta name="description" content="Compassionate, evidence-based psychotherapy, somatic breathwork, and clinical support designed to meet you wherever you are.">
+
+  <!-- Bootstrap 5 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- MindCare Design System Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body style="background-color: var(--mc-bg-warm);">
+
+  <!-- Top Global Compliance Strip -->
+  <div class="py-1 px-3 text-center small" style="background: linear-gradient(90deg, #ede0f7 0%, #fff7fd 100%); border-bottom: 1px solid var(--mc-border-light);">
+    <span class="text-plum fw-semibold" style="font-size: 0.76rem; letter-spacing: 0.04em;">
+      <i class="bi bi-shield-check text-primary me-1"></i> HIPAA COMPLIANT • 100% LICENSED PSYCHOTHERAPISTS
+    </span>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar navbar-expand-lg mc-navbar sticky-top">
+    <div class="container">
+      <a class="mc-brand" href="index.html">
+        <div class="mc-brand-logo">
+          <i class="bi bi-flower1"></i>
+        </div>
+        <span>HumanCare</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mcNavbarContent" aria-controls="mcNavbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2 text-dark"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mcNavbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="patient/book-appointment.html">Book a Session</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="therapists.html">Find a Psychologist</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="resources.html">Well-being Resources</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="about.html">About & Mission</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-outline-danger btn-sm rounded-pill px-3 mc-crisis-trigger small">
+            <i class="bi bi-telephone-fill me-1"></i> Crisis Support (988)
+          </button>
+          <a href="login.html" class="btn btn-mc-ghost btn-sm">Sign In</a>
+          <a href="register.html" class="btn btn-mc-primary btn-sm rounded-pill px-3">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section (Matching Mockup Image 2) -->
+    <section class="mc-hero py-5">
+      <div class="container position-relative">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7">
+            <span class="mc-section-tag" style="font-size: 0.72rem; letter-spacing: 0.08em;">
+              GENTLE, EVIDENCE-BASED MENTAL HEALTH
+            </span>
+            <h1 class="display-4 fw-bold mb-3 text-dark">
+              Your Well–being Matters.
+            </h1>
+            <p class="lead mb-4 text-plum" style="font-size: 1.15rem; max-width: 580px; line-height: 1.6;">
+              Compassionate, evidence-based psychotherapy, somatic breathwork, and clinical support designed to meet you wherever you are.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3 align-items-center mb-4">
+              <a href="therapists.html" class="btn btn-mc-primary py-3 px-4 fs-6 rounded-pill">
+                <i class="bi bi-search-heart me-2"></i> Find Your Psychologist
+              </a>
+              <a href="#howItWorks" class="btn btn-outline-secondary py-3 px-4 fs-6 rounded-pill">
+                How It Works &rarr;
+              </a>
+            </div>
+
+            <!-- 3 Trust Metrics -->
+            <div class="row g-3 pt-2 text-center text-sm-start" style="max-width: 540px;">
+              <div class="col-4">
+                <div class="fs-4 fw-bold text-dark">98.4%</div>
+                <span class="text-muted small" style="font-size: 0.75rem;">Therapeutic Alignment</span>
+              </div>
+              <div class="col-4">
+                <div class="fs-4 fw-bold text-dark">&lt; 48 hrs</div>
+                <span class="text-muted small" style="font-size: 0.75rem;">Avg First Intake</span>
+              </div>
+              <div class="col-4">
+                <div class="fs-4 fw-bold text-dark">50+ States</div>
+                <span class="text-muted small" style="font-size: 0.75rem;">Licensed Coverage</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Hero Card (Matching Mockup Image 2) -->
+          <div class="col-lg-5">
+            <div class="mc-card p-4 border-0 shadow-lg bg-white" style="border-radius: 28px;">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="small fw-bold text-dark">Daily Nervous System Regulation</span>
+                <span class="badge bg-primary-subtle text-primary rounded-pill small">Personalized</span>
+              </div>
+              <span class="text-muted small d-block mb-3" style="font-size: 0.75rem;">Personalized somatic breath pacing</span>
+
+              <!-- Living Room / Therapeutic Sanctuary Picture -->
+              <div class="position-relative rounded-4 overflow-hidden mb-3" style="height: 200px;">
+                <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=700&q=80" 
+                     class="w-100 h-100 object-fit-cover" alt="Therapeutic Calm Space">
+                <div class="position-absolute bottom-0 start-0 end-0 p-3" style="background: linear-gradient(180deg, transparent 0%, rgba(40, 17, 57, 0.85) 100%);">
+                  <a href="patient/patient-breathwork.html" class="badge bg-white text-plum text-decoration-none py-1 px-3 rounded-pill small">
+                    <i class="bi bi-play-circle-fill text-primary me-1"></i> Prescribed: 4-7-8 Calming • 5 Min Somatic Pacer
+                  </a>
+                </div>
+              </div>
+
+              <!-- Client Review Quote -->
+              <p class="small text-plum mb-3 fst-italic" style="font-size: 0.8rem; line-height: 1.45;">
+                "Working on boundary setting through HumanCare. Audio breathwork has normalized my nervous system on stressful work days."
+              </p>
+
+              <!-- Telehealth Safe Card -->
+              <div class="p-2 px-3 rounded-3 d-flex justify-content-between align-items-center" style="background: #fff7fd; border: 1px solid #ede0f7;">
+                <div class="d-flex align-items-center gap-2">
+                  <i class="bi bi-lock-fill text-primary"></i>
+                  <div>
+                    <strong class="text-dark small d-block" style="font-size: 0.76rem;">Private & Secure</strong>
+                    <span class="text-muted" style="font-size: 0.68rem;">End-to-end encrypted video</span>
+                  </div>
+                </div>
+                <button class="btn btn-mc-primary btn-sm py-1 px-3 rounded-pill mc-launch-telehealth" data-session-title="Anxiety Regulation Preview" data-doctor-name="Dr. Elena Rostova" style="font-size: 0.75rem;">
+                  Preview Room
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Immediate Mental Health Crisis Support Banner -->
+    <div class="container mb-5">
+      <div class="mc-card p-3" style="background: linear-gradient(135deg, #fff7fd 0%, #ffece5 100%); border: 1.5px solid #f9b195;">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+          <div class="d-flex align-items-center gap-3">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: #f69d7b; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+              <i class="bi bi-life-preserver"></i>
+            </div>
+            <div>
+              <strong class="text-dark d-block">Immediate Mental Health Crisis Support</strong>
+              <span class="text-muted small" style="font-size: 0.8rem;">
+                If you, a loved one, or client is experiencing a crisis, free support from trained crisis counselors is available 24/7. Never hesitate to reach out. Completely free.
+              </span>
+            </div>
+          </div>
+          <div class="d-flex gap-2">
+            <a href="tel:988" class="btn btn-mc-primary btn-sm rounded-pill px-3 py-2 fw-bold">
+              <i class="bi bi-telephone-fill me-1"></i> Call 988 Lifeline
+            </a>
+            <a href="sms:741741?body=HOME" class="btn btn-outline-secondary btn-sm rounded-pill px-3 py-2 fw-bold">
+              <i class="bi bi-chat-text-fill me-1"></i> Text 741741
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How HumanCare Works (Care Architecture) -->
+    <section class="py-5" id="howItWorks" style="background-color: #ffffff;">
+      <div class="container py-3">
+        <div class="mc-section-header">
+          <span class="mc-section-tag">CARE ARCHITECTURE</span>
+          <h2 class="fw-bold">How HumanCare Works</h2>
+          <p class="text-muted">A seamless combination of personalized clinical expertise and intelligent companion tools designed for lasting emotional wellness.</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Step 01 -->
+          <div class="col-md-4">
+            <div class="mc-card p-4 h-100 bg-white" style="border-top: 4px solid var(--mc-primary) !important;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="fs-1 fw-bold text-plum opacity-50">01</span>
+                <i class="bi bi-clipboard2-pulse fs-3 text-primary"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Clinical Matching Quiz</h5>
+              <p class="text-muted small mb-4" style="line-height: 1.55;">
+                Complete a brief, evidence-informed intake exploring communication style, attachment style, symptoms survey (PHQ-9 / GAD-7), and therapist model preferences.
+              </p>
+              <a href="patient/book-appointment.html" class="fw-semibold text-primary small text-decoration-none mt-auto">
+                Take Matching Assessment &bull; 3 mins &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="col-md-4">
+            <div class="mc-card p-4 h-100 bg-white" style="border-top: 4px solid var(--mc-primary-medium) !important;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="fs-1 fw-bold text-plum opacity-50">02</span>
+                <i class="bi bi-camera-video fs-3 text-primary"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Seamless Telehealth & In–Person</h5>
+              <p class="text-muted small mb-4" style="line-height: 1.55;">
+                Connect via encrypted video sessions from your quiet rest space, or in person across selective hubs in multiple metro areas. Flexibility for your schedule.
+              </p>
+              <a href="therapists.html" class="fw-semibold text-primary small text-decoration-none mt-auto">
+                Browse Licensed Providers & Directory &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="col-md-4">
+            <div class="mc-card p-4 h-100 bg-white" style="border-top: 4px solid var(--mc-accent-peach) !important;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="fs-1 fw-bold text-plum opacity-50">03</span>
+                <i class="bi bi-soundwave fs-3 text-primary"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Somatic & CBT Companion Tools</h5>
+              <p class="text-muted small mb-4" style="line-height: 1.55;">
+                Care doesn't end between weekly sessions. Access guided diaphragm pacing, somatic journaling, and cognitive restructuring worksheets customized by your therapist.
+              </p>
+              <a href="patient/patient-exercises.html" class="fw-semibold text-primary small text-decoration-none mt-auto">
+                24/7 Continuous Asynchronous Care &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clinician Directory: Find Your Psychologist -->
+    <section class="py-5" style="background-color: var(--mc-canvas);">
+      <div class="container py-3">
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-4">
+          <div>
+            <span class="mc-section-tag">CLINICIAN DIRECTORY</span>
+            <h2 class="fw-bold mb-1">Find Your Psychologist</h2>
+            <p class="text-muted mb-0">Every clinician in our network undergoes rigorous vetting, credential verification, and ongoing peer review.</p>
+          </div>
+          <a href="therapists.html" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
+            Explore All Clinicians &rarr;
+          </a>
+        </div>
+
+        <div class="row g-4">
+          <!-- Therapist 1: Dr. Elena Rostova -->
+          <div class="col-md-4">
+            <div class="mc-card p-4 h-100 bg-white d-flex flex-column">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=120&q=80" class="mc-avatar mc-avatar-md" alt="Dr. Rostova">
+                <div>
+                  <div class="d-flex align-items-center gap-1">
+                    <strong class="d-block text-dark">Dr. Elena Rostova, PsyD</strong>
+                    <i class="bi bi-patch-check-fill text-primary"></i>
+                  </div>
+                  <span class="text-muted small" style="font-size: 0.72rem;">12 Years Clinical Experience • Clinical Psychology</span>
+                </div>
+              </div>
+
+              <div class="d-flex flex-wrap gap-1 mb-3">
+                <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">Trauma & PTSD</span>
+                <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">EMDR Certified</span>
+                <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">Somatic Experiencing</span>
+              </div>
+
+              <p class="text-muted small flex-grow-1" style="font-size: 0.78rem; line-height: 1.45;">
+                Specializing in nervous system desensitization for high-stress executives, healthcare workers, and survivors of developmental trauma.
+              </p>
+
+              <div class="p-2 bg-light rounded-3 d-flex justify-content-between align-items-center text-muted small mb-3" style="font-size: 0.72rem;">
+                <span>Next Available:</span>
+                <strong class="text-dark">Tomorrow, 11:00 AM</strong>
+              </div>
+
+              <a href="therapist-details.html?id=therapist-001" class="btn btn-mc-primary w-100 py-2 rounded-pill small fw-bold">
+                Book Consultation
+              </a>
+            </div>
+          </div>
+
+          <!-- Therapist 2: Dr. Aris Thorne -->
+          <div class="col-md-4">
+            <div class="mc-card p-4 h-100 bg-white d-flex flex-column">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=120&q=80" class="mc-avatar mc-avatar-md" alt="Dr. Thorne">
+                <div>
+                  <div class="d-flex align-items-center gap-1">
+                    <strong class="d-block text-dark">Dr. Aris Thorne, PhD</strong>
+                    <i class="bi bi-patch-check-fill text-primary"></i>
+                  </div>
+                  <span class="text-muted small" style="font-size: 0.72rem;">14 Years Clinical Experience • Clinical & Somatic Psych</span>
+                </div>
+              </div>
+
+              <div class="d-flex flex-wrap gap-1 mb-3">
+                <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">CBT & ACT</span>
+                <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">Depressive Cycles</span>
+                <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">Sleep Architecture</span>
+              </div>
+
+              <p class="text-muted small flex-grow-1" style="font-size: 0.78rem; line-height: 1.45;">
+                Helping clients deconstruct chronic feedback loops and regain restful autonomic baseline.
+              </p>
+
+              <div class="p-2 bg-light rounded-3 d-flex justify-content-between align-items-center text-muted small mb-3" style="font-size: 0.72rem;">
+                <span>Next Available:</span>
+                <strong class="text-dark">Thursday, 1:30 PM</strong>
+              </div>
+
+              <a href="therapist-details.html?id=therapist-002" class="btn btn-mc-primary w-100 py-2 rounded-pill small fw-bold">
+                Book Consultation
+              </a>
+            </div>
+          </div>
+
+          <!-- Therapist 3: Marcus Sterling -->
+          <div class="col-md-4">
+            <div class="mc-card p-4 h-100 bg-white d-flex flex-column">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" class="mc-avatar mc-avatar-md" alt="Marcus Sterling">
+                <div>
+                  <div class="d-flex align-items-center gap-1">
+                    <strong class="d-block text-dark">Marcus Sterling, LMFT</strong>
+                    <i class="bi bi-patch-check-fill text-primary"></i>
+                  </div>
+                  <span class="text-muted small" style="font-size: 0.72rem;">9 Years Clinical Experience • Adult & Couples Therapist</span>
+                </div>
+              </div>
+
+              <div class="d-flex flex-wrap gap-1 mb-3">
+                <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">Relationship Therapy</span>
+                <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">Family Systems</span>
+                <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">Queer Affirming</span>
+              </div>
+
+              <p class="text-muted small flex-grow-1" style="font-size: 0.78rem; line-height: 1.45;">
+                Specialized guidance for couples navigating non-violent communication and boundary contracts.
+              </p>
+
+              <div class="p-2 bg-light rounded-3 d-flex justify-content-between align-items-center text-muted small mb-3" style="font-size: 0.72rem;">
+                <span>Next Available:</span>
+                <strong class="text-dark">Friday, 10:15 AM</strong>
+              </div>
+
+              <a href="therapist-details.html?id=therapist-003" class="btn btn-mc-primary w-100 py-2 rounded-pill small fw-bold">
+                Book Consultation
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Psychoeducation & Clinical Resources (Matching Mockup Image 2) -->
+    <section class="py-5" style="background-color: #ffffff;">
+      <div class="container py-3">
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-4">
+          <div>
+            <span class="mc-section-tag">CLINICAL PSYCHOEDUCATION</span>
+            <h2 class="fw-bold mb-1">Well–being & Psychoeducation Resources</h2>
+            <p class="text-muted mb-0">Demystifying nervous system science with accessible, clinician-written frameworks you can apply right now.</p>
+          </div>
+          <a href="resources.html" class="fw-bold text-primary small text-decoration-none">
+            Explore Entire Library &rarr;
+          </a>
+        </div>
+
+        <div class="row g-4">
+          <!-- Article 1: Decatastrophizing -->
+          <div class="col-md-4">
+            <div class="mc-card p-0 overflow-hidden h-100 bg-white d-flex flex-column">
+              <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=400&q=80" style="height: 170px; object-fit: cover;" alt="Decatastrophizing">
+              <div class="p-3 d-flex flex-column flex-grow-1">
+                <span class="text-muted small d-block mb-1" style="font-size: 0.72rem;">3 min read • Dr. Elena Rostova</span>
+                <h6 class="fw-bold text-dark mb-2">Decatastrophizing: A Practical 3–Step Guide to Neutralize Spiral Thinking</h6>
+                <p class="text-muted small flex-grow-1" style="font-size: 0.78rem;">
+                  When the brain evaluates minor uncertainty towards worst-case scenarios, use this somatic cognitive worksheet to regain proportion.
+                </p>
+                <a href="article-details.html?id=art-01" class="fw-semibold text-primary small text-decoration-none pt-2 border-top">
+                  Read Guide &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 2: Vagus Nerve -->
+          <div class="col-md-4">
+            <div class="mc-card p-0 overflow-hidden h-100 bg-white d-flex flex-column">
+              <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=400&q=80" style="height: 170px; object-fit: cover;" alt="Vagus Nerve">
+              <div class="p-3 d-flex flex-column flex-grow-1">
+                <span class="text-muted small d-block mb-1" style="font-size: 0.72rem;">4 min read • Somatic Clinical Team</span>
+                <h6 class="fw-bold text-dark mb-2">Vagus Nerve Somatic Regulation: Beyond Simple Deep Breathing</h6>
+                <p class="text-muted small flex-grow-1" style="font-size: 0.78rem;">
+                  Utilizing physiological sighs, cold hydro-triggers, and subtle diaphragmatic pauses to soothe your cranial parasympathetic braking axis.
+                </p>
+                <a href="article-details.html?id=art-02" class="fw-semibold text-primary small text-decoration-none pt-2 border-top">
+                  Read Guide &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 3: Sleep Architecture -->
+          <div class="col-md-4">
+            <div class="mc-card p-0 overflow-hidden h-100 bg-white d-flex flex-column">
+              <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=400&q=80" style="height: 170px; object-fit: cover;" alt="Sleep Architecture">
+              <div class="p-3 d-flex flex-column flex-grow-1">
+                <span class="text-muted small d-block mb-1" style="font-size: 0.72rem;">5 min read • Dr. Aris Thorne</span>
+                <h6 class="fw-bold text-dark mb-2">Sleep Architecture & Anxiety: Breaking the 3:00 AM Awakening</h6>
+                <p class="text-muted small flex-grow-1" style="font-size: 0.78rem;">
+                  Cognitive stimulus control and sleep hygiene adjustments designed to normalize cortisol surges during nighttime awakenings.
+                </p>
+                <a href="article-details.html?id=art-03" class="fw-semibold text-primary small text-decoration-none pt-2 border-top">
+                  Read Guide &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grounding Moment: Take a 60-Second Regulating Breath (Matching Mockup Image 2) -->
+    <section class="py-5" style="background-color: var(--mc-canvas);">
+      <div class="container py-3 text-center">
+        <span class="mc-section-tag" style="font-size: 0.72rem;">GROUNDING MOMENT</span>
+        <h2 class="fw-bold mb-1">Take a 60–Second Regulating Breath</h2>
+        <p class="text-muted small mx-auto mb-4" style="max-width: 500px;">
+          Sync with the gentle lavender sphere to stimulate your parasympathetic nervous system.
+        </p>
+
+        <!-- Interactive Animated Breathing Orb -->
+        <div class="mc-breathing-circle mb-3 cursor-pointer" id="groundingBreathCircle" onclick="toggleGroundingPacer()">
+          <div class="text-center">
+            <span class="fw-bold text-dark fs-6 d-block" id="groundingPacerText">Click Start</span>
+            <span class="text-muted small" style="font-size: 0.7rem;" id="groundingPacerSub">Inhale / Exhale</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-mc-primary btn-sm rounded-pill px-4 py-2" onclick="toggleGroundingPacer()">
+          Begin Breathing Cycle
+        </button>
+      </div>
+    </section>
+
+    <!-- Practice Philosophy: Care Rooted in Dignity, Human Rights & Equity (Matching Mockup Image 2) -->
+    <section class="py-5" style="background-color: #ffffff;">
+      <div class="container py-3">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-5">
+            <span class="mc-section-tag" style="font-size: 0.72rem;">PRACTICE PHILOSOPHY</span>
+            <h2 class="fw-bold mb-3">Care Rooted in Dignity, Human Rights & Equity</h2>
+            <p class="text-muted small mb-4" style="line-height: 1.6;">
+              Mental healthcare is not an exclusive luxury; it is a fundamental human right. HumanCare operates on an inclusive, anti-discriminatory, neurodiversity-affirming, and LGBTQIA+ practice pillar.
+            </p>
+            <div class="p-3 rounded-3" style="background: #fff7fd; border: 1.5px solid #ede0f7;">
+              <strong class="d-block text-dark small mb-1"><i class="bi bi-heart-fill text-danger me-1"></i> Sliding Scale Community Fund</strong>
+              <span class="text-muted small" style="font-size: 0.78rem;">
+                5% of all platform revenues directly subsidize free therapy packages for uninsured and historically marginalized individuals.
+              </span>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="row g-3">
+              <!-- Tile 1 -->
+              <div class="col-sm-6">
+                <div class="mc-card p-3 h-100 bg-white">
+                  <div class="mc-stat-icon lavender mb-2" style="width: 36px; height: 36px; font-size: 1rem;"><i class="bi bi-people-fill"></i></div>
+                  <strong class="d-block text-dark small mb-1">Culturally Humble Care</strong>
+                  <span class="text-muted small" style="font-size: 0.75rem;">Practitioners actively trained in recognizing systemic oppression, racial trauma, and intersectional identity stressors.</span>
+                </div>
+              </div>
+
+              <!-- Tile 2 -->
+              <div class="col-sm-6">
+                <div class="mc-card p-3 h-100 bg-white">
+                  <div class="mc-stat-icon peach mb-2" style="width: 36px; height: 36px; font-size: 1rem;"><i class="bi bi-shield-shaded"></i></div>
+                  <strong class="d-block text-dark small mb-1">Neurodivergence Affirming</strong>
+                  <span class="text-muted small" style="font-size: 0.75rem;">Accommodations for executive functioning differences, ADHD/Autism sensory profiles, and unmasking journey.</span>
+                </div>
+              </div>
+
+              <!-- Tile 3 -->
+              <div class="col-sm-6">
+                <div class="mc-card p-3 h-100 bg-white">
+                  <div class="mc-stat-icon mint mb-2" style="width: 36px; height: 36px; font-size: 1rem;"><i class="bi bi-shield-lock-fill"></i></div>
+                  <strong class="d-block text-dark small mb-1">Zero–Data Selling Guarantee</strong>
+                  <span class="text-muted small" style="font-size: 0.75rem;">Your personal reflections and therapy status are never sold to ad brokers or insurers. Pure confidentiality.</span>
+                </div>
+              </div>
+
+              <!-- Tile 4 -->
+              <div class="col-sm-6">
+                <div class="mc-card p-3 h-100 bg-white">
+                  <div class="mc-stat-icon lavender mb-2" style="width: 36px; height: 36px; font-size: 1rem;"><i class="bi bi-journal-check"></i></div>
+                  <strong class="d-block text-dark small mb-1">Trauma–Informed Consent</strong>
+                  <span class="text-muted small" style="font-size: 0.75rem;">You lead your care pace. You may pause, request a modality switch, or end sessions with complete sovereignty.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frequently Asked Questions (Matching Mockup Image 2) -->
+    <section class="py-5" style="background-color: var(--mc-canvas);">
+      <div class="container py-3">
+        <div class="mc-section-header">
+          <span class="mc-section-tag">COMMON INQUIRIES</span>
+          <h2 class="fw-bold">Frequently Asked Questions</h2>
+          <p class="text-muted">Common questions about licensing, insurance reimbursement, modalities, and getting started.</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="accordion mc-card p-2 border-0 shadow-sm" id="mcFaqAccordion">
+              <div class="accordion-item border-0 mb-2">
+                <h2 class="accordion-header" id="faqOne">
+                  <button class="accordion-button rounded-3 fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    How does HumanCare pair me with a psychologist?
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="faqOne" data-bs-parent="#mcFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Our matching algorithm utilizes evidence-informed clinical variables — including attachment style, preferred therapeutic modalities (CBT, somatic, psychodynamic), clinical specialty, and identity preferences — to present you with 3 highly aligned clinician matches.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item border-0 mb-2">
+                <h2 class="accordion-header" id="faqTwo">
+                  <button class="accordion-button collapsed rounded-3 fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Do you accept health insurance?
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#mcFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Yes. We provide automated superbill generation with full ICD-10 diagnostic and CPT billing codes for out-of-network reimbursement across major PPO networks, as well as direct in-network billing in participating states.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item border-0 mb-2">
+                <h2 class="accordion-header" id="faqThree">
+                  <button class="accordion-button collapsed rounded-3 fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    What is the difference between Somatic Therapy and standard CBT?
+                  </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#mcFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Standard CBT primarily targets cognitive thought loops and automatic beliefs. Somatic therapy recognizes that trauma and acute anxiety are deeply stored in the nervous system and body (vagal tension, racing pulse, diaphragmatic lock). By integrating both, you gain top-down cognitive reframing alongside bottom-up autonomic calming.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header" id="faqFour">
+                  <button class="accordion-button collapsed rounded-3 fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Can I switch clinicians if we aren't the right fit?
+                  </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="faqFour" data-bs-parent="#mcFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Absolutely. The therapeutic relationship is the single strongest predictor of treatment success. If at any point you feel a disconnect, you can switch providers with 1-click in your sanctuary portal without awkward explanations.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Call to Action (Matching Mockup Image 2) -->
+    <section class="py-5 text-center">
+      <div class="container py-4">
+        <div class="mc-card p-5 mx-auto" style="max-width: 800px; background: linear-gradient(135deg, #ede0f7 0%, #fff7fd 100%); border: 1.5px solid #d8c3ed;">
+          <h2 class="fw-bold text-dark mb-2">Ready to Begin Your Healing Journey?</h2>
+          <p class="text-muted small mb-4 mx-auto" style="max-width: 520px; font-size: 0.88rem; line-height: 1.5;">
+            Take the first mindful step toward emotional balance and clinical support with clinicians who fit your life.
+          </p>
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="patient/book-appointment.html" class="btn btn-mc-primary py-3 px-4 rounded-pill fw-bold">
+              Take Matching Assessment
+            </a>
+            <a href="therapists.html" class="btn btn-outline-secondary py-3 px-4 rounded-pill fw-bold">
+              Browse All Practitioners
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Immediate 24/7 Crisis Support Available Bar -->
+  <div class="container mb-4">
+    <div class="mc-card p-3 d-flex justify-content-between align-items-center flex-wrap gap-2" style="background: #fff7fd; border: 1px solid #f9b195;">
+      <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-life-preserver text-danger fs-5"></i>
+        <div>
+          <strong class="text-dark small d-block">Immediate 24/7 Crisis Support Available</strong>
+          <span class="text-muted" style="font-size: 0.72rem;">If you are experiencing suicidal thoughts or severe distress, compassionate help is one tap away.</span>
+        </div>
+      </div>
+      <div class="d-flex gap-2">
+        <a href="tel:988" class="btn btn-mc-primary btn-sm py-1 px-3 rounded-pill small">Call 988 Lifeline</a>
+        <a href="sms:741741?body=HOME" class="btn btn-outline-secondary btn-sm py-1 px-3 rounded-pill small">Text HOME to 741741</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer (Matching Mockup Image 2) -->
+  <footer class="mc-footer">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+            <strong class="fs-5 text-dark">HumanCare</strong>
+          </div>
+          <p class="text-muted small mb-3" style="font-size: 0.78rem; line-height: 1.5;">
+            Evidence-based psychological care designed for restorative healing, clinical excellence, and lasting emotional well-being.
+          </p>
+          <span class="text-muted small d-block" style="font-size: 0.7rem;">Certified Telehealth System operating in compliance with standard HIPAA regulations.</span>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="mc-footer-title" style="font-size: 0.88rem;">Therapeutic Care</h6>
+          <a href="services.html" class="mc-footer-link small">Individual Therapy</a>
+          <a href="services.html" class="mc-footer-link small">Cognitive Behavioral (CBT)</a>
+          <a href="services.html" class="mc-footer-link small">Mindful MBSR Support</a>
+          <a href="therapists.html" class="mc-footer-link small">Find a Clinician</a>
+          <a href="patient/book-appointment.html" class="mc-footer-link small">Clinical Matching Process</a>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="mc-footer-title" style="font-size: 0.88rem;">Resources</h6>
+          <a href="resources.html" class="mc-footer-link small">Mental Health Library</a>
+          <a href="patient/wellness-checkin.html" class="mc-footer-link small">Symptom Assessments</a>
+          <a href="patient/patient-breathwork.html" class="mc-footer-link small">4-7-8 Breathwork Pacer</a>
+          <a href="resources.html" class="mc-footer-link small">Insurance & Coverage Guide</a>
+          <a href="#" class="mc-footer-link small mc-crisis-trigger text-danger">Emergency Contacts</a>
+        </div>
+
+        <div class="col-lg-4">
+          <h6 class="mc-footer-title" style="font-size: 0.88rem;">Trust & Organization</h6>
+          <a href="about.html" class="mc-footer-link small">About & Mission</a>
+          <a href="admin/admin-therapists.html" class="mc-footer-link small">Clinical Advisory Board</a>
+          <a href="admin/admin-users.html" class="mc-footer-link small">Privacy Policy & EMR</a>
+          <a href="#" class="mc-footer-link small">Terms of Service</a>
+          <a href="therapist-login.html" class="mc-footer-link small">Practitioner Inquiries</a>
+        </div>
+      </div>
+
+      <div class="border-top pt-3 text-muted small d-flex justify-content-between align-items-center flex-wrap gap-2" style="font-size: 0.72rem;">
+        <div>&copy; 2026 HumanCare / MindCare Behavioral Health Inc. All rights reserved.</div>
+        <div class="d-flex gap-3">
+          <a href="#" class="text-muted">Privacy Policy</a>
+          <a href="#" class="text-muted">Terms of Service</a>
+          <a href="admin/admin-dashboard.html" class="text-muted">Admin Operations</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    let pacerActive = false;
+    let pacerTimer = null;
+    let pacerPhase = 'Inhale';
+    let pacerSeconds = 4;
+
+    function toggleGroundingPacer() {
+      const circle = document.getElementById('groundingBreathCircle');
+      const textEl = document.getElementById('groundingPacerText');
+      const subEl = document.getElementById('groundingPacerSub');
+
+      pacerActive = !pacerActive;
+      if (pacerActive) {
+        textEl.textContent = 'Inhale (4s)';
+        subEl.textContent = 'Gentle belly expansion';
+        MindCareUI.showToast('60-Second Regulating Breath initiated. Follow the rhythm.', 'info');
+        
+        pacerTimer = setInterval(() => {
+          if (pacerPhase === 'Inhale') {
+            pacerPhase = 'Hold';
+            textEl.textContent = 'Hold (7s)';
+            subEl.textContent = 'Chest steady';
+          } else if (pacerPhase === 'Hold') {
+            pacerPhase = 'Exhale';
+            textEl.textContent = 'Exhale (8s)';
+            subEl.textContent = 'Slow mouth release';
+          } else {
+            pacerPhase = 'Inhale';
+            textEl.textContent = 'Inhale (4s)';
+            subEl.textContent = 'Gentle belly expansion';
+          }
+        }, 4000);
+      } else {
+        clearInterval(pacerTimer);
+        textEl.textContent = 'Click Start';
+        subEl.textContent = 'Inhale / Exhale';
+        MindCareUI.showToast('Breathing cycle paused.', 'info');
+      }
+    }
+  </script>
+</body>
+</html>

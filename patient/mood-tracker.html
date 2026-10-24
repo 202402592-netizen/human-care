@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Mood Tracker — MindCare Sanctuary</title>
+  <meta name="description" content="Track your emotional states, somatic sensations, and visualize your mental wellness trends over time.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body style="background-color: var(--mc-bg-warm);">
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <div>
+          <span class="fw-bold text-dark d-block">HumanCare</span>
+          <span class="text-muted small" style="font-size: 0.72rem;">Patient Sanctuary</span>
+        </div>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li><a href="patient-dashboard.html" class="mc-sidebar-link"><i class="bi bi-grid"></i> Dashboard</a></li>
+        <li><a href="mood-tracker.html" class="mc-sidebar-link active"><i class="bi bi-emoji-smile-fill"></i> Mood Tracker</a></li>
+        <li><a href="journal.html" class="mc-sidebar-link"><i class="bi bi-journal-text"></i> Emotional Journal</a></li>
+        <li><a href="relaxation-studio.html" class="mc-sidebar-link"><i class="bi bi-wind"></i> Relaxation Studio</a></li>
+        <li><a href="wellness-goals.html" class="mc-sidebar-link"><i class="bi bi-trophy"></i> Wellness Goals</a></li>
+        <li><a href="ai-companion.html" class="mc-sidebar-link"><i class="bi bi-chat-heart"></i> AI Companion</a></li>
+        <li><a href="patient-exercises.html" class="mc-sidebar-link"><i class="bi bi-person-walking"></i> Prescribed Homework</a></li>
+        <li><a href="cbt-thought-log.html" class="mc-sidebar-link"><i class="bi bi-pencil-square"></i> CBT Thought Log</a></li>
+        <li><a href="patient-appointments.html" class="mc-sidebar-link"><i class="bi bi-calendar-check"></i> Appointments</a></li>
+        <li><a href="patient-profile.html" class="mc-sidebar-link"><i class="bi bi-person-gear"></i> Settings</a></li>
+      </ul>
+
+      <div class="pt-2 border-top">
+        <a href="../login.html" class="mc-sidebar-link text-danger">
+          <i class="bi bi-box-arrow-right text-danger"></i> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="mc-portal-content">
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+        <div>
+          <span class="mc-badge mc-badge-lavender py-1 px-3 mb-1">
+            <i class="bi bi-heart-pulse-fill me-1 text-primary"></i> Somatic Emotional Instrument
+          </span>
+          <h2 class="fw-bold text-dark mb-1">Interactive Mood Tracker</h2>
+          <p class="text-muted small mb-0">Record your current emotional anchor, map nervous system sensations, and view historical trajectories.</p>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill" onclick="MindCareUI.openNotifications()">
+            <i class="bi bi-bell me-1"></i> Notifications
+          </button>
+          <button type="button" class="btn btn-mc-primary btn-sm rounded-pill" onclick="document.getElementById('moodFormCard').scrollIntoView({ behavior: 'smooth' })">
+            <i class="bi bi-plus-lg me-1"></i> Log New Mood
+          </button>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <!-- Left Column: Mood Log Input Form -->
+        <div class="col-lg-7">
+          <div class="mc-card p-4 bg-white mb-4" id="moodFormCard">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="fw-bold text-dark mb-0">How are you feeling right now?</h5>
+              <div class="d-flex align-items-center gap-2">
+                <input type="date" class="form-control form-control-sm rounded-pill" id="moodDateInput" value="">
+              </div>
+            </div>
+
+            <!-- Mood Buttons Row -->
+            <label class="form-label small fw-bold text-dark mb-2">1. Select Core Mood</label>
+            <div class="row g-2 mb-4 text-center">
+              <div class="col">
+                <div class="mc-mood-btn" onclick="selectCoreMood(this, 'Great', 10, '🌟')">
+                  <span class="mood-emoji">🌟</span>
+                  <strong class="small text-dark">Great</strong>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mc-mood-btn active" onclick="selectCoreMood(this, 'Calm', 8, '🌸')">
+                  <span class="mood-emoji">🌸</span>
+                  <strong class="small text-dark">Calm</strong>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mc-mood-btn" onclick="selectCoreMood(this, 'Neutral', 6, '🌱')">
+                  <span class="mood-emoji">🌱</span>
+                  <strong class="small text-dark">Neutral</strong>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mc-mood-btn" onclick="selectCoreMood(this, 'Anxious', 4, '⚡')">
+                  <span class="mood-emoji">⚡</span>
+                  <strong class="small text-dark">Anxious</strong>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mc-mood-btn" onclick="selectCoreMood(this, 'Low', 2, '🌧️')">
+                  <span class="mood-emoji">🌧️</span>
+                  <strong class="small text-dark">Low</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Emotion Tags -->
+            <label class="form-label small fw-bold text-dark mb-2">2. Emotion & Energy Tags (Select all that apply)</label>
+            <div class="d-flex flex-wrap gap-2 mb-4" id="emotionTagsList">
+              <span class="mc-emotion-tag selected" onclick="this.classList.toggle('selected')"><i class="bi bi-check2"></i> Grounded</span>
+              <span class="mc-emotion-tag selected" onclick="this.classList.toggle('selected')"><i class="bi bi-check2"></i> Relaxed</span>
+              <span class="mc-emotion-tag" onclick="this.classList.toggle('selected')"><i class="bi bi-check2"></i> Hopeful</span>
+              <span class="mc-emotion-tag" onclick="this.classList.toggle('selected')"><i class="bi bi-check2"></i> Focused</span>
+              <span class="mc-emotion-tag" onclick="this.classList.toggle('selected')"><i class="bi bi-check2"></i> Grateful</span>
+              <span class="mc-emotion-tag" onclick="this.classList.toggle('selected')"><i class="bi bi-check2"></i> Overwhelmed</span>
+              <span class="mc-emotion-tag" onclick="this.classList.toggle('selected')"><i class="bi bi-check2"></i> Restless</span>
+              <span class="mc-emotion-tag" onclick="this.classList.toggle('selected')"><i class="bi bi-check2"></i> Tired</span>
+              <span class="mc-emotion-tag" onclick="this.classList.toggle('selected')"><i class="bi bi-check2"></i> Vulnerable</span>
+            </div>
+
+            <!-- Notes -->
+            <label class="form-label small fw-bold text-dark mb-1">3. Reflection or Trigger Note (Optional)</label>
+            <textarea class="form-control mb-3 small" id="moodNoteInput" rows="2" placeholder="What influenced this mood? (e.g. Completed a walk, had a difficult discussion, good night of rest...)"></textarea>
+
+            <button type="button" class="btn btn-mc-primary w-100 py-3 rounded-pill fw-bold" onclick="saveMoodEntry()">
+              <i class="bi bi-check2-circle me-1"></i> Log Mood Entry
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Visual Mood Breakdown & Stats -->
+        <div class="col-lg-5">
+          <!-- 7-Day Mood Trajectory Chart -->
+          <div class="mc-card p-4 bg-white mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h6 class="fw-bold text-dark mb-0"><i class="bi bi-graph-up text-primary me-2"></i> 7–Day Mood Trajectory</h6>
+              <span class="badge bg-success-subtle text-success small">Trending Upward</span>
+            </div>
+            <p class="text-muted small mb-3" style="font-size: 0.78rem;">Average emotional score: <strong>7.2 / 10 (Restorative)</strong></p>
+
+            <!-- SVG Visual Trend Line -->
+            <div class="p-2 bg-light rounded-3 mb-3">
+              <svg viewBox="0 0 400 120" class="w-100" style="height: 100px;">
+                <defs>
+                  <linearGradient id="moodFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#704c91" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#704c91" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M 20,80 Q 80,95 140,50 T 260,35 T 380,25 L 380,120 L 20,120 Z" fill="url(#moodFill)"/>
+                <path d="M 20,80 Q 80,95 140,50 T 260,35 T 380,25" fill="none" stroke="#704c91" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="20" cy="80" r="4" fill="#704c91"/>
+                <circle cx="80" cy="95" r="4" fill="#ba1a1a"/>
+                <circle cx="140" cy="50" r="4" fill="#704c91"/>
+                <circle cx="200" cy="60" r="4" fill="#704c91"/>
+                <circle cx="260" cy="35" r="4" fill="#2e7d32"/>
+                <circle cx="320" cy="40" r="4" fill="#704c91"/>
+                <circle cx="380" cy="25" r="5" fill="#f69d7b" stroke="#ffffff" stroke-width="2"/>
+              </svg>
+              <div class="d-flex justify-content-between text-muted small mt-1" style="font-size: 0.7rem;">
+                <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span class="text-primary fw-bold">Today</span>
+              </div>
+            </div>
+
+            <!-- Quick Correlation Box -->
+            <div class="p-2 px-3 rounded-3 small" style="background: #fff7fd; border: 1px solid #ede0f7; font-size: 0.78rem;">
+              <i class="bi bi-lightbulb-fill text-warning me-1"></i> <strong>Somatic Pattern:</strong> Your calmest days occur when morning 4-7-8 breathwork is logged before 9:00 AM.
+            </div>
+          </div>
+
+          <!-- Quick Shortcuts -->
+          <div class="mc-card p-3 bg-white">
+            <span class="text-uppercase fw-bold text-muted small d-block mb-2" style="font-size: 0.7rem;">Helpful Practices</span>
+            <div class="d-flex flex-column gap-2">
+              <a href="relaxation-studio.html" class="btn btn-outline-primary btn-sm rounded-pill text-start d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-wind me-2"></i>Launch Relaxation Studio</span>
+                <i class="bi bi-chevron-right"></i>
+              </a>
+              <a href="journal.html" class="btn btn-outline-secondary btn-sm rounded-pill text-start d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-journal-text me-2"></i>Write in Emotional Journal</span>
+                <i class="bi bi-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mood History Table / Cards -->
+      <div class="mc-card p-4 bg-white">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <h5 class="fw-bold text-dark mb-0">Recent Mood History</h5>
+            <span class="text-muted small" style="font-size: 0.75rem;">Temporary in-memory records</span>
+          </div>
+          <span class="badge bg-light text-primary border small" id="moodLogCountBadge">7 Entries</span>
+        </div>
+
+        <div class="d-flex flex-column gap-2" id="moodHistoryList">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/care-ui.js"></script>
+
+  <script>
+    let selectedMood = 'Calm';
+    let selectedScore = 8;
+    let selectedEmoji = '🌸';
+
+    document.getElementById('moodDateInput').value = new Date().toISOString().split('T')[0];
+
+    function selectCoreMood(el, mood, score, emoji) {
+      document.querySelectorAll('.mc-mood-btn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      selectedMood = mood;
+      selectedScore = score;
+      selectedEmoji = emoji;
+    }
+
+    function renderMoodHistory() {
+      const list = window.mindcareState ? window.mindcareState.getMoodLogs() : [];
+      const container = document.getElementById('moodHistoryList');
+      document.getElementById('moodLogCountBadge').textContent = list.length + ' Entries';
+
+      container.innerHTML = list.map(item => `
+        <div class="p-3 bg-light rounded-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <div class="d-flex align-items-center gap-3">
+            <span style="font-size: 1.75rem;">${item.emoji}</span>
+            <div>
+              <div class="d-flex align-items-center gap-2">
+                <strong class="text-dark small">${item.mood} (${item.score}/10)</strong>
+                <span class="text-muted small" style="font-size: 0.72rem;">${item.date}</span>
+              </div>
+              <div class="d-flex gap-1 flex-wrap mt-1">
+                ${item.tags.map(t => `<span class="badge bg-white text-muted border small" style="font-size: 0.68rem;">${t}</span>`).join('')}
+              </div>
+              ${item.note ? `<p class="small text-muted mb-0 mt-1 fst-italic" style="font-size: 0.75rem;">"${item.note}"</p>` : ''}
+            </div>
+          </div>
+          <span class="badge bg-primary-subtle text-primary rounded-pill small">Logged</span>
+        </div>
+      `).join('');
+    }
+
+    function saveMoodEntry() {
+      const selectedTags = Array.from(document.querySelectorAll('#emotionTagsList .selected')).map(el => el.textContent.trim().replace(/^✓\s*/, ''));
+      const note = document.getElementById('moodNoteInput').value;
+      const date = document.getElementById('moodDateInput').value;
+
+      if (window.mindcareState) {
+        window.mindcareState.addMoodLog({
+          date: date,
+          mood: selectedMood,
+          score: selectedScore,
+          emoji: selectedEmoji,
+          tags: selectedTags.length ? selectedTags : ['Present'],
+          note: note
+        });
+      }
+
+      MindCareUI.showToast(`Logged "${selectedMood}" for ${date} in memory!`, 'success');
+      document.getElementById('moodNoteInput').value = '';
+      renderMoodHistory();
+    }
+
+    document.addEventListener('DOMContentLoaded', renderMoodHistory);
+  </script>
+</body>
+</html>

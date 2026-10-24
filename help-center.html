@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Center & Clinical FAQs — MindCare</title>
+  <meta name="description" content="Find answers regarding clinical care pathways, telehealth appointments, insurance reimbursement, and HIPAA privacy.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body style="background-color: var(--mc-bg-warm);">
+
+  <!-- Public Navigation -->
+  <nav class="navbar navbar-expand-lg mc-navbar sticky-top bg-white border-bottom shadow-xs">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <span class="fw-bold text-dark fs-4">HumanCare</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mcNav" aria-controls="mcNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mcNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="therapists.html">Find Therapists</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="services.html">Clinical Services</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="resources.html">Resources & Articles</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link active" href="help-center.html">Help Center</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2">
+          <a href="#" class="btn btn-outline-danger btn-sm rounded-pill px-3 mc-crisis-trigger">
+            <i class="bi bi-telephone-fill me-1"></i> Crisis Lifeline 988
+          </a>
+          <a href="login.html" class="btn btn-mc-primary btn-sm rounded-pill px-3">
+            <i class="bi bi-person-circle me-1"></i> Portal Sign In
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="py-5 text-center bg-white border-bottom">
+    <div class="container py-4">
+      <span class="mc-badge mc-badge-lavender py-1 px-3 mb-2">
+        <i class="bi bi-question-circle-fill me-1 text-primary"></i> Patient Support & Clinical Knowledgebase
+      </span>
+      <h1 class="display-5 fw-bold text-dark mb-3">How can we support your care journey?</h1>
+      <p class="lead text-muted mx-auto mb-4" style="max-width: 620px;">
+        Explore clear guidance on booking sessions, therapist credentials, HSA/FSA insurance reimbursement, and HIPAA confidentiality protections.
+      </p>
+
+      <!-- Live Search Box -->
+      <div class="mx-auto" style="max-width: 580px;">
+        <div class="input-group shadow-sm rounded-pill overflow-hidden border">
+          <span class="input-group-text bg-white border-0 ps-4"><i class="bi bi-search text-muted"></i></span>
+          <input type="text" class="form-control form-control-lg border-0 ps-2" id="faqSearchInput" placeholder="Search keywords: 'insurance', 'cancellation', 'telehealth room'..." oninput="filterFaqs()">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Categories Grid -->
+  <main class="py-5">
+    <div class="container">
+      <div class="row g-3 mb-5">
+        <div class="col-md-4 col-sm-6">
+          <div class="mc-card p-4 bg-white h-100 hover-lift transition-all cursor-pointer" onclick="scrollToCategory('getting-started')">
+            <div class="rounded-circle d-flex align-items-center justify-content-center text-primary bg-primary-subtle mb-3" style="width: 48px; height: 48px; font-size: 1.3rem;">
+              <i class="bi bi-compass"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-1">Getting Started</h5>
+            <p class="small text-muted mb-0">Intake process, choosing a licensed provider, and your first clinical consultation.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="mc-card p-4 bg-white h-100 hover-lift transition-all cursor-pointer" onclick="scrollToCategory('telehealth')">
+            <div class="rounded-circle d-flex align-items-center justify-content-center text-teal bg-success-subtle mb-3" style="width: 48px; height: 48px; font-size: 1.3rem; color: var(--mc-primary);">
+              <i class="bi bi-camera-video"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-1">Telehealth & Appointments</h5>
+            <p class="small text-muted mb-0">Joining encrypted video rooms, rescheduling policy, and tech diagnostics.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="mc-card p-4 bg-white h-100 hover-lift transition-all cursor-pointer" onclick="scrollToCategory('billing')">
+            <div class="rounded-circle d-flex align-items-center justify-content-center text-warning bg-warning-subtle mb-3" style="width: 48px; height: 48px; font-size: 1.3rem;">
+              <i class="bi bi-credit-card-2-front"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-1">Billing, HSA & Insurance</h5>
+            <p class="small text-muted mb-0">Superbills, out-of-network reimbursement, FSA/HSA cards, and fee schedules.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="mc-card p-4 bg-white h-100 hover-lift transition-all cursor-pointer" onclick="scrollToCategory('privacy')">
+            <div class="rounded-circle d-flex align-items-center justify-content-center text-info bg-info-subtle mb-3" style="width: 48px; height: 48px; font-size: 1.3rem;">
+              <i class="bi bi-shield-lock"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-1">Privacy & HIPAA Security</h5>
+            <p class="small text-muted mb-0">Zero-knowledge notes, PSYPACT credentialing, and state licensure protections.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="mc-card p-4 bg-white h-100 hover-lift transition-all cursor-pointer" onclick="scrollToCategory('tools')">
+            <div class="rounded-circle d-flex align-items-center justify-content-center text-danger bg-danger-subtle mb-3" style="width: 48px; height: 48px; font-size: 1.3rem;">
+              <i class="bi bi-heart-pulse"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-1">Somatic & CBT Tools</h5>
+            <p class="small text-muted mb-0">Using 4-7-8 breathwork, 3-column logs, mood tracking, and companion AI.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="mc-card p-4 bg-white h-100 hover-lift transition-all cursor-pointer" onclick="scrollToCategory('crisis')">
+            <div class="rounded-circle d-flex align-items-center justify-content-center text-white bg-danger mb-3" style="width: 48px; height: 48px; font-size: 1.3rem;">
+              <i class="bi bi-exclamation-octagon"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-1">Urgent Crisis Protocols</h5>
+            <p class="small text-muted mb-0">24/7 Lifeline protocols, hospital diversion, and emergency contact policies.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Accordion Section -->
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <!-- Category 1: Getting Started -->
+          <div class="mb-5 faq-group" id="cat-getting-started">
+            <h4 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+              <i class="bi bi-compass text-primary"></i> Getting Started & Provider Matching
+            </h4>
+
+            <div class="accordion mc-accordion" id="accGettingStarted">
+              <div class="accordion-item faq-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqGS1">
+                    How does HumanCare pair me with the right psychologist?
+                  </button>
+                </h2>
+                <div id="faqGS1" class="accordion-collapse collapse" data-bs-parent="#accGettingStarted">
+                  <div class="accordion-body">
+                    During your brief initial onboarding intake, our algorithm assesses your primary clinical goals (e.g. panic regulation, trauma recovery, insomnia, relationship distress), your preferred therapeutic orientation (CBT, MBSR, ACT, EMDR), and state licensure requirements. You can review full psychologist credentials, video introductions, and verified patient reviews before selecting a provider.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item faq-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqGS2">
+                    What should I expect in my first 50-minute clinical consultation?
+                  </button>
+                </h2>
+                <div id="faqGS2" class="accordion-collapse collapse" data-bs-parent="#accGettingStarted">
+                  <div class="accordion-body">
+                    Your first consultation is a warm, collaborative diagnostic exploration. Your clinician will explore your symptoms, life stressors, somatic manifestations, and personal values. Together, you will co-design a personalized 8- to 12-week Care Protocol with clear milestone checkpoints.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item faq-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqGS3">
+                    Are all clinicians on HumanCare fully licensed?
+                  </button>
+                </h2>
+                <div id="faqGS3" class="accordion-collapse collapse" data-bs-parent="#accGettingStarted">
+                  <div class="accordion-body">
+                    Yes. Every practitioner on HumanCare undergoes rigorous multi-layer credentialing, including primary source state board verification, NPDB background checks, CAQH attestation, and PSYPACT interstate telehealth authorization. We do not permit uncredentialed wellness coaches to deliver clinical psychotherapy.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Telehealth -->
+          <div class="mb-5 faq-group" id="cat-telehealth">
+            <h4 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+              <i class="bi bi-camera-video text-teal" style="color: var(--mc-primary);"></i> Telehealth & Video Consultations
+            </h4>
+
+            <div class="accordion mc-accordion" id="accTelehealth">
+              <div class="accordion-item faq-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTH1">
+                    Do I need to download third-party software like Zoom?
+                  </button>
+                </h2>
+                <div id="faqTH1" class="accordion-collapse collapse" data-bs-parent="#accTelehealth">
+                  <div class="accordion-body">
+                    No. All telehealth video consultations run directly inside your modern web browser via WebRTC with end-to-end AES-256 encryption. Simply click "Join Telehealth Room" from your Patient Sanctuary dashboard 5 minutes prior to appointment time.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item faq-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTH2">
+                    What is your cancellation and rescheduling policy?
+                  </button>
+                </h2>
+                <div id="faqTH2" class="accordion-collapse collapse" data-bs-parent="#accTelehealth">
+                  <div class="accordion-body">
+                    We understand unexpected life events happen. You may cancel or reschedule any appointment without penalty up to 24 hours prior to scheduled start time via your Appointments dashboard. Late cancellations within 24 hours may incur a clinician reservation fee.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Billing -->
+          <div class="mb-5 faq-group" id="cat-billing">
+            <h4 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+              <i class="bi bi-credit-card-2-front text-warning"></i> Billing, Insurance & HSA/FSA
+            </h4>
+
+            <div class="accordion mc-accordion" id="accBilling">
+              <div class="accordion-item faq-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqBIL1">
+                    Can I use my HSA or FSA debit card?
+                  </button>
+                </h2>
+                <div id="faqBIL1" class="accordion-collapse collapse" data-bs-parent="#accBilling">
+                  <div class="accordion-body">
+                    Yes! Licensed psychotherapy and psychiatric evaluations are 100% qualified medical expenses under IRS Code 213(d). You may enter your HSA/FSA card directly during appointment booking.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item faq-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqBIL2">
+                    How do I get an insurance Superbill for out-of-network reimbursement?
+                  </button>
+                </h2>
+                <div id="faqBIL2" class="accordion-collapse collapse" data-bs-parent="#accBilling">
+                  <div class="accordion-body">
+                    Following each completed session, an automated itemized Superbill with standard CPT procedure codes (90834, 90837) and ICD-10 diagnostic codes is automatically generated in your Patient Portal under "Billing & Statements" for instant 1-click download.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Contact Intake Card -->
+        <div class="col-lg-4">
+          <div class="mc-card p-4 bg-white mb-4 sticky-top" style="top: 100px;">
+            <h5 class="fw-bold text-dark mb-2">Still need support?</h5>
+            <p class="small text-muted mb-3">Our compassionate care coordination team responds within 2 business hours.</p>
+
+            <form onsubmit="handleSupportSubmit(event)">
+              <div class="mb-3">
+                <label class="form-label small fw-bold text-dark mb-1">Your Name</label>
+                <input type="text" class="form-control rounded-pill px-3" id="supName" placeholder="Maya Lin" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label small fw-bold text-dark mb-1">Email Address</label>
+                <input type="email" class="form-control rounded-pill px-3" id="supEmail" placeholder="name@example.com" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label small fw-bold text-dark mb-1">Subject</label>
+                <select class="form-select rounded-pill px-3" id="supTopic">
+                  <option value="Billing & Superbills">Billing & Superbill Inquiry</option>
+                  <option value="Therapist Matching">Therapist Matching Advice</option>
+                  <option value="Technical Support">Technical Video Support</option>
+                  <option value="Account & Privacy">Account & Privacy Request</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label small fw-bold text-dark mb-1">Message</label>
+                <textarea class="form-control rounded-3 p-3" id="supMessage" rows="3" placeholder="How can our clinical support team assist you?" required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-mc-primary w-100 rounded-pill py-2 fw-bold">
+                <i class="bi bi-envelope-paper me-1"></i> Send Inquiry
+              </button>
+            </form>
+
+            <div class="pt-3 mt-3 border-top text-center">
+              <span class="small text-muted d-block mb-1">Prefer direct email?</span>
+              <a href="mailto:support@mindcare.org" class="small fw-bold text-teal" style="color: var(--mc-primary);">support@mindcare.org</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Crisis Banner -->
+  <section class="py-4 bg-danger-subtle border-top border-bottom">
+    <div class="container text-center">
+      <div class="d-flex align-items-center justify-content-center flex-wrap gap-3">
+        <i class="bi bi-shield-fill-exclamation text-danger fs-3"></i>
+        <div class="text-start">
+          <strong class="text-danger d-block">Experiencing an acute psychiatric emergency or thoughts of self-harm?</strong>
+          <span class="small text-dark">Free, confidential 24/7 crisis support is immediately available by calling or texting <strong>988</strong>.</span>
+        </div>
+        <a href="tel:988" class="btn btn-danger rounded-pill px-4 fw-bold">Call 988 Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mc-footer py-5 bg-white border-top">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+            <span class="fw-bold fs-4 text-dark">HumanCare</span>
+          </div>
+          <p class="text-muted small mb-3">
+            An evidence-based mental health platform pairing licensed doctoral-level psychologists with somatic autonomic regulation protocols.
+          </p>
+          <div class="text-success small fw-bold"><i class="bi bi-shield-check me-1"></i> HIPAA & PSYPACT Certified</div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="fw-bold text-dark mb-3">Navigation</h6>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="index.html" class="text-muted text-decoration-none">Home</a></li>
+            <li><a href="therapists.html" class="text-muted text-decoration-none">Therapist Directory</a></li>
+            <li><a href="services.html" class="text-muted text-decoration-none">Clinical Services</a></li>
+            <li><a href="resources.html" class="text-muted text-decoration-none">Educational Articles</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="fw-bold text-dark mb-3">Patient Sanctuary</h6>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="patient/patient-dashboard.html" class="text-muted text-decoration-none">My Care Plan</a></li>
+            <li><a href="patient/mood-tracker.html" class="text-muted text-decoration-none">Mood Tracker</a></li>
+            <li><a href="patient/journal.html" class="text-muted text-decoration-none">Emotional Journal</a></li>
+            <li><a href="patient/relaxation-studio.html" class="text-muted text-decoration-none">Relaxation Studio</a></li>
+            <li><a href="patient/wellness-goals.html" class="text-muted text-decoration-none">Wellness Goals</a></li>
+            <li><a href="patient/ai-companion.html" class="text-muted text-decoration-none">AI Companion</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="fw-bold text-dark mb-3">Support & Legal</h6>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="help-center.html" class="text-muted text-decoration-none">Help Center & FAQ</a></li>
+            <li><a href="privacy.html" class="text-muted text-decoration-none">Privacy Policy</a></li>
+            <li><a href="about.html" class="text-muted text-decoration-none">About Us</a></li>
+            <li><a href="contact.html" class="text-muted text-decoration-none">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="fw-bold text-dark mb-3">Portals</h6>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="login.html" class="text-muted text-decoration-none">Patient Login</a></li>
+            <li><a href="therapist-login.html" class="text-muted text-decoration-none">Therapist Portal</a></li>
+            <li><a href="admin/admin-dashboard.html" class="text-muted text-decoration-none">Clinical Operations</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top text-center text-muted small">
+        © 2026 HumanCare Mental Health Platform. Phase 1 Frontend Demonstration. Not medical advice.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    function scrollToCategory(id) {
+      const el = document.getElementById(`cat-${id}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function filterFaqs() {
+      const query = document.getElementById('faqSearchInput').value.toLowerCase().trim();
+      const items = document.querySelectorAll('.faq-item');
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (!query || text.includes(query)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function handleSupportSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('supName').value.trim();
+      const topic = document.getElementById('supTopic').value;
+
+      MindCareUI.showToast(`Thank you, ${name}. Your ${topic} inquiry has been logged in demo state!`, 'success');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

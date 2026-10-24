@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4-7-8 Guided Breathwork — MindCare Sanctuary</title>
+  <meta name="description" content="Prescribed 4-7-8 somatic vagal pacing rhythm with continuous biometric biofeedback sync.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body style="background-color: var(--mc-bg-warm);">
+
+  <!-- Mobile / Focused Container -->
+  <div class="container py-3" style="max-width: 520px;">
+    <!-- Top Action Bar -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <a href="patient-exercises.html" class="btn btn-light rounded-circle p-2 text-dark shadow-sm" style="width: 40px; height: 40px;" title="Back to exercises">
+        <i class="bi bi-chevron-down fs-5"></i>
+      </a>
+      <h6 class="fw-bold text-dark mb-0">4 7 8 Guided Breathwork</h6>
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="btn btn-light rounded-circle p-2 text-dark shadow-sm" style="width: 40px; height: 40px;" onclick="MindCareUI.showToast('Audio & Haptic tuning panel active.', 'info');">
+          <i class="bi bi-sliders"></i>
+        </button>
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" 
+             class="mc-avatar mc-avatar-sm" alt="Maya Lin">
+      </div>
+    </div>
+
+    <!-- Title & Context Pill -->
+    <div class="text-center mb-3">
+      <span class="mc-badge mc-badge-lavender py-1 px-3 mb-2">
+        <i class="bi bi-circle-fill text-primary me-1" style="font-size: 6px;"></i> Session 7 Homework • Vagal Pacing
+      </span>
+      <h2 class="fw-bold text-dark mt-2 mb-1" style="font-size: 1.65rem;">4–7–8 Calming Guided Rhythm</h2>
+      <p class="text-muted small mb-2" style="line-height: 1.45;">
+        Prescribed for somatic de-escalation prior to morning standup & evening sleep onset
+      </p>
+      <div class="d-inline-flex align-items-center gap-2 bg-white px-3 py-1 rounded-pill border small">
+        <i class="bi bi-person-badge text-primary"></i>
+        <span class="fw-semibold text-plum">Dr. Elena Rostova, PsyD</span>
+        <span class="text-muted">•</span>
+        <span class="text-muted">528 Hz Harmonic Chimes</span>
+      </div>
+    </div>
+
+    <!-- Breathing Orb & Visual Pacer -->
+    <div class="mc-breath-orb-container" id="mcBreathOrbContainer">
+      <div class="mc-breath-orbit-ring">
+        <div class="mc-breath-orbit-dot"></div>
+      </div>
+      <div class="mc-breath-outer-glow"></div>
+      
+      <div class="mc-breath-core hold" id="mcBreathCore">
+        <span class="mc-breath-phase-tag" id="mcBreathPhaseTag">HOLD</span>
+        <div class="mc-breath-timer-val" id="mcBreathTimerVal">1</div>
+        <span class="mc-breath-guide-txt" id="mcBreathGuideTxt">Chest steady & serene</span>
+      </div>
+    </div>
+
+    <!-- Cycle Completion Badge -->
+    <div class="text-center mb-3">
+      <span class="badge bg-white text-plum border rounded-pill px-3 py-2 small shadow-sm" id="mcCycleBadge">
+        <i class="bi bi-arrow-repeat text-primary me-1"></i> Cycle <span id="mcCycleNum">3</span> of 6 completed
+      </span>
+    </div>
+
+    <!-- 3 Phase Pills -->
+    <div class="mc-phase-pill-row mb-3">
+      <div class="mc-phase-pill passed" id="pillInhale">
+        <div class="small text-muted" style="font-size: 0.72rem;">Inhale</div>
+        <strong class="d-block text-dark">4s</strong>
+        <span class="small text-muted" style="font-size: 0.68rem;" id="subInhale">Passed</span>
+      </div>
+      <div class="mc-phase-pill active" id="pillHold">
+        <div class="small" style="font-size: 0.72rem;">Hold</div>
+        <strong class="d-block">7s</strong>
+        <span class="small" style="font-size: 0.68rem;" id="subHold">Current</span>
+      </div>
+      <div class="mc-phase-pill" id="pillExhale">
+        <div class="small text-muted" style="font-size: 0.72rem;">Exhale</div>
+        <strong class="d-block text-dark">8s</strong>
+        <span class="small text-muted" style="font-size: 0.68rem;" id="subExhale">Next &rarr;</span>
+      </div>
+    </div>
+
+    <!-- Vagal Tone Sync Card -->
+    <div class="mc-card p-3 mb-3 bg-white">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <div class="d-flex align-items-center gap-2">
+          <div class="mc-stat-icon peach" style="width: 34px; height: 34px; font-size: 1rem;">
+            <i class="bi bi-heart-fill"></i>
+          </div>
+          <div>
+            <strong class="text-dark small d-block">Vagal Tone Sync</strong>
+            <span class="text-muted" style="font-size: 0.72rem;">Apple Watch Series 9 • Continuous</span>
+          </div>
+        </div>
+        <span class="badge bg-success-subtle text-success rounded-pill small">● Optimal</span>
+      </div>
+
+      <div class="row g-2">
+        <div class="col-6">
+          <div class="p-2 rounded-3 bg-light text-center">
+            <span class="text-muted small d-block" style="font-size: 0.72rem;">Heart Rate</span>
+            <strong class="fs-5 text-dark" id="liveHr">68</strong> <span class="small text-muted">BPM</span>
+            <div class="text-success small" style="font-size: 0.7rem;"><i class="bi bi-arrow-down-right"></i> -8 BPM from start</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="p-2 rounded-3 bg-light text-center">
+            <span class="text-muted small d-block" style="font-size: 0.72rem;">Parasympathetic Shift</span>
+            <strong class="fs-5 text-primary">+18%</strong> <span class="small text-muted">RMSSD</span>
+            <div class="text-primary small" style="font-size: 0.7rem;"><i class="bi bi-flower1"></i> Rest & Digest Active</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audio Environment Card -->
+    <div class="mc-card p-3 mb-3 bg-white">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <div class="d-flex align-items-center gap-2">
+          <div class="mc-stat-icon lavender" style="width: 34px; height: 34px; font-size: 1rem;">
+            <i class="bi bi-soundwave"></i>
+          </div>
+          <div>
+            <strong class="text-dark small d-block">Audio Environment</strong>
+            <span class="text-muted" style="font-size: 0.72rem;">Multi-layered acoustic grounding</span>
+          </div>
+        </div>
+        <button type="button" class="btn btn-mc-primary btn-sm py-1 px-2 rounded-pill small" style="font-size: 0.75rem;">
+          <i class="bi bi-mic-fill me-1"></i> Voice (80%)
+        </button>
+      </div>
+
+      <div class="d-flex gap-2 flex-wrap mb-2">
+        <span class="mc-audio-env-chip selected" onclick="selectAudioEnv(this, '528 Hz Chimes')">
+          <i class="bi bi-music-note-beamed"></i> 528 Hz Chimes
+        </span>
+        <span class="mc-audio-env-chip" onclick="selectAudioEnv(this, 'Soft Ocean Tide')">
+          <i class="bi bi-water"></i> Soft Ocean Tide
+        </span>
+        <span class="mc-audio-env-chip" onclick="selectAudioEnv(this, 'Tibetan Bowls')">
+          <i class="bi bi-bell"></i> Tibetan Bowls
+        </span>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-phone-vibrate text-primary"></i>
+          <div>
+            <strong class="d-block text-dark small" style="font-size: 0.8rem;">Vagal Haptic Pacer</strong>
+            <span class="text-muted" style="font-size: 0.72rem;">Soft vibration on phase transition</span>
+          </div>
+        </div>
+        <div class="form-check form-switch m-0">
+          <input class="form-check-input" type="checkbox" id="hapticToggle" checked onchange="MindCareUI.showToast('Vagal Haptic feedback ' + (this.checked ? 'enabled' : 'disabled'), 'info')">
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline & Playback Bar -->
+    <div class="mc-card p-3 mb-3 bg-white">
+      <div class="d-flex justify-content-between text-muted small mb-1" style="font-size: 0.75rem;">
+        <span id="playerCurrentTime">02:48</span>
+        <span class="fw-semibold text-primary">56% of Protocol</span>
+        <span>05:00</span>
+      </div>
+      <div class="mc-progress mb-3">
+        <div class="mc-progress-bar" id="playerProgressBar" style="width: 56%;"></div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center px-2">
+        <button type="button" class="btn btn-outline-secondary btn-sm rounded-circle p-2" style="width: 40px; height: 40px;" title="Clinical Notes" onclick="MindCareUI.showToast('Dr. Elena note: Maintain soft apical diaphragm relaxation.', 'info')">
+          <i class="bi bi-card-text"></i>
+        </button>
+        <button type="button" class="btn btn-mc-primary rounded-circle p-2 shadow" style="width: 56px; height: 56px;" id="btnPlayPause" onclick="toggleBreathworkPlay()">
+          <i class="bi bi-pause-fill fs-3" id="playPauseIcon"></i>
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-sm rounded-circle p-2" style="width: 40px; height: 40px;" title="Protocol Grid" onclick="MindCareUI.showToast('Cadence: 4s Inhale &bull; 7s Hold &bull; 8s Exhale', 'info')">
+          <i class="bi bi-grid-3x3-gap"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Primary CTA: Log Early & Sync to Dr. Elena -->
+    <a href="session-completion.html" class="btn btn-mc-secondary w-100 py-3 fw-bold rounded-pill text-decoration-none d-flex align-items-center justify-content-center gap-2 mb-2 shadow-sm">
+      <i class="bi bi-patch-check-fill text-primary"></i> Log Early & Sync to Dr. Elena
+    </a>
+
+    <div class="text-center text-muted" style="font-size: 0.72rem;">
+      <i class="bi bi-shield-lock-fill me-1"></i> HIPAA Encrypted Telemetry • Synchronizes with Session 8 Care Log
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+  <script>
+    // Live Breathing Pacer Engine
+    let isPlaying = true;
+    let currentPhase = 'hold'; // inhale (4s), hold (7s), exhale (8s)
+    let phaseSeconds = 1; // current countdown seconds
+    let currentCycle = 3;
+    let timerInterval = null;
+
+    const coreEl = document.getElementById('mcBreathCore');
+    const phaseTagEl = document.getElementById('mcBreathPhaseTag');
+    const timerValEl = document.getElementById('mcBreathTimerVal');
+    const guideTxtEl = document.getElementById('mcBreathGuideTxt');
+
+    const pillInhale = document.getElementById('pillInhale');
+    const pillHold = document.getElementById('pillHold');
+    const pillExhale = document.getElementById('pillExhale');
+
+    function updatePacerUI() {
+      timerValEl.textContent = phaseSeconds;
+      if (currentPhase === 'inhale') {
+        coreEl.className = 'mc-breath-core inhale';
+        phaseTagEl.textContent = 'INHALE';
+        guideTxtEl.textContent = 'Inhale gently through nose';
+        pillInhale.className = 'mc-phase-pill active';
+        pillHold.className = 'mc-phase-pill';
+        pillExhale.className = 'mc-phase-pill';
+        document.getElementById('subInhale').textContent = 'Current';
+        document.getElementById('subHold').textContent = 'Next \u2192';
+        document.getElementById('subExhale').textContent = '8s';
+      } else if (currentPhase === 'hold') {
+        coreEl.className = 'mc-breath-core hold';
+        phaseTagEl.textContent = 'HOLD';
+        guideTxtEl.textContent = 'Chest steady & serene';
+        pillInhale.className = 'mc-phase-pill passed';
+        pillHold.className = 'mc-phase-pill active';
+        pillExhale.className = 'mc-phase-pill';
+        document.getElementById('subInhale').textContent = 'Passed';
+        document.getElementById('subHold').textContent = 'Current';
+        document.getElementById('subExhale').textContent = 'Next \u2192';
+      } else if (currentPhase === 'exhale') {
+        coreEl.className = 'mc-breath-core exhale';
+        phaseTagEl.textContent = 'EXHALE';
+        guideTxtEl.textContent = 'Slow whoosh exhale through mouth';
+        pillInhale.className = 'mc-phase-pill passed';
+        pillHold.className = 'mc-phase-pill passed';
+        pillExhale.className = 'mc-phase-pill active';
+        document.getElementById('subInhale').textContent = 'Passed';
+        document.getElementById('subHold').textContent = 'Passed';
+        document.getElementById('subExhale').textContent = 'Current';
+      }
+    }
+
+    function tick() {
+      if (!isPlaying) return;
+      phaseSeconds++;
+      if (currentPhase === 'inhale' && phaseSeconds > 4) {
+        currentPhase = 'hold';
+        phaseSeconds = 1;
+      } else if (currentPhase === 'hold' && phaseSeconds > 7) {
+        currentPhase = 'exhale';
+        phaseSeconds = 1;
+      } else if (currentPhase === 'exhale' && phaseSeconds > 8) {
+        currentPhase = 'inhale';
+        phaseSeconds = 1;
+        currentCycle = (currentCycle % 6) + 1;
+        document.getElementById('mcCycleNum').textContent = currentCycle;
+        if (currentCycle === 6) {
+          MindCareUI.showToast('All 6 breathwork cycles complete! Ready to log reflection.', 'success');
+        }
+      }
+      updatePacerUI();
+    }
+
+    function toggleBreathworkPlay() {
+      isPlaying = !isPlaying;
+      const icon = document.getElementById('playPauseIcon');
+      if (isPlaying) {
+        icon.className = 'bi bi-pause-fill fs-3';
+        MindCareUI.showToast('Vagal breath pacing resumed.', 'info');
+      } else {
+        icon.className = 'bi bi-play-fill fs-3';
+        MindCareUI.showToast('Vagal breath pacing paused.', 'info');
+      }
+    }
+
+    function selectAudioEnv(el, name) {
+      document.querySelectorAll('.mc-audio-env-chip').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      MindCareUI.showToast('Switched ambient soundscape to ' + name, 'info');
+    }
+
+    // Start timer on load
+    timerInterval = setInterval(tick, 1000);
+    updatePacerUI();
+  </script>
+</body>
+</html>

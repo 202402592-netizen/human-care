@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post-Session Summary — MindCare Clinical Portal</title>
+  <meta name="description" content="Clinical post-session telemetry, observational pulse, GAD-7 shift analysis, and homework dispatch interface.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo" style="background: linear-gradient(135deg, #5b426d 0%, #704c91 100%);">
+          <i class="bi bi-clipboard2-pulse"></i>
+        </div>
+        <div>
+          <span class="fw-bold text-dark d-block">MindCare</span>
+          <span class="badge bg-light text-primary border small">Clinical Portal</span>
+        </div>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li><a href="therapist-dashboard.html" class="mc-sidebar-link"><i class="bi bi-grid"></i> Clinician Overview</a></li>
+        <li><a href="therapist-appointments.html" class="mc-sidebar-link"><i class="bi bi-calendar-event"></i> Schedule & Requests</a></li>
+        <li><a href="therapist-session-notes.html" class="mc-sidebar-link active"><i class="bi bi-journal-medical"></i> Clinical SOAP Notes</a></li>
+        <li><a href="therapist-availability.html" class="mc-sidebar-link"><i class="bi bi-clock"></i> My Availability</a></li>
+        <li><a href="therapist-profile.html" class="mc-sidebar-link"><i class="bi bi-person-badge"></i> Practitioner Profile</a></li>
+      </ul>
+
+      <div class="pt-3 border-top">
+        <a href="../login.html" class="mc-sidebar-link text-danger">
+          <i class="bi bi-box-arrow-right text-danger"></i> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="mc-portal-content">
+      <!-- Breadcrumb & Status -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+        <span class="mc-badge mc-badge-lavender">
+          <i class="bi bi-shield-check"></i> Telehealth Telemetry Concluded
+        </span>
+        <span class="badge bg-white text-muted border">ID: #HC-8821</span>
+      </div>
+
+      <div class="mc-portal-header mb-4">
+        <div>
+          <h2 class="fw-bold text-dark mb-0">Post-Session Summary</h2>
+          <p class="text-muted small mb-0">Session 7 of 8 • Completed Today, 11:15 AM (45 min) • Lead Clinician: Dr. E. Rostova</p>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-mc-secondary btn-sm" onclick="window.print()">
+            <i class="bi bi-printer me-1"></i> PDF Export
+          </button>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <!-- Patient Summary Card -->
+          <div class="mc-card p-3 mb-4 bg-white">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" class="mc-avatar" alt="Maya Lin">
+                <div>
+                  <h5 class="fw-bold text-dark mb-0">Maya Lin <span class="mc-badge mc-badge-lavender ms-1">29 yrs</span></h5>
+                  <span class="text-muted small">Anxiety & Sleep Hygiene Protocol</span>
+                </div>
+              </div>
+              <span class="badge bg-success-subtle text-success rounded-pill px-3 py-2 small">
+                ● Ready for Sign-Off
+              </span>
+            </div>
+          </div>
+
+          <!-- Clinical Observational Pulse -->
+          <div class="mc-card mb-4" style="border-left: 5px solid var(--mc-primary) !important;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="fw-bold text-dark mb-0"><i class="bi bi-activity text-primary me-2"></i> Clinical Observational Pulse</h5>
+              <span class="badge bg-light text-primary border small">CBT Protocol</span>
+            </div>
+
+            <!-- Affect tags -->
+            <div class="d-flex flex-wrap gap-2 mb-4">
+              <span class="badge bg-light text-dark border py-2 px-3 rounded-pill">
+                <i class="bi bi-heart-pulse text-primary me-1"></i> Affect: Grounded & Receptive
+              </span>
+              <span class="badge bg-light text-dark border py-2 px-3 rounded-pill">
+                <i class="bi bi-wind text-success me-1"></i> Somatic Tension: Low
+              </span>
+              <span class="badge bg-light text-dark border py-2 px-3 rounded-pill">
+                <i class="bi bi-lightbulb text-warning me-1"></i> Insight: High
+              </span>
+            </div>
+
+            <!-- Self-Reported Anxiety GAD-7 Shift Visualizer -->
+            <div class="p-3 bg-light rounded-3 mb-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <strong class="text-dark small">Self-Reported Anxiety (GAD-7 Shift)</strong>
+                <span class="badge bg-primary text-white rounded-pill px-3 py-1 small">-3 pts (Significant)</span>
+              </div>
+              
+              <div class="d-flex justify-content-between small text-muted mb-1" style="font-size: 0.78rem;">
+                <span>Pre-Session: <strong>8/21 (Mild)</strong></span>
+                <span>Post-Session: <strong>5/21 (Minimal)</strong></span>
+              </div>
+
+              <div class="progress" style="height: 10px; border-radius: 9999px;">
+                <div class="progress-bar bg-success" style="width: 25%;" title="Minimal (0-4)"></div>
+                <div class="progress-bar bg-primary" style="width: 20%;" title="Post-Session 5"></div>
+                <div class="progress-bar bg-warning opacity-50" style="width: 25%;" title="Pre-Session 8"></div>
+              </div>
+
+              <div class="d-flex justify-content-between small text-muted mt-1" style="font-size: 0.7rem;">
+                <span>0 Minimal</span>
+                <span>7 Mild</span>
+                <span>14 Moderate</span>
+                <span>21 Severe</span>
+              </div>
+            </div>
+
+            <!-- Core Breakthrough Box -->
+            <div class="p-3 rounded-3" style="background: #fbf5fe; border: 1.5px dashed var(--mc-primary-soft);">
+              <div class="d-flex align-items-center gap-2 mb-1">
+                <i class="bi bi-stars text-primary fs-5"></i>
+                <strong class="text-dark small text-uppercase" style="letter-spacing: 0.05em;">Core Breakthrough</strong>
+              </div>
+              <p class="small text-plum mb-0" style="line-height: 1.6;">
+                Maya successfully isolated catastrophic distortions surrounding Tuesday morning sprint demos. Applied diaphragmatic pacing with a documented somatic downshift within 4 minutes.
+              </p>
+            </div>
+          </div>
+
+          <!-- Prescribed Homework (3) -->
+          <div class="mc-card mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div>
+                <h5 class="fw-bold text-dark mb-0"><i class="bi bi-journal-check text-primary me-2"></i> Prescribed Homework (3)</h5>
+                <span class="text-muted small">Active until final evaluation session on Wednesday, Oct 31.</span>
+              </div>
+              <button type="button" class="btn btn-outline-primary btn-sm rounded-pill" onclick="MindCareUI.showToast('Task added to clinical prescription.', 'info')">
+                <i class="bi bi-plus-lg me-1"></i> Add Task
+              </button>
+            </div>
+
+            <!-- Task 1: 3-Column Decatastrophizing Log -->
+            <div class="mc-card mc-card-sm p-3 mb-3 bg-light border-0">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="mc-stat-icon lavender mc-avatar-sm" style="font-size: 0.85rem;"><i class="bi bi-pencil"></i></div>
+                  <strong class="text-dark">3-Column Decatastrophizing Log</strong>
+                </div>
+                <span class="badge bg-white text-primary border small">In-App Journal</span>
+              </div>
+              <p class="small text-muted mb-2">CBT Thought Reframing Practice</p>
+              <div class="small text-muted mb-2 ps-2 border-start border-2 border-primary">
+                Target: Log automatic catastrophic thoughts during 10:00 AM standups.<br>
+                Cadence: 1x daily before evening unwind • Due by Session 8 (Wed, Oct 31)
+              </div>
+              <a href="../patient/cbt-thought-log.html" class="btn btn-mc-outline btn-sm">Preview Worksheet Flow &rarr;</a>
+            </div>
+
+            <!-- Task 2: 4-7-8 Guided Breathwork Audio -->
+            <div class="mc-card mc-card-sm p-3 mb-3 bg-light border-0">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="mc-stat-icon mint mc-avatar-sm" style="font-size: 0.85rem;"><i class="bi bi-headphones"></i></div>
+                  <strong class="text-dark">4-7-8 Guided Breathwork</strong>
+                </div>
+                <span class="badge bg-white text-success border small">Audio #04</span>
+              </div>
+              <p class="small text-muted mb-3">Autonomic Vagal Nerve Regulation</p>
+
+              <!-- Audio Player Card -->
+              <div class="mc-audio-card p-3 mb-2">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center gap-3">
+                    <button type="button" class="btn btn-light rounded-circle p-2 text-primary" style="width: 40px; height: 40px;" onclick="MindCareUI.showToast('Playing 4-7-8 Calming Rhythm (528 Hz Grounding)...', 'info')">
+                      <i class="bi bi-play-fill fs-5"></i>
+                    </button>
+                    <div>
+                      <strong class="d-block small text-white">4-7-8 Calming Rhythm</strong>
+                      <span class="text-white-50" style="font-size: 0.72rem;">5 min • MindCare Clinical Sanctuary</span>
+                    </div>
+                  </div>
+                  <div class="mc-waveform d-none d-sm-flex">
+                    <div class="mc-wave-bar active"></div>
+                    <div class="mc-wave-bar active"></div>
+                    <div class="mc-wave-bar"></div>
+                    <div class="mc-wave-bar active"></div>
+                    <div class="mc-wave-bar"></div>
+                  </div>
+                  <span class="text-white small">5:00</span>
+                </div>
+              </div>
+
+              <div class="form-check form-switch small">
+                <input class="form-check-input" type="checkbox" checked id="audioRemindToggle">
+                <label class="form-check-label text-muted" for="audioRemindToggle">Push reminder active: Triggered daily at 10:00 PM</label>
+              </div>
+            </div>
+
+            <!-- Task 3: Sleep Latency Log -->
+            <div class="mc-card mc-card-sm p-3 bg-light border-0">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="mc-stat-icon peach mc-avatar-sm" style="font-size: 0.85rem;"><i class="bi bi-moon-stars"></i></div>
+                  <strong class="text-dark">Sleep Latency Log</strong>
+                </div>
+                <span class="badge bg-white text-dark border small">Biometric Sync</span>
+              </div>
+              <p class="small text-muted mb-1">Sleep Efficiency Metric</p>
+              <span class="small text-muted d-block">• Target: Log lights-out vs sleep onset timestamp every morning.</span>
+              <span class="small text-muted d-block">• Zero screens in bedroom after 10:30 PM rule.</span>
+            </div>
+          </div>
+
+          <!-- Personalized Practitioner Note -->
+          <div class="mc-card mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h6 class="fw-bold text-dark mb-0"><i class="bi bi-heart text-danger me-2"></i> Personalized Practitioner Note</h6>
+              <span class="badge bg-light text-primary border small">Visible to Maya</span>
+            </div>
+            <textarea class="form-control small mb-2" rows="4">"Maya, truly profound breakthrough today on untangling anticipatory dread from realistic outcomes. Remember that feelings are real emotional indicators, but not always factual forecasts. Take gentle time with your evening breathwork."</textarea>
+            <span class="small text-muted">Dr. Elena Rostova, Psy.D. • Senior Clinical Psychologist</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="d-grid gap-2 mb-4">
+            <button type="button" id="btnDispatchHomework" class="btn btn-mc-primary py-3 fw-bold">
+              <i class="bi bi-send-check-fill me-2"></i> Finalize & Dispatch Homework to Maya
+            </button>
+            <div class="d-flex gap-2">
+              <a href="patient-telemetry.html" class="btn btn-outline-primary btn-sm flex-grow-1 py-2 rounded-pill text-decoration-none text-center">
+                <i class="bi bi-activity me-1"></i> View Live Vagal Telemetry
+              </a>
+              <button type="button" class="btn btn-outline-secondary btn-sm flex-grow-1 py-2 rounded-pill mc-launch-voice-anchor" data-patient="Maya Lin" data-patient-id="HC-8821">
+                <i class="bi bi-mic-fill text-danger me-1"></i> Clinical Voice Drawer
+              </button>
+            </div>
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-mc-secondary btn-sm flex-grow-1" onclick="MindCareUI.showToast('Draft notes saved securely.', 'info')">
+                Save Draft Note
+              </button>
+              <button type="button" class="btn btn-mc-secondary btn-sm flex-grow-1" onclick="window.print()">
+                PDF Export
+              </button>
+            </div>
+          </div>
+
+          <div class="text-center text-muted small" style="font-size: 0.72rem;">
+            <i class="bi bi-shield-lock-fill text-success me-1"></i> HIPAA-256 Compliant • Real-time sync with Maya's portal
+          </div>
+        </div>
+
+        <!-- Next Milestone Sidebar -->
+        <div class="col-lg-4">
+          <div class="mc-card sticky-top" style="top: 20px;">
+            <span class="mc-badge mc-badge-peach mb-2">Next Milestone</span>
+            <h5 class="fw-bold text-dark mb-1">Session 8 of 8 (Final Evaluation)</h5>
+            <p class="text-muted small mb-3">Evaluation & Maintenance Strategy with Dr. Rostova.</p>
+
+            <div class="p-3 bg-light rounded-3 mb-3 small">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="bi bi-calendar-event text-primary"></i>
+                <strong class="text-dark">Wed, October 31, 2026</strong>
+              </div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="bi bi-clock text-primary"></i>
+                <span>11:30 AM – 12:15 PM (45 min)</span>
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-camera-video text-primary"></i>
+                <span>Telehealth Room #MC-8821</span>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <a href="../patient/patient-exercises.html" class="btn btn-mc-secondary btn-sm">
+                <i class="bi bi-eye me-1"></i> View Patient's Assigned Portal
+              </a>
+              <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill" onclick="alert('Reschedule modal opened.')">
+                Reschedule Session 8
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    document.getElementById('btnDispatchHomework')?.addEventListener('click', () => {
+      MindCareUI.showToast('Prescribed homework & clinical note successfully dispatched to Maya Lin\'s portal!', 'success');
+      setTimeout(() => {
+        window.location.href = '../patient/patient-exercises.html';
+      }, 900);
+    });
+  </script>
+</body>
+</html>

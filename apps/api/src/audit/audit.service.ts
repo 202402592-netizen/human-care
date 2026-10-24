@@ -1,0 +1,2 @@
+import { Injectable } from '@nestjs/common'; import { InjectModel } from '@nestjs/mongoose'; import { Model } from 'mongoose'; import { AuditLog } from './audit.schema';
+@Injectable() export class AuditService { constructor(@InjectModel(AuditLog.name) private logs:Model<any>){} record(actorId:string,action:string,entity:string,entityId?:string,metadata?:Record<string,unknown>){return this.logs.create({actorId,action,entity,entityId,metadata});} }

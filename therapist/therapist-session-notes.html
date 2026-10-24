@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinical SOAP Notes — MindCare Clinical Portal</title>
+  <meta name="description" content="Confidential electronic health record charting, SOAP progress notes, and measurable treatment goal tracking for licensed clinicians.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo" style="background: linear-gradient(135deg, #5b426d 0%, #704c91 100%);">
+          <i class="bi bi-clipboard2-pulse"></i>
+        </div>
+        <div>
+          <span class="fw-bold text-dark d-block">MindCare</span>
+          <span class="badge bg-light text-primary border small">Clinical Portal</span>
+        </div>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li><a href="therapist-dashboard.html" class="mc-sidebar-link"><i class="bi bi-grid"></i> Clinician Overview</a></li>
+        <li><a href="therapist-appointments.html" class="mc-sidebar-link"><i class="bi bi-calendar-event"></i> Schedule & Requests</a></li>
+        <li><a href="therapist-session-notes.html" class="mc-sidebar-link active"><i class="bi bi-journal-medical-fill"></i> Clinical SOAP Notes</a></li>
+        <li><a href="therapist-availability.html" class="mc-sidebar-link"><i class="bi bi-clock"></i> My Availability</a></li>
+        <li><a href="therapist-profile.html" class="mc-sidebar-link"><i class="bi bi-person-badge"></i> Practitioner Profile</a></li>
+      </ul>
+
+      <div class="pt-3 border-top">
+        <a href="../login.html" class="mc-sidebar-link text-danger">
+          <i class="bi bi-box-arrow-right text-danger"></i> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="mc-portal-content">
+      <div class="mc-portal-header">
+        <div>
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <span class="mc-badge mc-badge-lavender">EHR Clinical Chart</span>
+            <span class="badge bg-secondary-subtle text-dark rounded-pill small"><i class="bi bi-shield-lock-fill text-success me-1"></i>Practitioner Only Access</span>
+          </div>
+          <h2 class="fw-bold text-dark mb-0">SOAP Progress Note: <span id="soapPatientTitle">Maya Lin</span></h2>
+          <p class="text-muted small mb-0">Documenting clinical affect, objective interventions, and CBT progress trajectory.</p>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <a href="patient-telemetry.html" class="btn btn-outline-primary btn-sm rounded-pill text-decoration-none">
+            <i class="bi bi-activity me-1"></i> Patient Telemetry
+          </a>
+          <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill mc-launch-voice-anchor" data-patient="Maya Lin" data-patient-id="HC-8821">
+            <i class="bi bi-mic-fill text-danger me-1"></i> Voice Drawer
+          </button>
+          <button type="button" class="btn btn-mc-secondary btn-sm rounded-pill" id="btnExportSoapPdf">
+            <i class="bi bi-printer me-1"></i> Export PDF
+          </button>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Patient Chart Summary & Protocol Left Column -->
+        <div class="col-lg-5">
+          <!-- Patient Capsule Header -->
+          <div class="mc-card mb-4">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" class="mc-avatar mc-avatar-lg" alt="Maya Lin">
+              <div>
+                <h5 class="fw-bold text-dark mb-0">Maya Lin <span class="mc-badge mc-badge-lavender ms-1">29y</span></h5>
+                <span class="text-muted small d-block">ID: #HC-8821 • Primary Clinician: Dr. Elena Rostova</span>
+                <span class="badge bg-success-subtle text-success small mt-1">Active Treatment Plan</span>
+              </div>
+            </div>
+
+            <hr class="border-light opacity-50 mb-3">
+
+            <!-- Active Protocol -->
+            <div class="p-3 bg-light rounded-3 mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="text-uppercase small fw-bold text-primary" style="font-size: 0.72rem;">Active Protocol</span>
+                <span class="badge bg-primary text-white rounded-pill small">Session 6 of 8</span>
+              </div>
+              <h6 class="fw-bold text-dark mb-2">Integrated CBT & Mindfulness</h6>
+              
+              <div class="small text-muted mb-2">
+                <strong>Diagnostic Focus:</strong> Generalized Anxiety & Stress Reactivity with somatic tension patterns.<br>
+                <strong>Cadence:</strong> Weekly clinical consultations • Next: Oct 31, 2026
+              </div>
+
+              <div class="d-flex justify-content-between small text-muted mb-1">
+                <span>Treatment Trajectory</span>
+                <strong class="text-primary">75% Completed</strong>
+              </div>
+              <div class="mc-progress mb-2">
+                <div class="mc-progress-bar" style="width: 75%;"></div>
+              </div>
+              <div class="d-flex justify-content-between small text-muted" style="font-size: 0.7rem;">
+                <span>Core Grounding</span>
+                <span>Cognitive Restructuring</span>
+                <span>Relapse Prevention</span>
+              </div>
+            </div>
+
+            <!-- Primary Interventions -->
+            <label class="form-label small fw-bold text-dark mb-2">Primary Prescribed Interventions</label>
+            <div class="d-flex flex-wrap gap-1 mb-4">
+              <span class="mc-badge mc-badge-lavender">Autonomic breathing</span>
+              <span class="mc-badge mc-badge-lavender">Socratic reframing</span>
+              <span class="mc-badge mc-badge-lavender">Daily thought logs</span>
+              <span class="mc-badge mc-badge-lavender">5-4-3-2-1 Somatic check-in</span>
+            </div>
+
+            <!-- Measurable Goals -->
+            <h6 class="fw-bold text-dark mb-3">Measurable Clinical Goals</h6>
+            <div class="mc-card mc-card-sm bg-light border-0 mb-2">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <strong class="small text-dark">1. Reduce panic symptom frequency &lt;1/wk</strong>
+                <span class="badge bg-primary text-white small">80%</span>
+              </div>
+              <p class="small text-muted mb-0">Baseline: 4 episodes/wk • Current avg: 0.6 episodes/wk</p>
+            </div>
+            <div class="mc-card mc-card-sm bg-light border-0 mb-2">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <strong class="small text-dark">2. 15-min mindfulness breathing 5x weekly</strong>
+                <span class="badge bg-success text-white small">90%</span>
+              </div>
+              <p class="small text-muted mb-0">Patient completed 9 of last 10 logged sessions</p>
+            </div>
+            <div class="mc-card mc-card-sm bg-light border-0">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <strong class="small text-dark">3. Reframe catastrophic distortions in journal</strong>
+                <span class="badge bg-warning text-dark small">60%</span>
+              </div>
+              <p class="small text-muted mb-0">Consistent entry cadence achieved over weekend</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: SOAP Form & Previous Session History -->
+        <div class="col-lg-7">
+          <div class="mc-card mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div>
+                <h5 class="fw-bold text-dark mb-0">Private Clinical SOAP Note</h5>
+                <span class="text-muted small">Current Session: Oct 24, 2026 (45 mins)</span>
+              </div>
+              <span class="badge bg-success-subtle text-success border small" id="soapDraftStatus">
+                <i class="bi bi-cloud-check-fill me-1"></i> Draft Auto-Saved
+              </span>
+            </div>
+
+            <form id="mcSoapNotesForm">
+              <!-- S: Subjective -->
+              <div class="mb-3">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <span class="badge bg-primary text-white rounded-circle" style="width: 22px; height: 22px; line-height: 16px;">S</span>
+                  <label class="form-label fw-bold mb-0">Subjective Observation</label>
+                </div>
+                <textarea class="form-control" rows="3" required>Patient reports decreased morning anticipatory anxiety. Expressed improved sleep latency (falling asleep within ~25 mins vs 60 mins baseline). Reports occasional chest tightness when opening work email inbox.</textarea>
+              </div>
+
+              <!-- O: Objective -->
+              <div class="mb-3">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <span class="badge bg-primary text-white rounded-circle" style="width: 22px; height: 22px; line-height: 16px;">O</span>
+                  <label class="form-label fw-bold mb-0">Objective Metrics & Affect</label>
+                </div>
+                <textarea class="form-control" rows="3" required>Affect calm, receptive, engaged throughout session. Speech fluid with normal prosody. Zero observable psychomotor agitation. GAD-7 score decreased from 14 to 8 over past 4 weeks.</textarea>
+              </div>
+
+              <!-- A: Assessment -->
+              <div class="mb-3">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <span class="badge bg-primary text-white rounded-circle" style="width: 22px; height: 22px; line-height: 16px;">A</span>
+                  <label class="form-label fw-bold mb-0">Clinical Assessment</label>
+                </div>
+                <textarea class="form-control" rows="3" required>Notable positive adaptation to diaphragmatic biofeedback. Catastrophic escalation loops being successfully recognized and interrupted in daily life using 5-4-3-2-1 sensory anchor technique.</textarea>
+              </div>
+
+              <!-- P: Plan -->
+              <div class="mb-4">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <span class="badge bg-primary text-white rounded-circle" style="width: 22px; height: 22px; line-height: 16px;">P</span>
+                  <label class="form-label fw-bold mb-0">Therapeutic Plan & Assigned Tasks</label>
+                </div>
+                <textarea class="form-control" rows="3" required>Sustain daily autonomic breathing logs. Prepare hierarchy ladder for social exposure trial. Schedule next follow-up clinical session on Wednesday, Oct 31 at 10:30 AM.</textarea>
+              </div>
+
+              <div class="d-flex gap-2 flex-wrap">
+                <button type="submit" class="btn btn-mc-primary py-2 px-4 fw-bold">
+                  <i class="bi bi-shield-check me-2"></i> Save Encrypted SOAP Note
+                </button>
+                <button type="button" class="btn btn-mc-secondary py-2 px-3" onclick="MindCareUI.showToast('Homework worksheet pushed to patient dashboard.', 'info')">
+                  <i class="bi bi-share me-1"></i> Push Homework
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Recent Signed Session Records Accordion -->
+          <div class="mc-card">
+            <h6 class="fw-bold text-dark mb-3"><i class="bi bi-file-earmark-medical text-primary me-2"></i> Recent Signed Session Records</h6>
+            
+            <div class="p-3 bg-light rounded-3 mb-2 d-flex justify-content-between align-items-center">
+              <div>
+                <span class="fw-bold text-dark small d-block"><i class="bi bi-check-circle-fill text-success me-1"></i> Session 5: Cognitive Distortions & Reframing</span>
+                <span class="text-muted small">Oct 17, 2026 • 50 mins • Dr. Elena Rostova</span>
+              </div>
+              <span class="badge bg-white text-muted border"><i class="bi bi-lock-fill text-secondary me-1"></i>Signed</span>
+            </div>
+
+            <div class="p-3 bg-light rounded-3 mb-2 d-flex justify-content-between align-items-center">
+              <div>
+                <span class="fw-bold text-dark small d-block"><i class="bi bi-check-circle-fill text-success me-1"></i> Session 4: Exposure Hierarchy & Panic De-escalation</span>
+                <span class="text-muted small">Oct 10, 2026 • 45 mins • Dr. Elena Rostova</span>
+              </div>
+              <span class="badge bg-white text-muted border"><i class="bi bi-lock-fill text-secondary me-1"></i>Signed</span>
+            </div>
+
+            <div class="p-3 bg-light rounded-3 d-flex justify-content-between align-items-center">
+              <div>
+                <span class="fw-bold text-dark small d-block"><i class="bi bi-check-circle-fill text-success me-1"></i> Session 3: Stress Trigger Mapping & Vagus Reset</span>
+                <span class="text-muted small">Oct 03, 2026 • 50 mins • Dr. Elena Rostova</span>
+              </div>
+              <span class="badge bg-white text-muted border"><i class="bi bi-lock-fill text-secondary me-1"></i>Signed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mc-mobile-bottom-nav">
+    <ul class="mc-mobile-nav-items">
+      <li><a href="therapist-dashboard.html" class="mc-mobile-nav-item"><i class="bi bi-grid"></i><span>Overview</span></a></li>
+      <li><a href="therapist-appointments.html" class="mc-mobile-nav-item"><i class="bi bi-calendar-event"></i><span>Schedule</span></a></li>
+      <li><a href="therapist-session-notes.html" class="mc-mobile-nav-item active"><i class="bi bi-journal-medical-fill"></i><span>Clinical</span></a></li>
+      <li><a href="therapist-availability.html" class="mc-mobile-nav-item"><i class="bi bi-clock"></i><span>Hours</span></a></li>
+      <li><a href="therapist-profile.html" class="mc-mobile-nav-item"><i class="bi bi-person"></i><span>Profile</span></a></li>
+    </ul>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/therapist.js"></script>
+</body>
+</html>

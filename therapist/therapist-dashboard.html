@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinician Dashboard — MindCare Clinical Portal</title>
+  <meta name="description" content="Practitioner clinical workspace. Monitor daily schedule, active patient caseload, attendance rate, and session charts.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo" style="background: linear-gradient(135deg, #5b426d 0%, #704c91 100%);">
+          <i class="bi bi-clipboard2-pulse"></i>
+        </div>
+        <div>
+          <span class="fw-bold text-dark d-block">MindCare</span>
+          <span class="badge bg-light text-primary border small">Clinical Portal</span>
+        </div>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li>
+          <a href="therapist-dashboard.html" class="mc-sidebar-link active">
+            <i class="bi bi-grid-fill"></i> Clinician Overview
+          </a>
+        </li>
+        <li>
+          <a href="therapist-appointments.html" class="mc-sidebar-link">
+            <i class="bi bi-calendar-event"></i> Schedule & Requests
+          </a>
+        </li>
+        <li>
+          <a href="therapist-session-notes.html" class="mc-sidebar-link">
+            <i class="bi bi-journal-medical"></i> Clinical SOAP Notes
+          </a>
+        </li>
+        <li>
+          <a href="therapist-availability.html" class="mc-sidebar-link">
+            <i class="bi bi-clock"></i> My Availability
+          </a>
+        </li>
+        <li>
+          <a href="therapist-profile.html" class="mc-sidebar-link">
+            <i class="bi bi-person-badge"></i> Practitioner Profile
+          </a>
+        </li>
+      </ul>
+
+      <div class="pt-3 border-top">
+        <a href="../login.html" class="mc-sidebar-link text-danger">
+          <i class="bi bi-box-arrow-right text-danger"></i> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="mc-portal-content">
+      <!-- Clinical Header -->
+      <div class="mc-portal-header">
+        <div>
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <span class="mc-badge mc-badge-lavender">Practitioner L3 • Active Duty</span>
+            <span class="badge bg-success-subtle text-success rounded-pill"><i class="bi bi-shield-lock-fill me-1"></i>HIPAA Verified</span>
+          </div>
+          <h2 class="fw-bold text-dark mb-0">Good morning, Dr. Rostova</h2>
+          <p class="text-muted small mb-0">"Guiding healing with empathy and calm presence."</p>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <div class="d-flex align-items-center gap-2 bg-light p-2 rounded-pill border">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=120&q=80" 
+                 class="mc-avatar mc-avatar-sm" alt="Dr. Rostova">
+            <div class="d-none d-sm-block text-end pe-2">
+              <span class="fw-bold text-dark small d-block">Dr. Elena Rostova</span>
+              <span class="text-muted" style="font-size: 0.72rem;">Ph.D., Clinical Psychology</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Capsule Banner (Wed Oct 24 • Mindful Pause) -->
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+        <div class="d-flex gap-2">
+          <span class="badge bg-light text-dark border py-2 px-3 rounded-pill fw-semibold">
+            <i class="bi bi-calendar3 text-primary me-1"></i> Wed, Oct 24 • 5 Sessions Today
+          </span>
+          <span class="badge bg-light text-dark border py-2 px-3 rounded-pill fw-semibold">
+            <i class="bi bi-flower1 text-primary me-1"></i> Mindful Pause: 12:45 PM
+          </span>
+        </div>
+      </div>
+
+      <!-- Session starting soon alert -->
+      <div class="mc-card p-3 mb-4 border-0 shadow-sm" style="background: linear-gradient(135deg, #ede0f7 0%, #f6e1ff 100%); border-left: 5px solid var(--mc-primary) !important;">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-broadcast text-primary fs-4"></i>
+            <span class="fw-semibold text-dark small">Next session starts in 15 mins with <strong>Maya Lin</strong>. Encrypted Room is prepped.</span>
+          </div>
+          <button class="btn btn-mc-primary btn-sm mc-launch-telehealth" data-session-title="Anxiety & Mindfulness Check-in" data-doctor-name="Dr. Elena Rostova">
+            <i class="bi bi-camera-video-fill me-1"></i> Enter Video Room
+          </button>
+        </div>
+      </div>
+
+      <!-- 4 Top Clinical Metric Cards -->
+      <div class="row g-3 mb-4">
+        <div class="col-sm-6 col-lg-3">
+          <div class="mc-stat-card h-100">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <span class="text-muted small fw-semibold">Today's Schedule</span>
+              <div class="mc-stat-icon lavender mc-avatar-sm"><i class="bi bi-calendar3"></i></div>
+            </div>
+            <div class="mc-stat-val">5 <span class="fs-6 text-muted fw-normal">Total</span></div>
+            <p class="text-muted small mb-0">• 2 completed • 1 now</p>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="mc-stat-card h-100">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <span class="text-muted small fw-semibold">Active Caseload</span>
+              <div class="mc-stat-icon peach mc-avatar-sm"><i class="bi bi-people"></i></div>
+            </div>
+            <div class="mc-stat-val">28 <span class="fs-6 text-muted fw-normal">Patients</span></div>
+            <p class="text-success small mb-0"><i class="bi bi-graph-up-arrow me-1"></i>+2 this month</p>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="mc-stat-card h-100">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <span class="text-muted small fw-semibold">Intake Requests</span>
+              <div class="mc-stat-icon lavender mc-avatar-sm"><i class="bi bi-envelope-open"></i></div>
+            </div>
+            <div class="mc-stat-val">3 <span class="badge bg-primary text-white fs-6">New</span></div>
+            <p class="text-muted small mb-0">Pending triage review</p>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="mc-stat-card h-100">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <span class="text-muted small fw-semibold">Attendance Rate</span>
+              <div class="mc-stat-icon mint mc-avatar-sm"><i class="bi bi-check-circle"></i></div>
+            </div>
+            <div class="mc-stat-val text-success">96%</div>
+            <div class="mc-progress mt-1">
+              <div class="mc-progress-bar bg-success" style="width: 96%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week Calendar Strip -->
+      <div class="mc-card p-3 mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-calendar-week text-primary me-2"></i> Week of Oct 22</h6>
+          <span class="text-muted small">24 Clinical Sessions Scheduled</span>
+        </div>
+        <div class="mc-week-strip text-center">
+          <div class="mc-week-day"><span class="text-muted small d-block">M</span><strong>22</strong><span class="d-block small text-muted">•</span></div>
+          <div class="mc-week-day"><span class="text-muted small d-block">T</span><strong>23</strong><span class="d-block small text-muted">•</span></div>
+          <div class="mc-week-day active"><span class="text-white-50 small d-block">W</span><strong>24</strong><span class="d-block small text-white">• • •</span></div>
+          <div class="mc-week-day"><span class="text-muted small d-block">T</span><strong>25</strong><span class="d-block small text-muted">•</span></div>
+          <div class="mc-week-day"><span class="text-muted small d-block">F</span><strong>26</strong><span class="d-block small text-muted">•</span></div>
+          <div class="mc-week-day"><span class="text-muted small d-block">S</span><strong>27</strong><span class="d-block small text-muted">-</span></div>
+          <div class="mc-week-day"><span class="text-muted small d-block">S</span><strong>28</strong><span class="d-block small text-muted">-</span></div>
+        </div>
+      </div>
+
+      <!-- Schedule Timeline & Caseload Index Row -->
+      <div class="row g-4 mb-4">
+        <!-- Today's Schedule Timeline -->
+        <div class="col-lg-7">
+          <div class="mc-card h-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="fw-bold text-dark mb-0"><i class="bi bi-clock-history text-primary me-2"></i> Today's Schedule</h5>
+              <a href="therapist-appointments.html" class="small text-primary fw-semibold">View All (5)</a>
+            </div>
+
+            <!-- Dynamically populated or static cards matching mockup -->
+            <div id="therapistTodayTimeline">
+              <!-- Populated by assets/js/therapist.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Caseload Well-Being Index & Quick Actions -->
+        <div class="col-lg-5">
+          <div class="mc-card mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h6 class="fw-bold text-dark mb-0"><i class="bi bi-activity text-primary me-2"></i> Caseload Well-Being Index</h6>
+              <span class="badge bg-primary-subtle text-primary rounded-pill small">74% Positive</span>
+            </div>
+            <p class="text-muted small mb-3">
+              Aggregate PHQ-9 & GAD-7 trending across active patients indicates sustained improvement over 6 weeks.
+            </p>
+
+            <div class="d-flex justify-content-between small text-muted mb-1">
+              <span>Emotional Recovery & Coping Metric</span>
+              <strong class="text-success">+12% vs last month</strong>
+            </div>
+            <div class="progress mb-2" style="height: 10px; border-radius: 9999px;">
+              <div class="progress-bar bg-primary" style="width: 58%;" title="Improving (58%)"></div>
+              <div class="progress-bar bg-secondary" style="width: 24%;" title="Stable (24%)"></div>
+              <div class="progress-bar bg-warning" style="width: 18%;" title="Review (18%)"></div>
+            </div>
+            <div class="d-flex justify-content-between small text-muted" style="font-size: 0.72rem;">
+              <span>• Improving (58%)</span>
+              <span>• Stable (24%)</span>
+              <span>• Review (18%)</span>
+            </div>
+          </div>
+
+          <!-- Quick Practitioner Actions -->
+          <div class="mc-card mb-4">
+            <h6 class="fw-bold text-dark mb-3"><i class="bi bi-lightning-charge text-primary me-2"></i> Quick Practitioner Actions</h6>
+            <div class="row g-2 text-center">
+              <div class="col-4">
+                <a href="therapist-session-notes.html" class="btn btn-light w-100 p-3 rounded-3 text-dark border">
+                  <i class="bi bi-pencil-square text-primary fs-4 d-block mb-1"></i>
+                  <span class="small fw-semibold">Quick Note</span>
+                </a>
+              </div>
+              <div class="col-4">
+                <a href="therapist-appointments.html" class="btn btn-light w-100 p-3 rounded-3 text-dark border">
+                  <i class="bi bi-calendar-event text-primary fs-4 d-block mb-1"></i>
+                  <span class="small fw-semibold">Reschedule</span>
+                </a>
+              </div>
+              <div class="col-4">
+                <a href="therapist-session-notes.html" class="btn btn-light w-100 p-3 rounded-3 text-dark border">
+                  <i class="bi bi-clipboard2-check text-primary fs-4 d-block mb-1"></i>
+                  <span class="small fw-semibold">Care Plan</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Provider Well-being Check (De-escalation) -->
+          <div class="mc-card bg-light border-0 p-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="mc-stat-icon lavender mc-avatar-sm flex-shrink-0"><i class="bi bi-flower1"></i></div>
+              <div>
+                <strong class="text-dark d-block small">Provider Well-Being Check</strong>
+                <span class="text-muted small">Remember to take a 5-minute breath between back-to-back sessions.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mc-mobile-bottom-nav">
+    <ul class="mc-mobile-nav-items">
+      <li><a href="therapist-dashboard.html" class="mc-mobile-nav-item active"><i class="bi bi-grid-fill"></i><span>Overview</span></a></li>
+      <li><a href="therapist-appointments.html" class="mc-mobile-nav-item"><i class="bi bi-calendar-event"></i><span>Schedule</span></a></li>
+      <li><a href="therapist-session-notes.html" class="mc-mobile-nav-item"><i class="bi bi-journal-medical"></i><span>Clinical</span></a></li>
+      <li><a href="therapist-availability.html" class="mc-mobile-nav-item"><i class="bi bi-clock"></i><span>Hours</span></a></li>
+      <li><a href="therapist-profile.html" class="mc-mobile-nav-item"><i class="bi bi-person"></i><span>Profile</span></a></li>
+    </ul>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/therapist.js"></script>
+</body>
+</html>

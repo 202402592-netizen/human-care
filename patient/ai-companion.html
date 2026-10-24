@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Wellness Companion — MindCare Sanctuary</title>
+  <meta name="description" content="Simulated empathetic conversational assistant for emotional grounding, mindfulness prompts, and cognitive reframing.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+
+  <style>
+    .mc-chat-messages {
+      height: 480px;
+      overflow-y: auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      background: #fafaf8;
+      border-radius: 20px;
+    }
+    .mc-message-row {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 82%;
+    }
+    .mc-message-row.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+    .mc-message-row.bot {
+      align-self: flex-start;
+    }
+    .mc-chat-bubble {
+      padding: 0.85rem 1.15rem;
+      border-radius: 18px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      position: relative;
+    }
+    .mc-chat-bubble.user {
+      background: linear-gradient(135deg, #2a9d8f 0%, #21867a 100%);
+      color: #ffffff;
+      border-bottom-right-radius: 4px;
+    }
+    .mc-chat-bubble.bot {
+      background: #ffffff;
+      color: #2b2d42;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border-bottom-left-radius: 4px;
+    }
+    .mc-typing-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 14px;
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .mc-typing-dot {
+      width: 6px;
+      height: 6px;
+      background: #8ab4f8;
+      border-radius: 50%;
+      animation: mcDotPulse 1.4s infinite ease-in-out both;
+    }
+    .mc-typing-dot:nth-child(1) { animation-delay: -0.32s; }
+    .mc-typing-dot:nth-child(2) { animation-delay: -0.16s; }
+    @keyframes mcDotPulse {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40% { transform: scale(1.1); opacity: 1; }
+    }
+    .suggested-pill {
+      font-size: 0.78rem;
+      cursor: pointer;
+      border-radius: 99px;
+      padding: 0.35rem 0.85rem;
+      background: #ffffff;
+      border: 1px solid rgba(42, 157, 143, 0.25);
+      color: #264653;
+      transition: all 0.2s ease;
+      display: inline-block;
+    }
+    .suggested-pill:hover {
+      background: var(--mc-lavender-subtle);
+      border-color: var(--mc-primary);
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body style="background-color: var(--mc-bg-warm);">
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <div>
+          <span class="fw-bold text-dark d-block">HumanCare</span>
+          <span class="text-muted small" style="font-size: 0.72rem;">Patient Sanctuary</span>
+        </div>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li><a href="patient-dashboard.html" class="mc-sidebar-link"><i class="bi bi-grid"></i> Dashboard</a></li>
+        <li><a href="mood-tracker.html" class="mc-sidebar-link"><i class="bi bi-emoji-smile"></i> Mood Tracker</a></li>
+        <li><a href="journal.html" class="mc-sidebar-link"><i class="bi bi-journal-text"></i> Emotional Journal</a></li>
+        <li><a href="relaxation-studio.html" class="mc-sidebar-link"><i class="bi bi-wind"></i> Relaxation Studio</a></li>
+        <li><a href="wellness-goals.html" class="mc-sidebar-link"><i class="bi bi-trophy"></i> Wellness Goals</a></li>
+        <li><a href="ai-companion.html" class="mc-sidebar-link active"><i class="bi bi-chat-heart-fill"></i> AI Companion</a></li>
+        <li><a href="patient-exercises.html" class="mc-sidebar-link"><i class="bi bi-person-walking"></i> Prescribed Homework</a></li>
+        <li><a href="cbt-thought-log.html" class="mc-sidebar-link"><i class="bi bi-pencil-square"></i> CBT Thought Log</a></li>
+        <li><a href="patient-appointments.html" class="mc-sidebar-link"><i class="bi bi-calendar-check"></i> Appointments</a></li>
+        <li><a href="patient-profile.html" class="mc-sidebar-link"><i class="bi bi-person-gear"></i> Settings</a></li>
+      </ul>
+
+      <div class="p-3 bg-white border rounded-3 mt-auto text-center">
+        <div class="text-muted small fw-bold mb-1"><i class="bi bi-robot text-primary me-1"></i> Demo Companion</div>
+        <span class="text-muted small d-block" style="font-size: 0.7rem;">Simulated conversational prompts. Not connected to external LLM APIs.</span>
+      </div>
+
+      <div class="pt-2 border-top mt-2">
+        <a href="../login.html" class="mc-sidebar-link text-danger">
+          <i class="bi bi-box-arrow-right text-danger"></i> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="mc-portal-content">
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+        <div>
+          <span class="mc-badge mc-badge-lavender py-1 px-3 mb-1">
+            <i class="bi bi-sparkles me-1 text-primary"></i> 24/7 Reflective Companion (Demo)
+          </span>
+          <h2 class="fw-bold text-dark mb-1">MindCare AI Companion</h2>
+          <p class="text-muted small mb-0">Empathetic cognitive reframing prompts, somatic grounding guidance, and de-escalation support.</p>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill" onclick="resetChatHistory()">
+            <i class="bi bi-arrow-counterclockwise me-1"></i> Reset Chat
+          </button>
+          <a href="#" class="btn btn-danger btn-sm rounded-pill mc-crisis-trigger">
+            <i class="bi bi-telephone-fill me-1"></i> Crisis Support 988
+          </a>
+        </div>
+      </div>
+
+      <!-- Mandatory Demo Disclaimer Banner -->
+      <div class="alert alert-warning border-0 rounded-4 d-flex align-items-center gap-3 p-3 mb-4 shadow-sm" style="background: rgba(233, 196, 106, 0.15);">
+        <i class="bi bi-info-circle-fill fs-3 text-warning"></i>
+        <div class="small text-dark">
+          <strong>Demo Notice:</strong> MindCare Companion is a simulated frontend dialogue engine using clinical behavioral heuristics. It is NOT connected to OpenAI, Anthropic, or external servers. It does not replace licensed medical or psychological treatment.
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Main Chat Area -->
+        <div class="col-lg-8">
+          <div class="mc-card p-3 p-md-4 bg-white">
+            <!-- Chat Header -->
+            <div class="d-flex align-items-center justify-content-between pb-3 mb-3 border-bottom">
+              <div class="d-flex align-items-center gap-2">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px; background: linear-gradient(135deg, #2a9d8f, #8ab4f8);">
+                  <i class="bi bi-heart-pulse-fill"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold text-dark mb-0">MindCare Companion</h6>
+                  <span class="text-success small" style="font-size: 0.72rem;"><i class="bi bi-circle-fill" style="font-size: 0.5rem;"></i> Simulated Online • Phase 1 Demo</span>
+                </div>
+              </div>
+              <span class="badge bg-light text-muted border rounded-pill px-3 py-1 small">In-Memory Conversation</span>
+            </div>
+
+            <!-- Messages Stream -->
+            <div class="mc-chat-messages" id="chatMessages">
+              <!-- Initial Greeting from AI -->
+              <div class="mc-message-row bot">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-white flex-shrink-0" style="width: 32px; height: 32px; background: #2a9d8f; font-size: 0.85rem;">
+                  <i class="bi bi-heart-fill"></i>
+                </div>
+                <div>
+                  <div class="mc-chat-bubble bot">
+                    Hello Maya. I'm here as your calm reflective companion. How is your nervous system feeling in this moment? You can tell me what's on your mind, explore an anxious thought, or ask for a grounding exercise.
+                  </div>
+                  <span class="text-muted small ms-2" style="font-size: 0.7rem;">Just now • MindCare AI</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Typing Indicator (Hidden by default) -->
+            <div id="typingIndicatorRow" class="mc-message-row bot my-2" style="display: none;">
+              <div class="rounded-circle d-flex align-items-center justify-content-center text-white flex-shrink-0" style="width: 32px; height: 32px; background: #2a9d8f; font-size: 0.85rem;">
+                <i class="bi bi-heart-fill"></i>
+              </div>
+              <div class="mc-typing-indicator">
+                <div class="mc-typing-dot"></div>
+                <div class="mc-typing-dot"></div>
+                <div class="mc-typing-dot"></div>
+              </div>
+            </div>
+
+            <!-- Suggested Prompt Chips -->
+            <div class="pt-3 pb-2">
+              <span class="text-muted small fw-bold d-block mb-2" style="font-size: 0.72rem; letter-spacing: 0.05em;">SUGGESTED CLINICAL INQUIRIES:</span>
+              <div class="d-flex flex-wrap gap-2" id="suggestedChipsContainer">
+                <span class="suggested-pill" onclick="sendSuggestedPrompt(this)">I feel sudden anxious tension in my chest</span>
+                <span class="suggested-pill" onclick="sendSuggestedPrompt(this)">Having trouble unwinding for sleep</span>
+                <span class="suggested-pill" onclick="sendSuggestedPrompt(this)">Help me reframe an impostor spiral at work</span>
+                <span class="suggested-pill" onclick="sendSuggestedPrompt(this)">Guide me through a quick sensory grounding</span>
+                <span class="suggested-pill" onclick="sendSuggestedPrompt(this)">How do I set emotional boundaries today?</span>
+              </div>
+            </div>
+
+            <!-- Chat Input Form -->
+            <form onsubmit="handleSendMessage(event)" class="mt-2">
+              <div class="input-group">
+                <input type="text" class="form-control form-control-lg rounded-start-pill ps-4" id="chatInput" placeholder="Type your reflection or question gently..." autocomplete="off">
+                <button type="submit" class="btn btn-mc-primary rounded-end-pill px-4" id="sendBtn">
+                  <i class="bi bi-send-fill"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Sidebar / Tips Area -->
+        <div class="col-lg-4">
+          <!-- Companion Capabilities Card -->
+          <div class="mc-card p-4 bg-white mb-4">
+            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-stars text-primary me-2"></i> What I Can Support</h5>
+            <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+              <li class="d-flex gap-2">
+                <i class="bi bi-shield-check text-success fs-5"></i>
+                <div>
+                  <strong class="d-block small text-dark">Somatic De-escalation</strong>
+                  <span class="small text-muted">Guidance to regulate acute sympathetic panic or hypervigilance.</span>
+                </div>
+              </li>
+              <li class="d-flex gap-2">
+                <i class="bi bi-columns-gap text-primary fs-5"></i>
+                <div>
+                  <strong class="d-block small text-dark">Cognitive Reframing</strong>
+                  <span class="small text-muted">Examine catastrophic thoughts with evidence-based CBT inquiries.</span>
+                </div>
+              </li>
+              <li class="d-flex gap-2">
+                <i class="bi bi-moon-stars text-info fs-5"></i>
+                <div>
+                  <strong class="d-block small text-dark">Nighttime Calming</strong>
+                  <span class="small text-muted">Sleep stimulus control tips when wakefulness feels overwhelming.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Quick Navigation Card -->
+          <div class="mc-card p-4 bg-light border-0">
+            <h6 class="fw-bold text-dark mb-2">Prefer Interactive Tools?</h6>
+            <p class="small text-muted mb-3">Jump straight into our clinician-designed modules anytime:</p>
+            <div class="d-flex flex-column gap-2">
+              <a href="relaxation-studio.html" class="btn btn-white btn-sm rounded-pill text-start border shadow-xs">
+                <i class="bi bi-wind text-success me-2"></i> 4-7-8 Breathing Pacer
+              </a>
+              <a href="journal.html" class="btn btn-white btn-sm rounded-pill text-start border shadow-xs">
+                <i class="bi bi-journal-text text-primary me-2"></i> Emotional Journal
+              </a>
+              <a href="cbt-thought-log.html" class="btn btn-white btn-sm rounded-pill text-start border shadow-xs">
+                <i class="bi bi-pencil-square text-warning me-2"></i> 3-Column Decatastrophizing
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+  <script>
+    function scrollChatToBottom() {
+      const container = document.getElementById('chatMessages');
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function sendSuggestedPrompt(pill) {
+      document.getElementById('chatInput').value = pill.textContent.trim();
+      handleSendMessage(new Event('submit'));
+    }
+
+    function handleSendMessage(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      // Append user bubble
+      appendUserMessage(text);
+      input.value = '';
+
+      // Show typing indicator
+      const typing = document.getElementById('typingIndicatorRow');
+      typing.style.display = 'flex';
+      scrollChatToBottom();
+
+      // Simulate natural response delay (700-1100ms)
+      setTimeout(() => {
+        typing.style.display = 'none';
+        const response = MindCareUI.getAIResponse(text);
+        appendBotMessage(response);
+      }, 900);
+    }
+
+    function appendUserMessage(text) {
+      const container = document.getElementById('chatMessages');
+      const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      const row = document.createElement('div');
+      row.className = 'mc-message-row user';
+      row.innerHTML = `
+        <div class="rounded-circle d-flex align-items-center justify-content-center text-white flex-shrink-0" style="width: 32px; height: 32px; background: #264653; font-size: 0.85rem;">
+          <i class="bi bi-person-fill"></i>
+        </div>
+        <div>
+          <div class="mc-chat-bubble user">
+            ${escapeHtml(text)}
+          </div>
+          <span class="text-muted small text-end d-block me-2" style="font-size: 0.7rem;">${timeStr} • You</span>
+        </div>
+      `;
+      container.appendChild(row);
+      scrollChatToBottom();
+    }
+
+    function appendBotMessage(text) {
+      const container = document.getElementById('chatMessages');
+      const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      const row = document.createElement('div');
+      row.className = 'mc-message-row bot';
+      row.innerHTML = `
+        <div class="rounded-circle d-flex align-items-center justify-content-center text-white flex-shrink-0" style="width: 32px; height: 32px; background: #2a9d8f; font-size: 0.85rem;">
+          <i class="bi bi-heart-fill"></i>
+        </div>
+        <div>
+          <div class="mc-chat-bubble bot">
+            ${escapeHtml(text)}
+          </div>
+          <span class="text-muted small ms-2" style="font-size: 0.7rem;">${timeStr} • MindCare AI (Demo)</span>
+        </div>
+      `;
+      container.appendChild(row);
+      scrollChatToBottom();
+    }
+
+    function resetChatHistory() {
+      const container = document.getElementById('chatMessages');
+      container.innerHTML = `
+        <div class="mc-message-row bot">
+          <div class="rounded-circle d-flex align-items-center justify-content-center text-white flex-shrink-0" style="width: 32px; height: 32px; background: #2a9d8f; font-size: 0.85rem;">
+            <i class="bi bi-heart-fill"></i>
+          </div>
+          <div>
+            <div class="mc-chat-bubble bot">
+              Conversation reset. I am ready to listen whenever you'd like to share. Take a breath and let me know how you're feeling.
+            </div>
+            <span class="text-muted small ms-2" style="font-size: 0.7rem;">Just now • MindCare AI</span>
+          </div>
+        </div>
+      `;
+      MindCareUI.showToast('Chat history cleared from memory.', 'info');
+    }
+
+    function escapeHtml(string) {
+      const div = document.createElement('div');
+      div.innerText = string;
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>

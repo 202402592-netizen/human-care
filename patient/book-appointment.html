@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve Clinical Session — MindCare Sanctuary</title>
+  <meta name="description" content="Schedule a confidential 1-on-1 therapy consultation or follow-up session.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <div>
+          <span class="fw-bold text-dark d-block">MindCare</span>
+          <span class="text-muted small">Sanctuary Portal</span>
+        </div>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li><a href="patient-dashboard.html" class="mc-sidebar-link"><i class="bi bi-grid"></i> Dashboard</a></li>
+        <li><a href="book-appointment.html" class="mc-sidebar-link active"><i class="bi bi-calendar-plus-fill"></i> Book Session</a></li>
+        <li><a href="patient-appointments.html" class="mc-sidebar-link"><i class="bi bi-calendar-check"></i> My Appointments</a></li>
+        <li><a href="wellness-checkin.html" class="mc-sidebar-link"><i class="bi bi-heart-pulse"></i> Wellness Check-in</a></li>
+        <li><a href="patient-favorites.html" class="mc-sidebar-link"><i class="bi bi-bookmark-heart"></i> Saved Resources</a></li>
+        <li><a href="patient-profile.html" class="mc-sidebar-link"><i class="bi bi-person-gear"></i> Profile & Care Plan</a></li>
+      </ul>
+
+      <div class="pt-3 border-top">
+        <a href="../login.html" class="mc-sidebar-link text-danger">
+          <i class="bi bi-box-arrow-right text-danger"></i> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="mc-portal-content">
+      <div class="mc-portal-header">
+        <div>
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <span class="mc-badge mc-badge-lavender">Session Reservation</span>
+            <span class="badge bg-light text-primary border small">Step 1 of 2</span>
+          </div>
+          <h2 class="fw-bold text-dark mb-0">Schedule Your Next Therapy Session</h2>
+          <p class="text-muted small mb-0">Select an available appointment time that allows space for quiet decompression before and after.</p>
+        </div>
+
+        <button class="btn btn-outline-danger btn-sm rounded-pill mc-crisis-trigger">
+          <i class="bi bi-telephone-fill me-1"></i> Crisis Help 988
+        </button>
+      </div>
+
+      <form id="mcBookingForm">
+        <div class="row g-4">
+          <!-- Step 1 & 2: Clinician & Timing -->
+          <div class="col-lg-7">
+            <!-- Clinician Selector -->
+            <div class="mc-card mb-4">
+              <h5 class="fw-bold text-dark mb-3"><i class="bi bi-person-check text-primary me-2"></i> 1. Select Clinician</h5>
+              <div class="mb-3">
+                <select id="bookTherapist" class="form-select form-select-lg">
+                  <!-- Populated by assets/js/patient.js -->
+                </select>
+              </div>
+
+              <div id="bookTherapistPreview" class="p-3 bg-light rounded-3">
+                <!-- Preview populated dynamically -->
+              </div>
+            </div>
+
+            <!-- Modality Selector -->
+            <div class="mc-card mb-4">
+              <h5 class="fw-bold text-dark mb-3"><i class="bi bi-sliders text-primary me-2"></i> 2. Choose Modality</h5>
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <div class="mc-modality-pill selected" data-modality="Telehealth Video">
+                    <div class="mc-stat-icon lavender mc-avatar-sm"><i class="bi bi-camera-video"></i></div>
+                    <div>
+                      <strong class="text-dark d-block">Telehealth Video</strong>
+                      <span class="text-muted small">Private 256-bit room</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="mc-modality-pill" data-modality="In-Clinic Room 3B">
+                    <div class="mc-stat-icon mint mc-avatar-sm"><i class="bi bi-hospital"></i></div>
+                    <div>
+                      <strong class="text-dark d-block">In-Clinic Room 3B</strong>
+                      <span class="text-muted small">San Francisco Pavilion</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Date & Slot Selector -->
+            <div class="mc-card mb-4">
+              <h5 class="fw-bold text-dark mb-3"><i class="bi bi-calendar3 text-primary me-2"></i> 3. Choose Date & Open Slot</h5>
+              <div class="mb-3">
+                <label class="form-label small fw-bold">Select Date</label>
+                <select id="bookDate" class="form-select">
+                  <option value="Tomorrow (Thursday, Oct 25)">Tomorrow (Thursday, Oct 25)</option>
+                  <option value="Friday, Oct 26">Friday, Oct 26</option>
+                  <option value="Monday, Oct 29">Monday, Oct 29</option>
+                  <option value="Wednesday, Oct 31">Wednesday, Oct 31</option>
+                </select>
+              </div>
+
+              <label class="form-label small fw-bold mb-2">Available Time Windows (Includes 15-min clinician mindful buffer)</label>
+              <div class="d-flex flex-wrap gap-2" id="bookSlotsContainer">
+                <!-- Populated by assets/js/patient.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Intake Summary & Confirmation -->
+          <div class="col-lg-5">
+            <div class="mc-card sticky-top" style="top: 20px;">
+              <h5 class="fw-bold text-dark mb-3"><i class="bi bi-clipboard2-check text-primary me-2"></i> Intake & Session Targets</h5>
+
+              <div class="mb-3">
+                <label class="form-label small fw-bold">Primary Goal for This Session</label>
+                <input type="text" id="bookReason" class="form-control" placeholder="e.g., Address anxiety spike regarding presentation" value="Cognitive reframing of anxious triggers & breathing check">
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label small fw-bold">Clinician Notes or Recent Symptoms (Optional)</label>
+                <textarea id="bookNotes" class="form-control" rows="3" placeholder="Share any notable stress patterns from this week..."></textarea>
+              </div>
+
+              <div class="bg-light p-3 rounded-3 mb-4 small">
+                <div class="d-flex justify-content-between mb-1">
+                  <span class="text-muted">Standard 50-Min Session:</span>
+                  <span class="fw-bold text-dark">$150.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-1">
+                  <span class="text-muted">Insurance Superbill:</span>
+                  <span class="text-success fw-semibold">Auto-Generated</span>
+                </div>
+                <div class="d-flex justify-content-between pt-2 border-top">
+                  <span class="fw-bold text-dark">Due at Consultation:</span>
+                  <span class="fw-bold text-primary fs-6">$150.00</span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-mc-primary w-100 py-3 fw-bold mb-3">
+                <i class="bi bi-check2-circle me-1"></i> Confirm & Lock Appointment
+              </button>
+
+              <div class="text-center small text-muted">
+                <i class="bi bi-shield-check text-success me-1"></i> Free cancellation up to 24 hours prior.
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mc-mobile-bottom-nav">
+    <ul class="mc-mobile-nav-items">
+      <li><a href="patient-dashboard.html" class="mc-mobile-nav-item"><i class="bi bi-grid"></i><span>Home</span></a></li>
+      <li><a href="book-appointment.html" class="mc-mobile-nav-item active"><i class="bi bi-calendar-plus-fill"></i><span>Book</span></a></li>
+      <li><a href="patient-appointments.html" class="mc-mobile-nav-item"><i class="bi bi-calendar-check"></i><span>Sessions</span></a></li>
+      <li><a href="wellness-checkin.html" class="mc-mobile-nav-item"><i class="bi bi-heart-pulse"></i><span>Check-in</span></a></li>
+      <li><a href="patient-profile.html" class="mc-mobile-nav-item"><i class="bi bi-person"></i><span>Profile</span></a></li>
+    </ul>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/patient.js"></script>
+</body>
+</html>

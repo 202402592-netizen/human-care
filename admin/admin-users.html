@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User & Identity Governance Directory — MindCare Admin Portal</title>
+  <meta name="description" content="Role-based access control, account lifecycle, and HIPAA least-privilege identity management.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body style="background-color: var(--mc-bg-warm);">
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Admin Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo" style="background: linear-gradient(135deg, #281139 0%, #5b426d 100%);">
+          <i class="bi bi-shield-lock"></i>
+        </div>
+        <div>
+          <span class="fw-bold text-dark d-block">HumanCare</span>
+          <span class="badge bg-dark text-white border small" style="font-size: 0.65rem;">HIPAA Tier 4 Oversight</span>
+        </div>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li><a href="admin-dashboard.html" class="mc-sidebar-link"><i class="bi bi-grid-1x2"></i> Platform Governance</a></li>
+        <li><a href="admin-therapists.html" class="mc-sidebar-link"><i class="bi bi-patch-check"></i> Psychologist Credentialing</a></li>
+        <li><a href="admin-users.html" class="mc-sidebar-link active"><i class="bi bi-people-fill"></i> User Management</a></li>
+        <li><a href="admin-appointments.html" class="mc-sidebar-link"><i class="bi bi-calendar-check"></i> Appointment Oversight</a></li>
+        <li><a href="admin-dashboard.html#audit" class="mc-sidebar-link"><i class="bi bi-journal-medical"></i> Audit Logs</a></li>
+        <li><a href="admin-settings.html" class="mc-sidebar-link"><i class="bi bi-gear"></i> Platform Settings</a></li>
+      </ul>
+
+      <!-- Admin Profile Card in Sidebar -->
+      <div class="pt-3 border-top mt-auto">
+        <div class="d-flex align-items-center gap-2 mb-2 px-2">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" 
+               class="mc-avatar mc-avatar-sm" alt="Dr. Vance">
+          <div class="overflow-hidden">
+            <strong class="d-block text-dark small text-truncate">Dr. Marcus Vance</strong>
+            <span class="text-muted small" style="font-size: 0.72rem;">Chief Medical Admin</span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center px-2 small">
+          <span class="badge bg-primary-subtle text-primary" style="font-size: 0.68rem;">SuperAdmin</span>
+          <a href="../login.html" class="text-danger text-decoration-none small"><i class="bi bi-box-arrow-right me-1"></i>Logout</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="mc-portal-content">
+      <!-- Top Action Bar -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+        <div class="d-flex align-items-center gap-3">
+          <div class="input-group input-group-sm" style="max-width: 240px;">
+            <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+            <input type="text" class="form-control" placeholder="Search clinicians, ID...">
+          </div>
+          <div class="d-none d-md-flex align-items-center gap-2 small">
+            <a href="admin-dashboard.html" class="badge bg-white text-muted border text-decoration-none py-2 px-3 rounded-pill">Governance</a>
+            <a href="admin-therapists.html" class="badge bg-white text-muted border text-decoration-none py-2 px-3 rounded-pill">Credentialing</a>
+            <span class="badge bg-primary text-white py-2 px-3 rounded-pill">Oversight</span>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge bg-success-subtle text-success py-2 px-3 rounded-pill small">
+            <i class="bi bi-check-circle-fill me-1"></i> Compliance Enforced
+          </span>
+          <button class="btn btn-mc-primary btn-sm rounded-pill" onclick="MindCareUI.showToast('Practitioner verification modal prepped.', 'info')">
+            <i class="bi bi-patch-check me-1"></i> Verify Practitioner
+          </button>
+          <button type="button" class="btn btn-light rounded-circle p-2 text-dark position-relative shadow-sm" style="width: 38px; height: 38px;">
+            <i class="bi bi-bell"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">4</span>
+          </button>
+          <div class="mc-brand-logo" style="width: 36px; height: 36px; font-size: 0.95rem;"><i class="bi bi-shield-check"></i></div>
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" 
+               class="mc-avatar mc-avatar-sm" alt="Admin">
+        </div>
+      </div>
+
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
+        <div>
+          <span class="mc-badge mc-badge-lavender mb-1" style="font-size: 0.72rem;">
+            <i class="bi bi-circle-fill text-primary me-1" style="font-size: 6px;"></i> ZERO-TRUST IDENTITY • Cluster: US-East HIPAA Enclave
+          </span>
+          <h2 class="fw-bold text-dark mb-1">User & Identity Governance Directory</h2>
+          <p class="text-muted small mb-0">Role-based access control, account lifecycle, and HIPAA least-privilege identity management.</p>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill" onclick="MindCareUI.showToast('Generating Access Review Log report...', 'info')">
+            <i class="bi bi-clock-history me-1"></i> Access Review Logs
+          </button>
+          <button type="button" class="btn btn-mc-primary btn-sm rounded-pill" onclick="MindCareUI.showToast('Provision Identity modal activated.', 'info')">
+            <i class="bi bi-person-plus-fill me-1"></i> Provision Identity
+          </button>
+        </div>
+      </div>
+
+      <!-- Confidentiality Enclave Banner -->
+      <div class="mc-card p-3 mb-4" style="background: linear-gradient(135deg, #f7effd 0%, #fff7fd 100%); border-left: 4px solid var(--mc-primary) !important;">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <div class="d-flex align-items-center gap-3">
+            <div style="width: 40px; height: 40px; border-radius: 50%; background: #ede0f7; display: flex; align-items: center; justify-content: center;">
+              <i class="bi bi-lock-fill text-primary fs-5"></i>
+            </div>
+            <div>
+              <div class="d-flex align-items-center gap-2">
+                <strong class="text-dark small">Confidentiality Enclave Active</strong>
+                <span class="badge bg-light text-primary border small" style="font-size: 0.68rem;">AES-256-GCM Hardware Mask</span>
+              </div>
+              <p class="text-muted small mb-0" style="font-size: 0.78rem;">
+                Patient psychotherapy journals, video recordings, and clinical logs are cryptographically masked from admin personnel.
+              </p>
+            </div>
+          </div>
+          <div class="d-flex gap-3 small">
+            <span class="badge bg-white text-success border rounded-pill py-1 px-3"><i class="bi bi-check-circle-fill me-1"></i>BAA Sign-off Valid</span>
+            <a href="admin-settings.html" class="text-muted text-decoration-none">Security Key Vault &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Top Stat Cards (Matching Mockup) -->
+      <div class="row g-3 mb-4">
+        <div class="col-sm-6 col-lg-3">
+          <div class="mc-stat-card h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="text-muted small fw-semibold" style="font-size: 0.72rem;">TOTAL USERS</span>
+              <div class="mc-stat-icon lavender mc-avatar-sm" style="width: 28px; height: 28px; font-size: 0.85rem;"><i class="bi bi-people-fill"></i></div>
+            </div>
+            <div class="mc-stat-val fs-3">24,892 <span class="text-success fs-6 fw-bold">+3.4%</span></div>
+            <div class="text-muted small mt-1" style="font-size: 0.7rem;">Patients: <strong>21,450</strong> • Clinicians: <strong>384</strong> • Admins: <strong>58</strong></div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="mc-stat-card h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="text-muted small fw-semibold" style="font-size: 0.72rem;">2FA / MFA ENFORCED</span>
+              <div class="mc-stat-icon mint mc-avatar-sm" style="width: 28px; height: 28px; font-size: 0.85rem;"><i class="bi bi-shield-lock-fill"></i></div>
+            </div>
+            <div class="mc-stat-val fs-3 text-success">100%</div>
+            <span class="text-muted small" style="font-size: 0.7rem;"><i class="bi bi-check2 text-success me-1"></i>0 bypass exceptions configured (FIDO2 / TOTP Mandatory)</span>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="mc-stat-card h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="text-muted small fw-semibold" style="font-size: 0.72rem;">GDPR/HIPAA EXPORTS</span>
+              <div class="mc-stat-icon lavender mc-avatar-sm" style="width: 28px; height: 28px; font-size: 0.85rem;"><i class="bi bi-download"></i></div>
+            </div>
+            <div class="mc-stat-val fs-3">2 <span class="fs-6 fw-normal text-muted">Pending Decryption</span></div>
+            <span class="text-danger small" style="font-size: 0.7rem;">SLA Deadline: &lt; 14h (Priority)</span>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="mc-stat-card h-100 p-3 border-danger">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="text-muted small fw-semibold" style="font-size: 0.72rem;">DELETION REQUESTS</span>
+              <div class="mc-stat-icon peach mc-avatar-sm" style="width: 28px; height: 28px; font-size: 0.85rem;"><i class="bi bi-person-x"></i></div>
+            </div>
+            <div class="mc-stat-val fs-3 text-danger">1 <span class="fs-6 fw-normal text-muted">Awaiting Medical Review</span></div>
+            <span class="text-muted small" style="font-size: 0.7rem;">Patient #HC-9104 (Review Queue)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search & Filters -->
+      <div class="mc-card p-3 mb-4 bg-white">
+        <div class="row g-2 align-items-center">
+          <div class="col-md-4">
+            <div class="input-group input-group-sm">
+              <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+              <input type="text" class="form-control" placeholder="Search by User ID (e.g. #HC-8821)..." id="userDirectorySearch">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <select class="form-select form-select-sm rounded-pill">
+              <option>All Roles (All Privileges)</option>
+              <option>Patients Only</option>
+              <option>Practitioners Only</option>
+              <option>System Administrators</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <select class="form-select form-select-sm rounded-pill">
+              <option>All Account Statuses</option>
+              <option>Active</option>
+              <option>In Session</option>
+              <option>Deletion Requested</option>
+            </select>
+          </div>
+          <div class="col-md-2 d-flex gap-2">
+            <select class="form-select form-select-sm rounded-pill">
+              <option>MFA Enforced (100%)</option>
+            </select>
+            <button type="button" class="btn btn-outline-secondary btn-sm rounded-circle p-1" style="width: 32px; height: 32px;" onclick="MindCareUI.showToast('Directory refreshed.', 'info')">
+              <i class="bi bi-arrow-clockwise"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Identity Subjects Table (4 Highlighted Records matching Mockup) -->
+      <div class="mc-card p-4 bg-white mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <h5 class="fw-bold text-dark mb-0">Identity Subjects</h5>
+            <span class="badge bg-light text-primary border small">4 Highlighted Records</span>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-secondary btn-sm rounded-pill" onclick="MindCareUI.showToast('Column config drawer toggled.', 'info')">
+              <i class="bi bi-sliders me-1"></i> Column Config
+            </button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill" onclick="MindCareUI.showToast('Exporting identity audit CSV...', 'info')">
+              <i class="bi bi-download me-1"></i> Export Audit (CSV)
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="bg-light text-muted small" style="font-size: 0.72rem;">
+              <tr>
+                <th class="ps-3">USER / IDENTITY PROFILE</th>
+                <th>ROLE & CREDENTIALS</th>
+                <th>SECURITY & MFA</th>
+                <th>GOVERNANCE ASSOCIATIONS</th>
+                <th>ACCOUNT LIFECYCLE</th>
+                <th class="pe-3 text-end">ADMINISTRATIVE ACTION</th>
+              </tr>
+            </thead>
+            <tbody class="small">
+              <!-- Row 1: Maya Lin -->
+              <tr>
+                <td class="ps-3">
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" 
+                         class="mc-avatar mc-avatar-sm" alt="Maya">
+                    <div>
+                      <div class="d-flex align-items-center gap-1">
+                        <strong class="text-dark">Maya Lin</strong>
+                        <span class="badge bg-primary-subtle text-primary small" style="font-size: 0.65rem;">Patient</span>
+                      </div>
+                      <span class="text-muted" style="font-size: 0.7rem;">ID: #HC-8821 • m***n@priv-mail.net</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <strong class="d-block text-dark" style="font-size: 0.75rem;">Standard Patient EMR</strong>
+                  <span class="text-muted" style="font-size: 0.68rem;">Tier-1 Consent Signed</span>
+                </td>
+                <td>
+                  <span class="badge bg-light text-primary border small"><i class="bi bi-shield-check me-1"></i>2FA Enabled</span>
+                  <span class="text-muted d-block" style="font-size: 0.68rem;">TOTP Authenticator</span>
+                </td>
+                <td>
+                  <span class="text-muted d-block" style="font-size: 0.7rem;">Assigned: <strong>Dr. Elena Rostova</strong></span>
+                  <span class="text-muted" style="font-size: 0.68rem;">Weekly Cognitive Behavioral Therapy</span>
+                </td>
+                <td>
+                  <span class="badge bg-success-subtle text-success small">● Active</span>
+                  <span class="text-muted d-block" style="font-size: 0.68rem;">Last active 12m ago</span>
+                </td>
+                <td class="pe-3 text-end">
+                  <div class="d-flex gap-1 justify-content-end">
+                    <button class="btn btn-outline-primary btn-sm py-1 px-2 rounded-pill" style="font-size: 0.72rem;" onclick="MindCareUI.showToast('Inspecting Maya Lin security audit profile...', 'info')">
+                      View Audit Profile
+                    </button>
+                    <button class="btn btn-light btn-sm py-1 px-2 text-muted border rounded-pill" style="font-size: 0.72rem;" onclick="MindCareUI.showToast('Exported pseudonymized metadata.', 'info')">
+                      Export Metadata
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 2: Dr. Elena Rostova -->
+              <tr>
+                <td class="ps-3">
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=80&q=80" 
+                         class="mc-avatar mc-avatar-sm" alt="Dr. Rostova">
+                    <div>
+                      <div class="d-flex align-items-center gap-1">
+                        <strong class="text-dark">Dr. Elena Rostova</strong>
+                        <span class="badge bg-secondary-subtle text-dark small" style="font-size: 0.65rem;">Practitioner</span>
+                      </div>
+                      <span class="text-muted" style="font-size: 0.7rem;">ID: #PR-4402 • NPI: 1982740921</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <strong class="d-block text-success" style="font-size: 0.75rem;"><i class="bi bi-patch-check-fill me-1"></i>NPI Verified</strong>
+                  <span class="text-muted" style="font-size: 0.68rem;">PsyD Clinical License (CA-Active)</span>
+                </td>
+                <td>
+                  <span class="badge bg-primary text-white small"><i class="bi bi-key-fill me-1"></i>FIDO2 Security Key</span>
+                  <span class="text-muted d-block" style="font-size: 0.68rem;">YubiKey Tier-4 Hardened</span>
+                </td>
+                <td>
+                  <strong class="d-block text-dark" style="font-size: 0.72rem;">28 Active Patients</strong>
+                  <span class="text-muted" style="font-size: 0.68rem;">Supervising 1 Clinical Resident</span>
+                </td>
+                <td>
+                  <span class="badge bg-primary-subtle text-primary small">● Active In Session</span>
+                  <span class="text-muted d-block" style="font-size: 0.68rem;">Encrypted RTC</span>
+                </td>
+                <td class="pe-3 text-end">
+                  <button class="btn btn-mc-primary btn-sm py-1 px-3 rounded-pill" style="font-size: 0.72rem;" onclick="MindCareUI.showToast('Practitioner role management drawer opened.', 'info')">
+                    Manage Role
+                  </button>
+                </td>
+              </tr>
+
+              <!-- Row 3: Dr. Marcus Vance -->
+              <tr>
+                <td class="ps-3">
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" 
+                         class="mc-avatar mc-avatar-sm" alt="Dr. Vance">
+                    <div>
+                      <div class="d-flex align-items-center gap-1">
+                        <strong class="text-dark">Dr. Marcus Vance</strong>
+                        <span class="badge bg-dark text-white small" style="font-size: 0.65rem;">SuperAdmin</span>
+                      </div>
+                      <span class="text-muted" style="font-size: 0.7rem;">ID: #AD-0012 • Chief Medical Admin</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <strong class="d-block text-dark" style="font-size: 0.75rem;">Full Governance Role</strong>
+                  <span class="text-muted" style="font-size: 0.68rem;">HIPAA Designated Privacy Officer</span>
+                </td>
+                <td>
+                  <span class="badge bg-dark text-white small"><i class="bi bi-cpu-fill me-1"></i>Dual YubiKey MFA</span>
+                  <span class="text-muted d-block" style="font-size: 0.68rem;">Biometric Bound (PKI)</span>
+                </td>
+                <td>
+                  <strong class="d-block text-dark" style="font-size: 0.72rem;">Whole Organization Oversight</strong>
+                  <span class="text-muted" style="font-size: 0.68rem;">Master Audit Log Reader</span>
+                </td>
+                <td>
+                  <span class="badge bg-success-subtle text-success small">● Active Session</span>
+                  <span class="text-muted d-block" style="font-size: 0.68rem;">Current Terminal (Auth Valid)</span>
+                </td>
+                <td class="pe-3 text-end">
+                  <span class="badge bg-light text-muted border small" style="font-size: 0.72rem;">Immutable Privileges</span>
+                </td>
+              </tr>
+
+              <!-- Row 4: John Doe (Deletion Requested) -->
+              <tr class="table-danger-subtle">
+                <td class="ps-3">
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" 
+                         class="mc-avatar mc-avatar-sm" alt="John Doe">
+                    <div>
+                      <div class="d-flex align-items-center gap-1">
+                        <strong class="text-dark">John Doe</strong>
+                        <span class="badge bg-primary-subtle text-primary small" style="font-size: 0.65rem;">Patient</span>
+                      </div>
+                      <span class="text-muted" style="font-size: 0.7rem;">ID: #HC-9104 • j***e@domain-hold.org</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <strong class="d-block text-dark" style="font-size: 0.75rem;">Self-Service Account</strong>
+                  <span class="text-muted" style="font-size: 0.68rem;">Encrypted Session Tokens</span>
+                </td>
+                <td>
+                  <span class="badge bg-light text-primary border small">2FA Enforced</span>
+                  <span class="text-muted d-block" style="font-size: 0.68rem;">SMS Verification Vault</span>
+                </td>
+                <td>
+                  <span class="text-muted d-block" style="font-size: 0.7rem;">Former: <strong>Dr. Angela Wu</strong></span>
+                  <span class="text-muted" style="font-size: 0.68rem;">Discharged 42 days ago</span>
+                </td>
+                <td>
+                  <span class="badge bg-danger text-white small">● Deletion Requested</span>
+                  <span class="text-muted d-block" style="font-size: 0.68rem;">Submitted 18h ago (GDPR Art. 17)</span>
+                </td>
+                <td class="pe-3 text-end">
+                  <button class="btn btn-mc-primary btn-sm py-1 px-3 rounded-pill" style="font-size: 0.72rem;" onclick="MindCareUI.showToast('Opened medical review dialog for cryptographic purge request #HC-9104.', 'warning')">
+                    Review Deletion Request
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table Pagination -->
+        <div class="d-flex justify-content-between align-items-center pt-3 border-top flex-wrap gap-2 text-muted small" style="font-size: 0.72rem;">
+          <span>Showing 1–4 of 24,892 verified entries • <strong>100% Cryptographic Verification Rate</strong></span>
+          <nav>
+            <ul class="pagination pagination-sm m-0">
+              <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item disabled"><span class="page-link">...</span></li>
+              <li class="page-item"><a class="page-link" href="#">622</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Bottom Three Governance Cards (Matching Mockup) -->
+      <div class="row g-3">
+        <!-- Card 1: Dual-Party Signoff Pipeline -->
+        <div class="col-md-4">
+          <div class="mc-card p-3 bg-white h-100">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <strong class="text-dark small">Dual–Party Signoff Pipeline</strong>
+              <i class="bi bi-shield-lock text-primary"></i>
+            </div>
+            <p class="text-muted small mb-3" style="font-size: 0.75rem; line-height: 1.45;">
+              Under HIPAA Security Rule §164.312, destructive account terminations and bulk data exports require dual administrative key endorsement.
+            </p>
+            <div class="p-2 bg-light rounded-3 d-flex justify-content-between align-items-center small" style="font-size: 0.72rem;">
+              <span>Pending Authorization Keys:</span>
+              <span class="badge bg-primary text-white rounded-pill">1 / 2 Collected</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Automatic Retention Rules -->
+        <div class="col-md-4">
+          <div class="mc-card p-3 bg-white h-100">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <strong class="text-dark small">Automatic Retention Rules</strong>
+              <i class="bi bi-hourglass-split text-primary"></i>
+            </div>
+            <p class="text-muted small mb-3" style="font-size: 0.75rem; line-height: 1.45;">
+              Adult therapy clinical notes are retained for 7 years post-discharge as mandated by state psychological boards before purge execution.
+            </p>
+            <div class="p-2 bg-light rounded-3 d-flex justify-content-between align-items-center small" style="font-size: 0.72rem;">
+              <span>Retention Compliance:</span>
+              <span class="badge bg-success-subtle text-success rounded-pill">Automated Legal Hold</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Zero-Knowledge Keyring -->
+        <div class="col-md-4">
+          <div class="mc-card p-3 bg-white h-100">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <strong class="text-dark small">Zero–Knowledge Keyring</strong>
+              <i class="bi bi-shield-check text-primary"></i>
+            </div>
+            <p class="text-muted small mb-3" style="font-size: 0.75rem; line-height: 1.45;">
+              Patient identity credentials map to client-side derived AES keys. Server personnel possess zero visibility into decrypted therapy sessions.
+            </p>
+            <div class="p-2 bg-light rounded-3 d-flex justify-content-between align-items-center small" style="font-size: 0.72rem;">
+              <span>Hardware Keystore:</span>
+              <span class="badge bg-light text-dark border">HSM Online (FIPS 140-3)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

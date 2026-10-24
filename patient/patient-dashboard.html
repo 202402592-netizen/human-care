@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Sanctuary — MindCare Patient Portal</title>
+  <meta name="description" content="Your personal mental wellness sanctuary. View upcoming sessions, track daily mood and somatic check-ins, and review prescribed care plans.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body style="background-color: var(--mc-bg-warm);">
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <div>
+          <span class="fw-bold text-dark d-block">HumanCare</span>
+          <span class="text-muted small" style="font-size: 0.72rem;">Patient Portal</span>
+        </div>
+      </div>
+
+      <!-- Primary Therapist Capsule in Sidebar -->
+      <div class="p-3 bg-light rounded-3 mb-3 border">
+        <span class="text-uppercase text-muted fw-bold d-block mb-1" style="font-size: 0.68rem; letter-spacing: 0.05em;">Primary Therapist</span>
+        <strong class="d-block text-dark small">Dr. Elena Rostova</strong>
+        <span class="text-muted small" style="font-size: 0.72rem;">Next Session: Today, 2:00 PM EST</span>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li><a href="patient-dashboard.html" class="mc-sidebar-link active"><i class="bi bi-grid-fill"></i> My Care Plan</a></li>
+        <li><a href="wellness-checkin.html" class="mc-sidebar-link"><i class="bi bi-heart-pulse"></i> Daily Mood & Journal</a></li>
+        <li><a href="patient-appointments.html" class="mc-sidebar-link"><i class="bi bi-calendar-check"></i> Appointments</a></li>
+        <li><a href="patient-exercises.html" class="mc-sidebar-link"><i class="bi bi-person-walking"></i> Prescribed Homework</a></li>
+        <li><a href="patient-breathwork.html" class="mc-sidebar-link"><i class="bi bi-wind"></i> 4-7-8 Breathwork Pacer</a></li>
+        <li><a href="cbt-thought-log.html" class="mc-sidebar-link"><i class="bi bi-pencil-square"></i> CBT Thought Log</a></li>
+        <li><a href="patient-favorites.html" class="mc-sidebar-link"><i class="bi bi-bookmark-heart"></i> Resources & Tools</a></li>
+        <li><a href="patient-profile.html" class="mc-sidebar-link"><i class="bi bi-person-gear"></i> Profile & Settings</a></li>
+      </ul>
+
+      <div class="p-3 bg-white border rounded-3 mt-auto text-center">
+        <div class="text-success small fw-bold mb-1"><i class="bi bi-shield-lock-fill me-1"></i> HIPAA Compliant</div>
+        <span class="text-muted small d-block" style="font-size: 0.7rem;">Your therapy records and session journals are end-to-end protected.</span>
+      </div>
+
+      <div class="pt-2 border-top mt-2">
+        <a href="../login.html" class="mc-sidebar-link text-danger">
+          <i class="bi bi-box-arrow-right text-danger"></i> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="mc-portal-content">
+      <!-- Top Patient Bar -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+        <div class="d-none d-md-flex align-items-center gap-2">
+          <a href="patient-dashboard.html" class="badge bg-primary text-white text-decoration-none py-2 px-3 rounded-pill small">My Care Plan</a>
+          <a href="wellness-checkin.html" class="badge bg-white text-dark border text-decoration-none py-2 px-3 rounded-pill small">Daily Mood & Journal</a>
+          <a href="patient-appointments.html" class="badge bg-white text-dark border text-decoration-none py-2 px-3 rounded-pill small">Appointments</a>
+          <a href="patient-favorites.html" class="badge bg-white text-dark border text-decoration-none py-2 px-3 rounded-pill small">Resources</a>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 ms-auto">
+          <button class="btn btn-danger btn-sm rounded-pill px-3 mc-crisis-trigger fw-bold">
+            <i class="bi bi-asterisk me-1"></i> Crisis 24/7
+          </button>
+          <button type="button" class="btn btn-light rounded-circle p-2 text-dark position-relative shadow-sm" style="width: 38px; height: 38px;" onclick="MindCareUI.showToast('Dr. Elena Rostova confirmed your 2:00 PM session.', 'info')">
+            <i class="bi bi-bell"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">1</span>
+          </button>
+          <div class="d-flex align-items-center gap-2 bg-white py-1 px-2 rounded-pill border">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" 
+                 class="mc-avatar mc-avatar-sm" alt="Maya Lin">
+            <div class="d-none d-sm-block pe-1">
+              <strong class="d-block text-dark small" style="line-height: 1.1;">Maya Lin</strong>
+              <span class="text-success small" style="font-size: 0.68rem;">● Care Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Welcome Banner & Upcoming Session Card -->
+      <div class="mc-card p-4 mb-4 bg-white border-0 shadow-sm" style="background: linear-gradient(135deg, #fbf7ff 0%, #ffffff 100%);">
+        <div class="row align-items-center g-3">
+          <div class="col-lg-8">
+            <span class="mc-badge mc-badge-lavender py-1 px-3 mb-2" style="font-size: 0.74rem;">
+              <i class="bi bi-flower1 text-primary me-1"></i> Mindful Space • Day 42 of Recovery Program
+            </span>
+            <h2 class="fw-bold text-dark mt-2 mb-1">Welcome back, Maya. Take a gentle breath.</h2>
+            <p class="text-muted small mb-0" style="font-size: 0.92rem; line-height: 1.5;">
+              Your physiological coherence reached an <strong>84% steady state</strong> this morning. Ground into the present moment.
+            </p>
+          </div>
+          <div class="col-lg-4">
+            <div class="p-3 rounded-3 text-center border" style="background: #fff7fd;">
+              <div class="d-flex align-items-center justify-content-center gap-2 mb-1">
+                <i class="bi bi-camera-video-fill text-primary"></i>
+                <span class="badge bg-warning-subtle text-warning-emphasis small">IN 3 HOURS</span>
+              </div>
+              <strong class="d-block text-dark">Dr. Elena Rostova</strong>
+              <span class="text-muted small d-block mb-2" style="font-size: 0.78rem;">Today • 2:00 PM EST</span>
+              <button class="btn btn-mc-primary w-100 py-2 rounded-pill fw-bold mc-launch-telehealth" data-session-title="Session 7: Anxiety Management & Sleep Hygiene" data-doctor-name="Dr. Elena Rostova">
+                <i class="bi bi-camera-video me-1"></i> Join Waiting Room
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Voice Note from Clinical Team Banner -->
+      <div class="mc-card p-3 mb-4" style="background: linear-gradient(135deg, #ede0f7 0%, #fff7fd 100%); border-left: 5px solid var(--mc-primary) !important;">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+          <div class="d-flex align-items-center gap-3">
+            <button type="button" class="btn btn-mc-primary rounded-circle p-2 d-flex align-items-center justify-content-center shadow-sm" style="width: 48px; height: 48px;" onclick="MindCareUI.showToast('Playing personalized somatic audio anchor from Dr. Elena Rostova...', 'info')">
+              <i class="bi bi-play-fill fs-4"></i>
+            </button>
+            <div>
+              <div class="d-flex align-items-center gap-2">
+                <span class="text-uppercase fw-bold text-primary small" style="font-size: 0.72rem;">Voice Note from Clinical Team</span>
+                <span class="badge bg-white text-muted border small">01:42</span>
+              </div>
+              <strong class="text-dark d-block">Dr. Elena sent a voice note: Vagal Shift Validation</strong>
+              <span class="text-muted small">Personalized somatic feedback following your elevated journal entry yesterday.</span>
+            </div>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <div class="mc-waveform d-none d-sm-flex">
+              <div class="mc-wave-bar active"></div>
+              <div class="mc-wave-bar"></div>
+              <div class="mc-wave-bar active"></div>
+              <div class="mc-wave-bar"></div>
+              <div class="mc-wave-bar active"></div>
+            </div>
+            <span class="badge bg-white text-plum border rounded-pill py-1 px-3 small"><i class="bi bi-check2 text-success me-1"></i>Ready</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Columns: Interactive Clinical Instrument + Sidebar -->
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <!-- Interactive Clinical Instrument: Daily Mood & Somatic Check-In -->
+          <div class="mc-card p-4 mb-4 bg-white">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div>
+                <span class="text-uppercase fw-bold text-muted small" style="font-size: 0.72rem;">Interactive Clinical Instrument</span>
+                <h5 class="fw-bold text-dark mb-0">Daily Mood & Somatic Check–In</h5>
+              </div>
+              <span class="badge bg-success-subtle text-success rounded-pill small"><i class="bi bi-shield-check me-1"></i>HIPAA Validated</span>
+            </div>
+
+            <!-- 1. Core Emotional State -->
+            <div class="mb-4">
+              <label class="form-label small fw-bold text-dark mb-2">1. Core Emotional State (Select Primary Anchor)</label>
+              <div class="row g-2 text-center" id="moodGrid">
+                <div class="col">
+                  <div class="p-2 rounded-3 border bg-light mc-mood-tile cursor-pointer" onclick="selectMoodTile(this, 'Calm')">
+                    <i class="bi bi-flower1 fs-4 text-primary d-block mb-1"></i>
+                    <strong class="d-block small text-dark">Calm</strong>
+                    <span class="text-muted" style="font-size: 0.68rem;">Ventral State</span>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="p-2 rounded-3 border bg-light mc-mood-tile cursor-pointer" onclick="selectMoodTile(this, 'Grateful')">
+                    <i class="bi bi-heart fs-4 text-danger d-block mb-1"></i>
+                    <strong class="d-block small text-dark">Grateful</strong>
+                    <span class="text-muted" style="font-size: 0.68rem;">Expansive</span>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="p-2 rounded-3 border bg-light mc-mood-tile cursor-pointer" onclick="selectMoodTile(this, 'Anxious')">
+                    <i class="bi bi-activity fs-4 text-warning d-block mb-1"></i>
+                    <strong class="d-block small text-dark">Anxious</strong>
+                    <span class="text-muted" style="font-size: 0.68rem;">Sympathetic</span>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="p-2 rounded-3 border bg-light mc-mood-tile cursor-pointer" onclick="selectMoodTile(this, 'Exhausted')">
+                    <i class="bi bi-moon fs-4 text-secondary d-block mb-1"></i>
+                    <strong class="d-block small text-dark">Exhausted</strong>
+                    <span class="text-muted" style="font-size: 0.68rem;">Dorsal Drift</span>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="p-2 rounded-3 border bg-primary text-white mc-mood-tile cursor-pointer selected" onclick="selectMoodTile(this, 'Grounded')">
+                    <i class="bi bi-patch-check-fill fs-4 text-white d-block mb-1"></i>
+                    <strong class="d-block small text-white">Grounded</strong>
+                    <span class="text-white-50" style="font-size: 0.68rem;">Integrated</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. SUDS Rating Slider -->
+            <div class="mb-4">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label class="form-label small fw-bold text-dark mb-0">2. SUDS Rating (Subjective Units of Distress Scale)</label>
+                <strong class="fs-5 text-primary" id="sudsLiveVal">28 <span class="fs-6 text-muted fw-normal">/ 100</span></strong>
+              </div>
+              <span class="text-muted small d-block mb-2" style="font-size: 0.75rem;">From 0 (complete serenity) to 100 (maximum distress)</span>
+              <input type="range" class="form-range" min="0" max="100" value="28" id="sudsSlider" oninput="document.getElementById('sudsLiveVal').innerHTML = this.value + ' <span class=\'fs-6 text-muted fw-normal\'>/ 100</span>'">
+              <div class="d-flex justify-content-between text-muted small" style="font-size: 0.68rem;">
+                <span>0: Completely Serene</span>
+                <span>25: Mild Awareness</span>
+                <span>50: Moderate Alert</span>
+                <span>75: Severe Tension</span>
+                <span>100: Crisis Spike</span>
+              </div>
+            </div>
+
+            <!-- 3. Somatic Physical Sensation Mapping -->
+            <div class="mb-4">
+              <label class="form-label small fw-bold text-dark mb-1">3. Somatic Physical Sensation Mapping</label>
+              <div class="d-flex flex-wrap gap-2 pt-1">
+                <span class="mc-sensation-chip" onclick="this.classList.toggle('selected')">Chest tension</span>
+                <span class="mc-sensation-chip selected" onclick="this.classList.toggle('selected')"><i class="bi bi-check2"></i> Relaxed shoulders</span>
+                <span class="mc-sensation-chip selected" onclick="this.classList.toggle('selected')"><i class="bi bi-check2"></i> Clear mind</span>
+                <span class="mc-sensation-chip" onclick="this.classList.toggle('selected')">Solar plexus fluttering</span>
+                <span class="mc-sensation-chip" onclick="this.classList.toggle('selected')">Warm extremities</span>
+                <span class="mc-sensation-chip" onclick="this.classList.toggle('selected')">Jaw clenched</span>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center pt-3 border-top flex-wrap gap-2">
+              <span class="text-muted small"><i class="bi bi-clock-history me-1"></i> Last submitted: Yesterday at 8:45 PM</span>
+              <button type="button" class="btn btn-mc-primary py-2 px-4 rounded-pill fw-bold" onclick="MindCareUI.showToast('Today\'s somatic check-in saved and synced with care team.', 'success')">
+                <i class="bi bi-check2-circle me-1"></i> Save Today's Check-In
+              </button>
+            </div>
+          </div>
+
+          <!-- Biometric Integration: 7-Day Emotional Trajectory Chart -->
+          <div class="mc-card p-4 bg-white mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+              <div>
+                <span class="text-uppercase fw-bold text-muted small" style="font-size: 0.72rem;">Biometric Integration</span>
+                <h5 class="fw-bold text-dark mb-0">7–Day Emotional Trajectory</h5>
+              </div>
+              <div class="d-flex gap-3 small text-muted">
+                <span><i class="bi bi-circle-fill text-plum me-1"></i> SUDS Level</span>
+                <span><i class="bi bi-circle-fill text-primary me-1"></i> HRV Coherence %</span>
+              </div>
+            </div>
+
+            <!-- SVG 7-Day Trajectory Curve -->
+            <div class="p-3 bg-light rounded-3 my-2 position-relative">
+              <svg viewBox="0 0 600 140" class="w-100" style="height: 120px;">
+                <!-- SUDS declining curve (Good progress) -->
+                <path d="M 30,35 Q 120,45 210,65 T 390,90 T 570,98" fill="none" stroke="#281139" stroke-width="3" stroke-linecap="round"/>
+                <!-- HRV Coherence rising curve -->
+                <path d="M 30,110 Q 120,100 210,85 T 390,55 T 570,30" fill="none" stroke="#8a65ac" stroke-width="3" stroke-linecap="round"/>
+                <!-- Data nodes -->
+                <circle cx="30" cy="35" r="4" fill="#281139"/>
+                <circle cx="120" cy="45" r="4" fill="#281139"/>
+                <circle cx="210" cy="65" r="4" fill="#281139"/>
+                <circle cx="300" cy="72" r="4" fill="#281139"/>
+                <circle cx="390" cy="90" r="4" fill="#281139"/>
+                <circle cx="480" cy="94" r="4" fill="#281139"/>
+                <circle cx="570" cy="98" r="5" fill="#f69d7b" stroke="#ffffff" stroke-width="2"/>
+              </svg>
+
+              <div class="d-flex justify-content-between text-muted small mt-1" style="font-size: 0.72rem;">
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+                <span class="text-primary fw-bold">Today</span>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-3 mt-3" style="background: #fff7fd; border: 1px solid #ede0f7;">
+              <div class="d-flex align-items-start gap-2">
+                <i class="bi bi-activity text-primary fs-5 mt-1"></i>
+                <div class="small">
+                  <strong class="d-block text-dark">Clinical Correlation Note</strong>
+                  <span class="text-muted" style="line-height: 1.45;">
+                    Distress score dropped from 65 to 28 over 7 days. Notable HRV coherence leaps correspond directly with your <strong>4-7-8 breathwork sessions</strong> logged prior to 9:00 PM. Vagal resilience is trending upward.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Protocol, Private Journal, Psychoeducation -->
+        <div class="col-lg-4">
+          <!-- Card 1: Prescribed Protocol Daily Well-Being Plan -->
+          <div class="mc-card p-3 mb-4 bg-white">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-uppercase fw-bold text-muted small" style="font-size: 0.72rem;">Prescribed Protocol</span>
+              <span class="badge bg-primary text-white rounded-pill small">2/3</span>
+            </div>
+            <h6 class="fw-bold text-dark mb-3">Daily Well-Being Plan</h6>
+
+            <div class="d-flex flex-column gap-2 mb-3">
+              <!-- Item 1 -->
+              <div class="p-2 px-3 rounded-3 bg-light border small">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <strong class="text-dark"><i class="bi bi-check2-square text-success me-1"></i> 4–7–8 Breathwork</strong>
+                  <span class="badge bg-success-subtle text-success small">Completed</span>
+                </div>
+                <span class="text-muted d-block" style="font-size: 0.72rem;">8 cycles • Morning regulation with somatic check</span>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="p-2 px-3 rounded-3 bg-light border small">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <strong class="text-dark"><i class="bi bi-check2-square text-success me-1"></i> 3–Column CBT Framing</strong>
+                  <span class="badge bg-success-subtle text-success small">Completed</span>
+                </div>
+                <span class="text-muted d-block" style="font-size: 0.72rem;">Decatastrophizing work deadline cognitive distortions</span>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="p-2 px-3 rounded-3 bg-white border small">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <strong class="text-dark"><i class="bi bi-square text-muted me-1"></i> Evening Gratitude Scan</strong>
+                  <span class="badge bg-warning-subtle text-warning-emphasis small">Tonight</span>
+                </div>
+                <span class="text-muted d-block" style="font-size: 0.72rem;">3 tangible safety cues before 10:00 PM wind-down</span>
+              </div>
+            </div>
+
+            <div class="p-2 px-3 rounded-pill bg-light text-center small text-plum fw-semibold">
+              <i class="bi bi-fire text-danger me-1"></i> 5–Day Practice Streak Keep Going
+            </div>
+          </div>
+
+          <!-- Card 2: Private Journal (Encrypted) -->
+          <div class="mc-card p-3 mb-4 bg-white">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-lock-fill text-primary"></i>
+                <h6 class="fw-bold text-dark mb-0">Private Journal</h6>
+              </div>
+              <span class="badge bg-light text-muted border small">Encrypted</span>
+            </div>
+            <span class="text-muted small d-block mb-2" style="font-size: 0.72rem;">Only shared with Dr. Elena with your explicit consent.</span>
+
+            <div class="p-2 bg-light rounded-3 mb-2 small text-plum">
+              <span class="fw-bold d-block" style="font-size: 0.75rem;">Today's Reflective Prompt:</span>
+              <span class="fst-italic">"What brought you ease today?"</span>
+            </div>
+
+            <textarea class="form-control mb-2 small" rows="3" placeholder="Write freely here. Describe the sensory anchors, quiet moments, or micro-shifts you noticed..." style="font-size: 0.82rem;"></textarea>
+
+            <div class="form-check small mb-3">
+              <input class="form-check-input" type="checkbox" id="grantDoctorAccess" checked>
+              <label class="form-check-label text-muted" for="grantDoctorAccess" style="font-size: 0.75rem;">Grant Dr. Elena view access</label>
+            </div>
+
+            <button type="button" class="btn btn-mc-primary w-100 py-2 rounded-pill small fw-bold" onclick="MindCareUI.showToast('Journal entry encrypted and committed locally.', 'success')">
+              Save Entry
+            </button>
+          </div>
+
+          <!-- Card 3: Psychoeducation & Toolkit -->
+          <div class="mc-card p-3 bg-white" style="background: linear-gradient(135deg, #ede0f7 0%, #ffffff 100%);">
+            <span class="text-uppercase fw-bold text-primary small" style="font-size: 0.7rem;">Psychoeducation & Toolkit</span>
+            <h6 class="fw-bold text-dark mt-1 mb-1">Understanding The Polyvagal Ladder</h6>
+            <p class="text-muted small mb-2" style="font-size: 0.78rem; line-height: 1.45;">
+              Explore 6-minute guided somatic exercises to identify when you drop into dorsal shutdown or rise into calm ventral activation.
+            </p>
+            <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+              <a href="patient-favorites.html" class="text-primary text-decoration-none small fw-semibold">Open Exercise Module &rarr;</a>
+              <button class="btn btn-link text-danger p-0 text-decoration-none small mc-crisis-trigger">
+                <i class="bi bi-telephone me-1"></i> Immediate Support
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Quick Action Pills (Matching Mockup) -->
+      <div class="row g-3 mt-2">
+        <div class="col-md-4">
+          <a href="patient-breathwork.html" class="mc-card p-3 text-decoration-none d-flex align-items-center gap-3 bg-white h-100">
+            <div class="mc-stat-icon lavender" style="width: 40px; height: 40px; font-size: 1.1rem;"><i class="bi bi-wind"></i></div>
+            <div>
+              <strong class="d-block text-dark small">Box Breathing Pacer</strong>
+              <span class="text-muted" style="font-size: 0.72rem;">Immediate autonomic re-centering</span>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="patient-exercises.html" class="mc-card p-3 text-decoration-none d-flex align-items-center gap-3 bg-white h-100">
+            <div class="mc-stat-icon peach" style="width: 40px; height: 40px; font-size: 1.1rem;"><i class="bi bi-bookmark-check"></i></div>
+            <div>
+              <strong class="d-block text-dark small">Safety Anchors List</strong>
+              <span class="text-muted" style="font-size: 0.72rem;">8 personal cues co-created in therapy</span>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="cbt-thought-log.html" class="mc-card p-3 text-decoration-none d-flex align-items-center gap-3 bg-white h-100">
+            <div class="mc-stat-icon mint" style="width: 40px; height: 40px; font-size: 1.1rem;"><i class="bi bi-calendar2-check"></i></div>
+            <div>
+              <strong class="d-block text-dark small">Treatment Milestone 2</strong>
+              <span class="text-muted" style="font-size: 0.72rem;">Cognitive flexibility check • Oct 28</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/patient.js"></script>
+
+  <script>
+    function selectMoodTile(el, mood) {
+      document.querySelectorAll('.mc-mood-tile').forEach(t => {
+        t.className = 'p-2 rounded-3 border bg-light mc-mood-tile cursor-pointer';
+        const str = t.querySelector('strong');
+        if (str) str.className = 'd-block small text-dark';
+      });
+      el.className = 'p-2 rounded-3 border bg-primary text-white mc-mood-tile cursor-pointer selected';
+      const activeStr = el.querySelector('strong');
+      if (activeStr) activeStr.className = 'd-block small text-white';
+      MindCareUI.showToast('Core emotional anchor set to: ' + mood, 'info');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+apps/api/node_modules/
+apps/api/dist/
+apps/api/.env
+apps/api/coverage/
+*.log
+
+.env
+apps/api/.env
+node_modules/
+apps/api/node_modules/
+dist/
+apps/api/dist/

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy & HIPAA Clinical Protections — MindCare</title>
+  <meta name="description" content="MindCare's rigorous commitment to patient confidentiality, zero-knowledge emotional storage, HIPAA compliance, and GDPR data portability.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body style="background-color: var(--mc-bg-warm);">
+
+  <!-- Public Navigation -->
+  <nav class="navbar navbar-expand-lg mc-navbar sticky-top bg-white border-bottom shadow-xs">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <span class="fw-bold text-dark fs-4">HumanCare</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mcNav" aria-controls="mcNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mcNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="therapists.html">Find Therapists</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="services.html">Clinical Services</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="resources.html">Resources & Articles</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="help-center.html">Help Center</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2">
+          <a href="#" class="btn btn-outline-danger btn-sm rounded-pill px-3 mc-crisis-trigger">
+            <i class="bi bi-telephone-fill me-1"></i> Crisis Lifeline 988
+          </a>
+          <a href="login.html" class="btn btn-mc-primary btn-sm rounded-pill px-3">
+            <i class="bi bi-person-circle me-1"></i> Portal Sign In
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <header class="py-5 bg-white border-bottom text-center">
+    <div class="container py-3">
+      <span class="mc-badge mc-badge-mint py-1 px-3 mb-2">
+        <i class="bi bi-shield-lock-fill me-1 text-success"></i> Patient Trust & Confidentiality Architecture
+      </span>
+      <h1 class="display-6 fw-bold text-dark mb-2">Clinical Privacy & HIPAA Safeguards</h1>
+      <p class="text-muted lead mx-auto mb-0" style="max-width: 650px;">
+        Your therapeutic disclosures, somatic telemetry, and private reflections are protected by stringent healthcare privacy standards and cryptographic isolation.
+      </p>
+    </div>
+  </header>
+
+  <!-- Content Section -->
+  <main class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Table of Contents Sidebar -->
+        <div class="col-lg-3">
+          <div class="mc-card p-3 bg-white sticky-top" style="top: 100px;">
+            <h6 class="fw-bold text-dark mb-3">Policy Sections</h6>
+            <nav class="nav flex-column gap-1 small">
+              <a class="nav-link text-muted px-2 py-1 rounded hover-bg-light" href="#hipaa-overview">1. HIPAA & HITECH Foundation</a>
+              <a class="nav-link text-muted px-2 py-1 rounded hover-bg-light" href="#memory-isolation">2. Phase 1 In-Memory Guarantee</a>
+              <a class="nav-link text-muted px-2 py-1 rounded hover-bg-light" href="#telehealth-security">3. Telehealth Encryption (AES-256)</a>
+              <a class="nav-link text-muted px-2 py-1 rounded hover-bg-light" href="#gdpr-rights">4. GDPR & Patient Rights</a>
+              <a class="nav-link text-muted px-2 py-1 rounded hover-bg-light" href="#mandatory-reporting">5. Mandated Safety Exceptions</a>
+              <a class="nav-link text-muted px-2 py-1 rounded hover-bg-light" href="#data-dpo">6. Data Protection Officer Contact</a>
+            </nav>
+
+            <div class="pt-3 mt-3 border-top">
+              <button class="btn btn-outline-secondary btn-sm w-100 rounded-pill" onclick="simulateExportPrivacyPdf()">
+                <i class="bi bi-file-earmark-pdf me-1"></i> Download PDF Summary
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Legal / Policy Body -->
+        <div class="col-lg-9">
+          <div class="mc-card p-4 p-md-5 bg-white mb-4">
+            <!-- Last Updated Capsule -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 pb-3 mb-4 border-bottom">
+              <span class="text-muted small"><strong>Effective Date:</strong> October 2026 | Version 2.4</span>
+              <span class="badge bg-success-subtle text-success rounded-pill px-3 py-1">Audited Compliance</span>
+            </div>
+
+            <!-- Section 1 -->
+            <section id="hipaa-overview" class="mb-5">
+              <h3 class="fw-bold text-dark mb-3">1. HIPAA & HITECH Compliance Foundation</h3>
+              <p class="text-muted" style="line-height: 1.7;">
+                HumanCare operates in full compliance with the Health Insurance Portability and Accountability Act of 1996 (HIPAA) and the Health Information Technology for Economic and Clinical Health (HITECH) Act. We maintain strict Administrative, Physical, and Technical safeguards to ensure the confidentiality, integrity, and availability of all electronic Protected Health Information (ePHI).
+              </p>
+              <div class="p-3 bg-light rounded-4 border-start border-4 border-primary">
+                <strong class="text-dark d-block mb-1">Business Associate Agreements (BAA):</strong>
+                <p class="small text-muted mb-0">
+                  Every technical vendor, infrastructure hosting provider, and certified telehealth transport protocol maintains signed BAAs adhering to 45 CFR § 164.502(e) and § 164.504(e).
+                </p>
+              </div>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="memory-isolation" class="mb-5">
+              <h3 class="fw-bold text-dark mb-3">2. Phase 1 In-Memory Ephemeral Storage Guarantee</h3>
+              <p class="text-muted" style="line-height: 1.7;">
+                In accordance with our strict privacy-first architecture for Phase 1, sensitive mental health notes, emotional journal reflections, subjective distress units (SUDS), and AI conversational exchanges are stored <strong>strictly in volatile browser RAM memory (`window.mindcareState`)</strong>.
+              </p>
+              <ul class="text-muted small ps-3 mb-3" style="line-height: 1.7;">
+                <li><strong>No Unencrypted LocalStorage:</strong> Journal narratives and sensitive clinical check-ins are NEVER written to persistent browser cookies or localStorage.</li>
+                <li><strong>No External Telemetry Tracking:</strong> Phase 1 features no third-party tracking scripts, advertising beacons, or pixel trackers (e.g. Meta Pixel, TikTok, or Google Ads tags are strictly excluded).</li>
+                <li><strong>Session Volatility:</strong> When you close your browser tab or sign out, sensitive in-memory reflections are immediately wiped from memory.</li>
+              </ul>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="telehealth-security" class="mb-5">
+              <h3 class="fw-bold text-dark mb-3">3. Telehealth Encryption & PSYPACT Standards</h3>
+              <p class="text-muted" style="line-height: 1.7;">
+                All peer-to-peer telehealth sessions are conducted through encrypted WebRTC protocols utilizing Datagram Transport Layer Security (DTLS) and Secure Real-time Transport Protocol (SRTP) with AES-256 bit symmetric key encryption.
+              </p>
+              <p class="text-muted" style="line-height: 1.7;">
+                All clinical psychologists providing telehealth across state lines are credentialed through <strong>PSYPACT (Psychology Interjurisdictional Compact)</strong> with active Authority to Practice Interjurisdictional Telepsychology (APIT) numbers, adhering to the ethical standards of the American Psychological Association (APA).
+              </p>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="gdpr-rights" class="mb-5">
+              <h3 class="fw-bold text-dark mb-3">4. GDPR & Patient Data Sovereignty</h3>
+              <p class="text-muted" style="line-height: 1.7;">
+                Regardless of your geographic location, HumanCare extends comprehensive patient data sovereignty rights:
+              </p>
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <div class="p-3 bg-light rounded-4 h-100 border">
+                    <h6 class="fw-bold text-dark small mb-1"><i class="bi bi-file-earmark-arrow-down text-primary me-1"></i> Right of Access & Portability</h6>
+                    <p class="small text-muted mb-0">Patients may request a complete machine-readable JSON export of their clinical history and Superbills at any time.</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="p-3 bg-light rounded-4 h-100 border">
+                    <h6 class="fw-bold text-dark small mb-1"><i class="bi bi-trash3 text-danger me-1"></i> Right to Erasure ("Forgotten")</h6>
+                    <p class="small text-muted mb-0">Patients may request permanent account purge subject to mandatory clinical record retention laws (typically 7 years).</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="mandatory-reporting" class="mb-5">
+              <h3 class="fw-bold text-dark mb-3">5. Mandatory Safety & Duty-to-Protect Exceptions</h3>
+              <p class="text-muted" style="line-height: 1.7;">
+                While clinician-patient privilege is sacred, licensed mental health professionals are legally and ethically bound by federal and state Mandated Reporting statutes in the following isolated circumstances:
+              </p>
+              <ul class="text-muted small ps-3 mb-0" style="line-height: 1.7;">
+                <li>Imminent risk of severe physical self-harm or suicide where emergency stabilization is urgently required.</li>
+                <li>Reasonable suspicion or knowledge of child abuse, neglect, or elder exploitation.</li>
+                <li>Clear and imminent threat of physical violence directed toward a designated individual (Tarasoff duty to warn).</li>
+              </ul>
+            </section>
+
+            <!-- Section 6 -->
+            <section id="data-dpo">
+              <h3 class="fw-bold text-dark mb-3">6. Clinical Data Protection Officer</h3>
+              <p class="text-muted" style="line-height: 1.7;">
+                If you have inquiries concerning privacy safeguards, wish to lodge an ethics inquiry, or submit a formal record transfer request, contact our Privacy Officer:
+              </p>
+              <div class="p-3 rounded-4 bg-light border">
+                <strong class="text-dark d-block">Office of Clinical Governance & HIPAA Compliance</strong>
+                <span class="small text-muted d-block">Attention: Alexandra Vance, Compliance Director</span>
+                <span class="small text-muted d-block">Email: <a href="mailto:privacy@mindcare.org" class="text-teal" style="color: var(--mc-primary);">privacy@mindcare.org</a></span>
+                <span class="small text-muted d-block">Secure HIPAA Escalation Line: +1 (800) 555-CARE (Ext. 4)</span>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mc-footer py-5 bg-white border-top">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+            <span class="fw-bold fs-4 text-dark">HumanCare</span>
+          </div>
+          <p class="text-muted small mb-3">
+            An evidence-based mental health platform pairing licensed doctoral-level psychologists with somatic autonomic regulation protocols.
+          </p>
+          <div class="text-success small fw-bold"><i class="bi bi-shield-check me-1"></i> HIPAA & PSYPACT Certified</div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="fw-bold text-dark mb-3">Navigation</h6>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="index.html" class="text-muted text-decoration-none">Home</a></li>
+            <li><a href="therapists.html" class="text-muted text-decoration-none">Therapist Directory</a></li>
+            <li><a href="services.html" class="text-muted text-decoration-none">Clinical Services</a></li>
+            <li><a href="resources.html" class="text-muted text-decoration-none">Educational Articles</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="fw-bold text-dark mb-3">Patient Sanctuary</h6>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="patient/patient-dashboard.html" class="text-muted text-decoration-none">My Care Plan</a></li>
+            <li><a href="patient/mood-tracker.html" class="text-muted text-decoration-none">Mood Tracker</a></li>
+            <li><a href="patient/journal.html" class="text-muted text-decoration-none">Emotional Journal</a></li>
+            <li><a href="patient/relaxation-studio.html" class="text-muted text-decoration-none">Relaxation Studio</a></li>
+            <li><a href="patient/wellness-goals.html" class="text-muted text-decoration-none">Wellness Goals</a></li>
+            <li><a href="patient/ai-companion.html" class="text-muted text-decoration-none">AI Companion</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="fw-bold text-dark mb-3">Support & Legal</h6>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="help-center.html" class="text-muted text-decoration-none">Help Center & FAQ</a></li>
+            <li><a href="privacy.html" class="text-muted text-decoration-none">Privacy Policy</a></li>
+            <li><a href="about.html" class="text-muted text-decoration-none">About Us</a></li>
+            <li><a href="contact.html" class="text-muted text-decoration-none">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="fw-bold text-dark mb-3">Portals</h6>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="login.html" class="text-muted text-decoration-none">Patient Login</a></li>
+            <li><a href="therapist-login.html" class="text-muted text-decoration-none">Therapist Portal</a></li>
+            <li><a href="admin/admin-dashboard.html" class="text-muted text-decoration-none">Clinical Operations</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top text-center text-muted small">
+        © 2026 HumanCare Mental Health Platform. Phase 1 Frontend Demonstration. Not medical advice.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    function simulateExportPrivacyPdf() {
+      MindCareUI.showToast('Generating official HIPAA Privacy & Security Statement PDF (Demo)...', 'info');
+      setTimeout(() => {
+        window.print();
+      }, 700);
+    }
+  </script>
+</body>
+</html>

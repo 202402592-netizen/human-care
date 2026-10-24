@@ -1,0 +1,3 @@
+import { IsDateString, IsIn, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
+export class CreateAppointmentDto { @IsString() therapistId!: string; @IsDateString() startsAt!: string; @IsOptional() @IsInt() @Min(15) @Max(180) durationMinutes?: number; @IsIn(['telehealth','in-clinic']) modality!: string; @IsOptional() @IsString() focus?: string; @IsOptional() @IsString() notes?: string; @IsOptional() @IsString() idempotencyKey?: string; }
+export class UpdateAppointmentStatusDto { @IsIn(['confirmed','completed','cancelled']) status!: string; @IsOptional() @IsString() cancellationReason?: string; }

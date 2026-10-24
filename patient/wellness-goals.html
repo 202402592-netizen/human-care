@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wellness Goals & Milestones — MindCare Sanctuary</title>
+  <meta name="description" content="Set evidence-based behavioral goals, track cognitive and somatic milestones, and earn achievement badges.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body style="background-color: var(--mc-bg-warm);">
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <div>
+          <span class="fw-bold text-dark d-block">HumanCare</span>
+          <span class="text-muted small" style="font-size: 0.72rem;">Patient Sanctuary</span>
+        </div>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li><a href="patient-dashboard.html" class="mc-sidebar-link"><i class="bi bi-grid"></i> Dashboard</a></li>
+        <li><a href="mood-tracker.html" class="mc-sidebar-link"><i class="bi bi-emoji-smile"></i> Mood Tracker</a></li>
+        <li><a href="journal.html" class="mc-sidebar-link"><i class="bi bi-journal-text"></i> Emotional Journal</a></li>
+        <li><a href="relaxation-studio.html" class="mc-sidebar-link"><i class="bi bi-wind"></i> Relaxation Studio</a></li>
+        <li><a href="wellness-goals.html" class="mc-sidebar-link active"><i class="bi bi-trophy-fill"></i> Wellness Goals</a></li>
+        <li><a href="ai-companion.html" class="mc-sidebar-link"><i class="bi bi-chat-heart"></i> AI Companion</a></li>
+        <li><a href="patient-exercises.html" class="mc-sidebar-link"><i class="bi bi-person-walking"></i> Prescribed Homework</a></li>
+        <li><a href="cbt-thought-log.html" class="mc-sidebar-link"><i class="bi bi-pencil-square"></i> CBT Thought Log</a></li>
+        <li><a href="patient-appointments.html" class="mc-sidebar-link"><i class="bi bi-calendar-check"></i> Appointments</a></li>
+        <li><a href="patient-profile.html" class="mc-sidebar-link"><i class="bi bi-person-gear"></i> Settings</a></li>
+      </ul>
+
+      <div class="p-3 bg-white border rounded-3 mt-auto text-center">
+        <div class="text-success small fw-bold mb-1"><i class="bi bi-trophy-fill text-warning me-1"></i> 4 Badges Unlocked</div>
+        <span class="text-muted small d-block" style="font-size: 0.7rem;">Consistent small behavioral micro-steps build lasting neurological rewiring.</span>
+      </div>
+
+      <div class="pt-2 border-top mt-2">
+        <a href="../login.html" class="mc-sidebar-link text-danger">
+          <i class="bi bi-box-arrow-right text-danger"></i> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="mc-portal-content">
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+        <div>
+          <span class="mc-badge mc-badge-mint py-1 px-3 mb-1">
+            <i class="bi bi-check2-circle me-1 text-success"></i> Behavioral Health Objectives
+          </span>
+          <h2 class="fw-bold text-dark mb-1">Wellness Goals & Achievements</h2>
+          <p class="text-muted small mb-0">Track your clinical care objectives, celebrate micro-victories, and cultivate self-efficacy.</p>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill" onclick="MindCareUI.openNotifications()">
+            <i class="bi bi-bell me-1"></i> Notifications
+          </button>
+          <button type="button" class="btn btn-mc-primary btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#newGoalModal">
+            <i class="bi bi-plus-lg me-1"></i> Add Custom Goal
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Summary Stats -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-3 col-6">
+          <div class="mc-card p-3 bg-white">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span class="badge bg-primary-subtle text-primary rounded-circle p-2"><i class="bi bi-flag-fill"></i></span>
+              <span class="text-muted small">Active Goals</span>
+            </div>
+            <h3 class="fw-bold text-dark mb-0" id="statActiveGoals">3</h3>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-6">
+          <div class="mc-card p-3 bg-white">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span class="badge bg-success-subtle text-success rounded-circle p-2"><i class="bi bi-check2-all"></i></span>
+              <span class="text-muted small">Average Progress</span>
+            </div>
+            <h3 class="fw-bold text-dark mb-0" id="statAvgProgress">77%</h3>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-6">
+          <div class="mc-card p-3 bg-white">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span class="badge bg-warning-subtle text-dark rounded-circle p-2"><i class="bi bi-fire"></i></span>
+              <span class="text-muted small">Current Streak</span>
+            </div>
+            <h3 class="fw-bold text-dark mb-0">5 Days</h3>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-6">
+          <div class="mc-card p-3 bg-white">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span class="badge bg-info-subtle text-info rounded-circle p-2"><i class="bi bi-award-fill"></i></span>
+              <span class="text-muted small">Badges Earned</span>
+            </div>
+            <h3 class="fw-bold text-dark mb-0" id="statBadgesEarned">4 / 6</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Goals List -->
+      <div class="row g-4 mb-4">
+        <div class="col-lg-8">
+          <div class="mc-card p-4 bg-white mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="fw-bold text-dark mb-0">Active Behavioral Goals</h5>
+              <span class="text-muted small">Click milestones to update live progress</span>
+            </div>
+
+            <!-- Dynamic Goals Container -->
+            <div class="d-flex flex-column gap-3" id="goalsContainer">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Weekly Micro-Challenges -->
+          <div class="mc-card p-4 bg-white">
+            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-lightning-charge-fill text-warning me-2"></i> Weekly Wellness Challenges</h5>
+            
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="p-3 rounded-4 border bg-light h-100 d-flex flex-column justify-content-between">
+                  <div>
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-success-subtle text-success rounded-pill px-2 py-1 small">+50 Calm Pts</span>
+                      <span class="text-muted small">Ends in 2 days</span>
+                    </div>
+                    <h6 class="fw-bold text-dark mb-1">10-Minute Mindful Walk</h6>
+                    <p class="small text-muted mb-3">Walk outdoors without headphones; notice 3 textures of tree bark or plants.</p>
+                  </div>
+                  <button type="button" class="btn btn-outline-success btn-sm rounded-pill w-100" onclick="completeChallenge(this, 'Mindful Walk')">
+                    <i class="bi bi-check2 me-1"></i> Mark Completed
+                  </button>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="p-3 rounded-4 border bg-light h-100 d-flex flex-column justify-content-between">
+                  <div>
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-primary-subtle text-primary rounded-pill px-2 py-1 small">+75 Calm Pts</span>
+                      <span class="text-muted small">Ends in 4 days</span>
+                    </div>
+                    <h6 class="fw-bold text-dark mb-1">Evening Screen Sunset</h6>
+                    <p class="small text-muted mb-3">Put digital devices in do-not-disturb mode 45 minutes prior to sleep.</p>
+                  </div>
+                  <button type="button" class="btn btn-outline-primary btn-sm rounded-pill w-100" onclick="completeChallenge(this, 'Evening Screen Sunset')">
+                    <i class="bi bi-check2 me-1"></i> Mark Completed
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Badges & Rewards -->
+        <div class="col-lg-4">
+          <div class="mc-card p-4 bg-white mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="fw-bold text-dark mb-0">Achievement Badges</h5>
+              <span class="badge bg-warning-subtle text-dark rounded-pill px-2 py-1 small">Evidence-Based</span>
+            </div>
+            <p class="small text-muted mb-3">Badges represent neuroplastic resilience milestones achieved across your MindCare journey.</p>
+
+            <div class="d-flex flex-column gap-3" id="badgesContainer">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Doctor Note -->
+          <div class="mc-card p-3 border-0 rounded-4" style="background-color: var(--mc-lavender-subtle);">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=100&q=80" class="rounded-circle" width="36" height="36" alt="Dr. Elena">
+              <div>
+                <strong class="d-block small text-dark">Dr. Elena Rostova</strong>
+                <span class="text-muted" style="font-size: 0.72rem;">Primary Therapist</span>
+              </div>
+            </div>
+            <p class="small text-muted mb-0" style="line-height: 1.5;">
+              "Maya, focusing on the continuity of your evening breathwork has produced measurable gains in your sleep latency. Excellent momentum this week."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create New Goal Modal -->
+  <div class="modal fade" id="newGoalModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg rounded-4">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold text-dark">Create Wellness Goal</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form onsubmit="handleCreateGoal(event)">
+          <div class="modal-body p-4">
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-dark mb-1">Goal Title</label>
+              <input type="text" class="form-control rounded-pill px-3" id="newGoalTitle" placeholder="e.g. Morning 5-Minute Sun Exposure" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-dark mb-1">Category</label>
+              <select class="form-select rounded-pill px-3" id="newGoalCategory">
+                <option value="Somatic Mindfulness">Somatic Mindfulness & Breath</option>
+                <option value="Cognitive Reframing">Cognitive Reframing (CBT)</option>
+                <option value="Sleep Hygiene">Sleep Hygiene</option>
+                <option value="Emotional Grounding">Emotional Grounding</option>
+                <option value="Social Connection">Social Connection & Boundaries</option>
+              </select>
+            </div>
+
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label small fw-bold text-dark mb-1">Target Frequency</label>
+                <input type="number" class="form-control rounded-pill px-3" id="newGoalTarget" value="7" min="1" max="30" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-bold text-dark mb-1">Unit</label>
+                <input type="text" class="form-control rounded-pill px-3" id="newGoalUnit" value="days/week" required>
+              </div>
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label small fw-bold text-dark mb-1">Actionable Micro-Steps</label>
+              <input type="text" class="form-control rounded-pill px-3 mb-2" id="newGoalStep1" placeholder="Step 1: e.g. Step outside within 30 mins of waking" required>
+              <input type="text" class="form-control rounded-pill px-3 mb-2" id="newGoalStep2" placeholder="Step 2: e.g. Sip warm water while looking at horizon">
+              <input type="text" class="form-control rounded-pill px-3" id="newGoalStep3" placeholder="Step 3: e.g. Take 3 deep coherent breaths">
+            </div>
+          </div>
+          <div class="modal-footer border-0 pt-0">
+            <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-mc-primary rounded-pill px-4 fw-bold">Create Goal</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/care-ui.js"></script>
+
+  <script>
+    function renderGoals() {
+      const goals = window.mindcareState ? window.mindcareState.getGoals() : [];
+      const container = document.getElementById('goalsContainer');
+      document.getElementById('statActiveGoals').textContent = goals.length;
+
+      let totalProg = 0;
+      container.innerHTML = goals.map(goal => {
+        totalProg += goal.progress;
+        return `
+          <div class="p-3 rounded-4 border bg-light">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div>
+                <span class="badge bg-secondary-subtle text-secondary rounded-pill px-2 py-1 small mb-1">${goal.category}</span>
+                <h6 class="fw-bold text-dark mb-0">${goal.title}</h6>
+              </div>
+              <div class="text-end">
+                <span class="fw-bold text-teal" style="color: var(--mc-primary); font-size: 1.1rem;">${goal.progress}%</span>
+                <span class="text-muted small d-block">${goal.current} / ${goal.target} ${goal.unit}</span>
+              </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress mb-3" style="height: 8px; border-radius: 99px;">
+              <div class="progress-bar bg-success" style="width: ${goal.progress}%; border-radius: 99px;"></div>
+            </div>
+
+            <!-- Milestones Checklist -->
+            <div class="d-flex flex-column gap-1">
+              ${goal.milestones.map((m, idx) => `
+                <div class="form-check cursor-pointer" onclick="toggleGoalStep('${goal.id}', ${idx})">
+                  <input class="form-check-input" type="checkbox" ${m.done ? 'checked' : ''} id="chk-${goal.id}-${idx}">
+                  <label class="form-check-label small ${m.done ? 'text-decoration-line-through text-muted' : 'text-dark'}" for="chk-${goal.id}-${idx}">
+                    ${m.text}
+                  </label>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const avg = goals.length ? Math.round(totalProg / goals.length) : 0;
+      document.getElementById('statAvgProgress').textContent = `${avg}%`;
+    }
+
+    function toggleGoalStep(goalId, stepIdx) {
+      if (window.mindcareState) {
+        window.mindcareState.toggleMilestone(goalId, stepIdx);
+        renderGoals();
+        MindCareUI.showToast('Milestone updated! Keep building continuity.', 'success');
+      }
+    }
+
+    function renderBadges() {
+      const badges = window.mindcareState ? window.mindcareState.getBadges() : [];
+      const container = document.getElementById('badgesContainer');
+      const unlockedCount = badges.filter(b => b.unlocked).length;
+      document.getElementById('statBadgesEarned').textContent = `${unlockedCount} / ${badges.length}`;
+
+      container.innerHTML = badges.map(b => {
+        return `
+          <div class="p-3 rounded-4 border ${b.unlocked ? 'bg-light border-warning-subtle' : 'bg-white text-muted'} d-flex align-items-center gap-3">
+            <div class="badge-icon-box rounded-circle d-flex align-items-center justify-content-center ${b.unlocked ? 'bg-warning text-dark' : 'bg-light text-muted'}" style="width: 46px; height: 46px; min-width: 46px; font-size: 1.3rem;">
+              <i class="bi ${b.icon}"></i>
+            </div>
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center">
+                <strong class="small ${b.unlocked ? 'text-dark' : 'text-muted'}">${b.title}</strong>
+                <span class="badge ${b.unlocked ? 'bg-success-subtle text-success' : 'bg-light text-secondary'} rounded-pill" style="font-size: 0.68rem;">
+                  ${b.unlocked ? 'Unlocked' : 'Locked'}
+                </span>
+              </div>
+              <p class="mb-0 small text-muted" style="font-size: 0.78rem; line-height: 1.3;">${b.desc}</p>
+              <span class="small text-muted" style="font-size: 0.7rem;">${b.date}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function handleCreateGoal(e) {
+      e.preventDefault();
+      const title = document.getElementById('newGoalTitle').value.trim();
+      const category = document.getElementById('newGoalCategory').value;
+      const target = parseInt(document.getElementById('newGoalTarget').value, 10);
+      const unit = document.getElementById('newGoalUnit').value.trim();
+
+      const m1 = document.getElementById('newGoalStep1').value.trim();
+      const m2 = document.getElementById('newGoalStep2').value.trim();
+      const m3 = document.getElementById('newGoalStep3').value.trim();
+
+      const milestones = [];
+      if (m1) milestones.push({ text: m1, done: false });
+      if (m2) milestones.push({ text: m2, done: false });
+      if (m3) milestones.push({ text: m3, done: false });
+
+      if (window.mindcareState) {
+        window.mindcareState.addGoal({
+          title,
+          category,
+          target,
+          unit,
+          milestones
+        });
+      }
+
+      const modalEl = document.getElementById('newGoalModal');
+      const bsModal = bootstrap.Modal.getInstance(modalEl);
+      if (bsModal) bsModal.hide();
+
+      renderGoals();
+      MindCareUI.showToast('New wellness goal initialized.', 'success');
+      e.target.reset();
+    }
+
+    function completeChallenge(btn, title) {
+      btn.disabled = true;
+      btn.classList.replace('btn-outline-success', 'btn-success');
+      btn.classList.replace('btn-outline-primary', 'btn-primary');
+      btn.innerHTML = '<i class="bi bi-check-lg me-1"></i> Completed (+Points Awarded)';
+      MindCareUI.showToast(`Challenge completed: ${title}! +50 Calm Points.`, 'success');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderGoals();
+      renderBadges();
+    });
+  </script>
+</body>
+</html>

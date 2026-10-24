@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinician Portal Sign In — MindCare Clinical</title>
+  <meta name="description" content="Secure clinical gateway for licensed psychologists, therapists, and behavioral health providers.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="d-flex flex-column min-vh-100" style="background: linear-gradient(135deg, #fff7fd 0%, #f7f0fc 100%);">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg mc-navbar bg-transparent border-0">
+    <div class="container">
+      <a class="mc-brand" href="index.html">
+        <div class="mc-brand-logo" style="background: linear-gradient(135deg, #5b426d 0%, #704c91 100%);">
+          <i class="bi bi-clipboard2-pulse"></i>
+        </div>
+        <span>MindCare <span class="badge bg-light text-primary border small ms-1">Clinical</span></span>
+      </a>
+      <a href="login.html" class="btn btn-mc-ghost small">
+        <i class="bi bi-person me-1"></i> Patient Portal &rarr;
+      </a>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 d-flex align-items-center py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-5">
+          <div class="mc-card p-4 p-md-5 border-0 shadow-lg" style="border-radius: 28px;">
+            <div class="text-center mb-4">
+              <span class="mc-badge mc-badge-lavender mb-2">
+                <i class="bi bi-shield-lock-fill text-success"></i> Practitioner Portal L3
+              </span>
+              <h3 class="fw-bold text-dark mb-1">Clinician Workspace</h3>
+              <p class="text-muted small">HIPAA-Verified Access to Patient Charts, SOAP Notes & Telehealth</p>
+            </div>
+
+            <!-- Pre-fill Clinician -->
+            <div class="mc-card mc-card-sm bg-light border-0 mb-4 text-center">
+              <span class="small fw-bold text-muted d-block mb-1">⚡ Quick Demo Evaluation:</span>
+              <button type="button" class="btn btn-mc-secondary btn-sm" id="btnFillTherapistDirect">
+                <i class="bi bi-person-badge me-1"></i> Pre-fill Dr. Elena Rostova (Ph.D.)
+              </button>
+            </div>
+
+            <form id="mcTherapistLoginForm">
+              <div class="mb-3">
+                <label class="form-label">Clinical Email Address</label>
+                <input type="email" id="therapistEmail" class="form-control" placeholder="dr.rostova@mindcare.org" value="dr.rostova@mindcare.org" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">State License # or NPI Identifier</label>
+                <input type="text" id="therapistNpi" class="form-control" placeholder="PSY-88219" value="PSY-88219 (Active)" required>
+              </div>
+
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <label class="form-label mb-0">Password</label>
+                  <a href="#" class="small text-muted" onclick="alert('Clinical credential reset link sent.')">Forgot?</a>
+                </div>
+                <div class="input-group">
+                  <input type="password" id="therapistPassword" class="form-control" placeholder="••••••••" value="Clinical#Care2026" required>
+                  <button class="btn btn-outline-secondary mc-toggle-password" type="button" data-target="therapistPassword">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-mc-primary w-100 py-3 fw-bold mb-3">
+                <i class="bi bi-shield-check me-2"></i> Launch Clinical Dashboard
+              </button>
+
+              <div class="text-center pt-2">
+                <span class="small text-muted">Interested in joining our clinical network?</span>
+                <a href="contact.html?topic=Practitioner" class="small fw-bold text-primary d-block mt-1">Submit Credential Application &rarr;</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-3 text-center text-muted small">
+    &copy; 2026 MindCare Mental Health Platform. Practitioner Clinical Portal.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth-ui.js"></script>
+  <script>
+    document.getElementById('btnFillTherapistDirect')?.addEventListener('click', () => {
+      document.getElementById('therapistEmail').value = 'dr.rostova@mindcare.org';
+      document.getElementById('therapistNpi').value = 'PSY-88219 (Stanford / CA Board Verified)';
+      document.getElementById('therapistPassword').value = 'Clinical#Care2026';
+      MindCareUI.showToast('Pre-filled Dr. Elena Rostova credentials', 'info');
+    });
+  </script>
+</body>
+</html>

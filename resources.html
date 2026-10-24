@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Wellness Resources & Guides — MindCare Library</title>
+  <meta name="description" content="Explore evidence-based clinical articles, somatic exercises, sleep guides, and cognitive reframing strategies written by licensed psychologists.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Crisis Banner -->
+  <div class="bg-light border-bottom py-1 px-3 text-center small">
+    <span class="text-muted">In crisis or experiencing acute distress? Free 24/7 support is available:</span>
+    <a href="#" class="text-danger fw-bold ms-2 mc-crisis-trigger">
+      <i class="bi bi-heart-pulse-fill me-1"></i> Call 988 Crisis Lifeline
+    </a>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg mc-navbar">
+    <div class="container">
+      <a class="mc-brand" href="index.html">
+        <div class="mc-brand-logo"><i class="bi bi-flower1"></i></div>
+        <span>MindCare</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mcNavbarContent">
+        <i class="bi bi-list fs-2 text-dark"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mcNavbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="therapists.html">Therapists</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link active" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link mc-nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a href="login.html" class="btn btn-mc-ghost">Sign In</a>
+          <a href="register.html" class="btn btn-mc-primary">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Resource Header -->
+    <section class="py-5" style="background: linear-gradient(180deg, #fff7fd 0%, var(--mc-canvas) 100%);">
+      <div class="container py-3 text-center">
+        <span class="mc-section-tag">Educational Library</span>
+        <h1 class="display-6 fw-bold mb-2 text-dark">Mental Wellness Articles & Therapeutic Tools</h1>
+        <p class="text-muted mx-auto" style="max-width: 650px;">
+          Clinically grounded insights and self-regulation exercises designed to help you thrive between therapy sessions.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="mc-card p-3 mx-auto mt-4 shadow-sm border-0" style="max-width: 600px;">
+          <div class="input-group">
+            <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+            <input type="text" id="resSearchInput" class="form-control" placeholder="Search anxiety, sleep, somatic breathing, burnout...">
+          </div>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="d-flex justify-content-center gap-2 flex-wrap mt-3" id="resCategoryFilters">
+          <button class="btn btn-mc-primary btn-sm mc-cat-btn active" data-cat="all">All Topics</button>
+          <button class="btn btn-mc-secondary btn-sm mc-cat-btn" data-cat="Anxiety">Anxiety</button>
+          <button class="btn btn-mc-secondary btn-sm mc-cat-btn" data-cat="Sleep">Sleep & Insomnia</button>
+          <button class="btn btn-mc-secondary btn-sm mc-cat-btn" data-cat="Stress">Stress & Burnout</button>
+          <button class="btn btn-mc-secondary btn-sm mc-cat-btn" data-cat="Relationships">Relationships</button>
+          <button class="btn btn-mc-secondary btn-sm mc-cat-btn" data-cat="Mindfulness">Mindfulness</button>
+          <button class="btn btn-mc-secondary btn-sm mc-cat-btn" data-cat="CBT">CBT Techniques</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <span class="text-muted small" id="resArticlesCount">Showing clinical articles</span>
+          <a href="patient/patient-favorites.html" class="fw-semibold text-primary small">
+            <i class="bi bi-bookmark-heart-fill me-1"></i> View Saved in Sanctuary Portal
+          </a>
+        </div>
+
+        <div class="row g-4" id="resArticlesGrid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mc-footer">
+    <div class="container text-center text-muted small">
+      &copy; 2026 MindCare Mental Health Platform. Educational resources are for informational and self-reflection purposes.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const grid = document.getElementById('resArticlesGrid');
+      const searchInput = document.getElementById('resSearchInput');
+      const countLabel = document.getElementById('resArticlesCount');
+      let currentCat = 'all';
+
+      async function renderArticles() {
+        const query = searchInput ? searchInput.value.trim() : '';
+        const articles = await MindCareAPI.articles.getAll({ category: currentCat, search: query });
+
+        if (countLabel) {
+          countLabel.textContent = `Showing ${articles.length} mental health guide${articles.length === 1 ? '' : 's'}`;
+        }
+
+        if (articles.length === 0) {
+          grid.innerHTML = `
+            <div class="col-12 text-center py-5">
+              <i class="bi bi-journal-x fs-1 opacity-50 mb-3 d-block text-secondary"></i>
+              <h5>No articles found</h5>
+              <p class="text-muted small">Try searching for other mental wellness terms like 'breathing' or 'anxiety'.</p>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = articles.map(art => `
+          <div class="col-lg-4 col-md-6">
+            <div class="mc-card h-100 d-flex flex-column">
+              <div class="position-relative mb-3 overflow-hidden rounded-3">
+                <img src="${art.image}" class="w-100" style="height: 190px; object-fit: cover;" alt="${art.title}">
+                <button class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle p-2 shadow-sm mc-fav-toggle" data-id="${art.id}" title="Save to Favorites">
+                  <i class="bi ${art.saved ? 'bi-bookmark-heart-fill text-danger' : 'bi-bookmark-heart text-muted'}"></i>
+                </button>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="mc-badge mc-badge-peach">${art.category}</span>
+                <span class="text-muted small">${art.readTime}</span>
+              </div>
+
+              <h5 class="fw-bold mb-2 text-dark">${art.title}</h5>
+              <p class="text-muted small flex-grow-1">${art.excerpt}</p>
+
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top mt-2">
+                <span class="text-muted small"><i class="bi bi-person me-1"></i>${art.author}</span>
+                <a href="article-details.html?id=${art.id}" class="fw-bold text-primary small">
+                  Read <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        // Bind favorite toggles
+        grid.querySelectorAll('.mc-fav-toggle').forEach(btn => {
+          btn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            const id = this.getAttribute('data-id');
+            const res = await MindCareAPI.articles.toggleSave(id);
+            const icon = this.querySelector('i');
+            if (res.saved) {
+              icon.className = 'bi bi-bookmark-heart-fill text-danger';
+              MindCareUI.showToast('Article saved to your sanctuary favorites!', 'success');
+            } else {
+              icon.className = 'bi bi-bookmark-heart text-muted';
+              MindCareUI.showToast('Article removed from favorites.', 'info');
+            }
+          });
+        });
+      }
+
+      // Category click
+      document.querySelectorAll('.mc-cat-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.mc-cat-btn').forEach(b => {
+            b.classList.remove('btn-mc-primary', 'active');
+            b.classList.add('btn-mc-secondary');
+          });
+          this.classList.remove('btn-mc-secondary');
+          this.classList.add('btn-mc-primary', 'active');
+          currentCat = this.getAttribute('data-cat');
+          renderArticles();
+        });
+      });
+
+      if (searchInput) searchInput.addEventListener('input', renderArticles);
+
+      renderArticles();
+    });
+  </script>
+</body>
+</html>

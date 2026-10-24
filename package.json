@@ -1,0 +1,12 @@
+{
+  "name": "human-care",
+  "private": true,
+  "scripts": {
+    "api:install": "npm --prefix apps/api install",
+    "api:dev": "npm --prefix apps/api run start:dev",
+    "api:build": "npm --prefix apps/api run build",
+    "api:test": "npm --prefix apps/api test",
+    "api:seed": "npm --prefix apps/api run seed",
+    "dev": "npm run api:dev"
+  }
+}

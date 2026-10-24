@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article CMS & Content Management — MindCare Operations</title>
+  <meta name="description" content="Manage the MindCare mental wellness publication repository. Create, edit, and publish clinical guides.">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="mc-portal-layout">
+    <!-- Desktop Admin Sidebar -->
+    <aside class="mc-sidebar">
+      <div class="mc-sidebar-brand d-flex align-items-center gap-2">
+        <div class="mc-brand-logo" style="background: linear-gradient(135deg, #281139 0%, #5b426d 100%);">
+          <i class="bi bi-shield-lock"></i>
+        </div>
+        <div>
+          <span class="fw-bold text-dark d-block">MindCare</span>
+          <span class="badge bg-dark text-white border small">Admin Operations</span>
+        </div>
+      </div>
+
+      <ul class="mc-sidebar-nav flex-grow-1">
+        <li><a href="admin-dashboard.html" class="mc-sidebar-link"><i class="bi bi-speedometer2"></i> Executive Overview</a></li>
+        <li><a href="admin-users.html" class="mc-sidebar-link"><i class="bi bi-people"></i> User Management</a></li>
+        <li><a href="admin-therapists.html" class="mc-sidebar-link"><i class="bi bi-patch-check"></i> Therapist Verification</a></li>
+        <li><a href="admin-appointments.html" class="mc-sidebar-link"><i class="bi bi-calendar-check"></i> Platform Appointments</a></li>
+        <li><a href="admin-articles.html" class="mc-sidebar-link active"><i class="bi bi-journal-text"></i> Article CMS</a></li>
+        <li><a href="admin-feedback.html" class="mc-sidebar-link"><i class="bi bi-chat-heart"></i> Feedback & Reviews</a></li>
+        <li><a href="admin-settings.html" class="mc-sidebar-link"><i class="bi bi-gear"></i> Platform Settings</a></li>
+      </ul>
+
+      <div class="pt-3 border-top">
+        <a href="../login.html" class="mc-sidebar-link text-danger">
+          <i class="bi bi-box-arrow-right text-danger"></i> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="mc-portal-content">
+      <div class="mc-portal-header">
+        <div>
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <span class="mc-badge mc-badge-peach">Clinical Publishing Hub</span>
+          </div>
+          <h2 class="fw-bold text-dark mb-0">Mental Wellness Articles CMS</h2>
+          <p class="text-muted small mb-0">Publish evidence-based therapeutic essays, somatic guidance, and insomnia protocols for patients.</p>
+        </div>
+
+        <button class="btn btn-mc-primary" data-bs-toggle="modal" data-bs-target="#mcCreateArticleModal">
+          <i class="bi bi-plus-lg me-1"></i> New Article
+        </button>
+      </div>
+
+      <!-- Articles CMS Table -->
+      <div class="mc-card p-0 overflow-hidden mb-4">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="bg-light">
+              <tr>
+                <th class="ps-4">Article Title & Author</th>
+                <th>Category</th>
+                <th>Published Date</th>
+                <th>Popularity</th>
+                <th class="pe-4">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminArticlesTableBody">
+              <!-- Rendered by assets/js/admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Article Modal -->
+  <div class="modal fade" id="mcCreateArticleModal" tabindex="-1" aria-labelledby="createArticleLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold text-dark" id="createArticleLabel">
+            <i class="bi bi-pencil-square text-primary me-2"></i> Publish New Educational Guide
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="mcCreateArticleForm">
+            <div class="mb-3">
+              <label class="form-label">Article Title *</label>
+              <input type="text" id="newArtTitle" class="form-control" placeholder="e.g., The Neurobiology of Compassion Fatigue" required>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-4">
+                <label class="form-label">Category *</label>
+                <select id="newArtCategory" class="form-select">
+                  <option value="Anxiety">Anxiety & Panic</option>
+                  <option value="Sleep">Sleep & Insomnia</option>
+                  <option value="Stress">Stress & Burnout</option>
+                  <option value="Mindfulness">Mindfulness & Somatics</option>
+                  <option value="Relationships">Couples & Attachment</option>
+                  <option value="CBT">CBT Techniques</option>
+                </select>
+              </div>
+              <div class="col-md-5">
+                <label class="form-label">Author Name & Credentials</label>
+                <input type="text" id="newArtAuthor" class="form-control" value="Dr. Elena Rostova (Ph.D.)">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Read Time</label>
+                <input type="text" id="newArtReadTime" class="form-control" value="5 min read">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Lead Excerpt / Summary *</label>
+              <textarea id="newArtExcerpt" class="form-control" rows="2" placeholder="Brief 1-2 sentence hook explaining the therapeutic benefit..." required></textarea>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label">Full Clinical Article Content *</label>
+              <textarea id="newArtContent" class="form-control" rows="6" placeholder="Write paragraphs, somatic grounding steps, and clinical reflections..." required></textarea>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-mc-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-mc-primary fw-bold">
+                <i class="bi bi-cloud-arrow-up me-1"></i> Publish to Sanctuary
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mc-mobile-bottom-nav">
+    <ul class="mc-mobile-nav-items">
+      <li><a href="admin-dashboard.html" class="mc-mobile-nav-item"><i class="bi bi-speedometer2"></i><span>Home</span></a></li>
+      <li><a href="admin-users.html" class="mc-mobile-nav-item"><i class="bi bi-people"></i><span>Users</span></a></li>
+      <li><a href="admin-therapists.html" class="mc-mobile-nav-item"><i class="bi bi-patch-check"></i><span>Verify</span></a></li>
+      <li><a href="admin-articles.html" class="mc-mobile-nav-item active"><i class="bi bi-journal-text"></i><span>Articles</span></a></li>
+      <li><a href="admin-settings.html" class="mc-mobile-nav-item"><i class="bi bi-gear"></i><span>Settings</span></a></li>
+    </ul>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

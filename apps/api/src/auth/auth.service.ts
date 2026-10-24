@@ -1,0 +1,8 @@
+import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common'; import { InjectModel } from '@nestjs/mongoose'; import { JwtService } from '@nestjs/jwt'; import { Model } from 'mongoose'; import * as bcrypt from 'bcrypt'; import { User, UserDocument } from './user.schema'; import { LoginDto, RegisterDto } from './auth.dto';
+@Injectable() export class AuthService { constructor(@InjectModel(User.name) private users:Model<UserDocument>, private jwt:JwtService) {}
+ private safe(u:UserDocument){return {id:u._id.toString(),name:u.name,email:u.email,role:u.role,status:u.status,phone:u.phone,avatar:u.avatar,profile:u.profile};}
+ private tokens(u:UserDocument){const payload={sub:u._id.toString(),email:u.email,role:u.role}; return {accessToken:this.jwt.sign(payload),user:this.safe(u)};}
+ async register(dto:RegisterDto){const exists=await this.users.exists({email:dto.email.toLowerCase()}); if(exists) throw new ConflictException('An account with this email already exists'); const u=await this.users.create({name:dto.name,email:dto.email,passwordHash:await bcrypt.hash(dto.password,12),role:'patient',phone:dto.phone}); return this.tokens(u);}
+ async login(dto:LoginDto){const u=await this.users.findOne({email:dto.email.toLowerCase()}).select('+passwordHash'); if(!u || u.status!=='active' || !(await bcrypt.compare(dto.password,u.passwordHash))) throw new UnauthorizedException('Invalid credentials'); if(dto.role && u.role!==dto.role) throw new UnauthorizedException('This account does not have the selected role'); return this.tokens(u);}
+ async me(id:string){const u=await this.users.findById(id); if(!u) throw new UnauthorizedException(); return this.safe(u);}
+}
